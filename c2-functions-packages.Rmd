@@ -1,0 +1,14 @@
+---
+title: "Functions & Packages"
+output:
+  html_document:
+    number_sections: false
+    toc: no
+params:
+  class: "2-functions-packages"
+---
+
+```{r child = "_knitr_setup.Rmd"}
+```
+
+Coming soon!

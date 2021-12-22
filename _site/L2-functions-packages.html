@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Functions &amp; Packages</title>
+
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link rel="icon" href="images/favicon.ico">
+<script src="https://kit.fontawesome.com/1392a7030f.js" crossorigin="anonymous"></script>
+<style type="text/css">
+
+/* Text */
+
+h1 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 60px;
+}
+h2 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 50px;
+}
+h3 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 40px;
+}
+body {
+  font-size: 16px;
+  line-height: 26px;
+}
+blockquote {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-color: #2296f3;
+  border-radius: 5px;
+}
+blockquote h3 {
+  margin-top: 0px;
+}
+
+/* Images */
+
+img {
+  padding-bottom: 10px;
+}
+
+/* Tables */
+
+table {
+  border-collapse: collapse;
+  margin-bottom:10px;
+}
+thead {
+  border-top: solid #DCDCDC;
+  border-bottom: solid #DCDCDC;
+}
+tr.odd {
+  background-color: #F8F8F8;
+}
+tr:first-child {
+  border-top: solid #DCDCDC;
+}
+tr:last-child {
+  border-bottom: solid #DCDCDC;
+}
+
+</style>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">P4A - Spring 2022</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="syllabus.html">
+    <span class="far fa-map"></span>
+     
+    Syllabus
+  </a>
+</li>
+<li>
+  <a href="schedule.html">
+    <span class="far fa-calendar-alt"></span>
+     
+    Schedule
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-book"></span>
+     
+    Lessons
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="L0-course-prep.html">0: Course Prep</a>
+    </li>
+    <li>
+      <a href="L1.1-course-introduction.html">Week 1.1: Course Introduction</a>
+    </li>
+    <li>
+      <a href="L1.2-getting-started.html">Week 1.2: Getting Started</a>
+    </li>
+    <li>
+      <a href="L1.3-operations-data-types.html">Week 1.3: Operations &amp; Data Types</a>
+    </li>
+    <li>
+      <a href="L2-functions-packages.html">Week 2: Functions &amp; Packages</a>
+    </li>
+    <li>
+      <a href="L3-creating-functions.html">Week 3: Creating functions</a>
+    </li>
+    <li>
+      <a href="L4.1-conditionals.html">Week 4.1: Conditionals</a>
+    </li>
+    <li>
+      <a href="L4.2-testing-debugging.html">Week 4.2: Testing &amp; Debugging</a>
+    </li>
+    <li>
+      <a href="L5-loops.html">Week 5: Loops</a>
+    </li>
+    <li>
+      <a href="L6-vectors.html">Week 6: Vectors</a>
+    </li>
+    <li>
+      <a href="L7-strings.html">Week 7: Strings</a>
+    </li>
+    <li>
+      <a href="L9-python-intro.html">
+        <span class="fab fa-python"></span>
+         
+        Week 9: Introduction to Python
+      </a>
+    </li>
+    <li>
+      <a href="L11.1-data-analysis-prelude.html">Week 11-1: Data Analysis Prelude</a>
+    </li>
+    <li>
+      <a href="L11.2-data-frames.html">Week 11-2: Data Frames</a>
+    </li>
+    <li>
+      <a href="L12-data-wrangling.html">Week 12: Data Wrangling</a>
+    </li>
+    <li>
+      <a href="L13-data-visualization.html">Week 13: Data Visualization</a>
+    </li>
+    <li>
+      <a href="L14-reproducible-reporting.html">Week 14: Reproducible Reporting</a>
+    </li>
+    <li>
+      <a href="L15-monte-carlo-methods.html">Week 15: Monte Carlo Methods</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-laptop"></span>
+     
+    Assignments
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="hw1-getting-started.html">HW 1 - Getting Started</a>
+    </li>
+    <li>
+      <a href="hw2-functions-packages.html">HW 2 - Functions &amp; Packages</a>
+    </li>
+    <li>
+      <a href="hw3-creating-functions.html">HW 3 - Creating Functions</a>
+    </li>
+    <li>
+      <a href="hw4-conditionals-testing.html">HW 4 - Conditionals &amp; Testing</a>
+    </li>
+    <li>
+      <a href="hw5-loops.html">HW 5 - Loops</a>
+    </li>
+    <li>
+      <a href="hw6-vectors.html">HW 6 - Vectors</a>
+    </li>
+    <li>
+      <a href="hw7-strings.html">HW 7 - Strings</a>
+    </li>
+    <li>
+      <a href="hw8-python.html">HW 8 - Python</a>
+    </li>
+    <li>
+      <a href="hw9-data-frames.html">HW 9 - Data Frames</a>
+    </li>
+    <li>
+      <a href="hw10-data-wrangling.html">HW 10 - Data Wrangling</a>
+    </li>
+    <li>
+      <a href="hw11-data-visualization.html">HW 11 - Data Visualization</a>
+    </li>
+    <li>
+      <a href="hw12-reproducible-reporting.html">HW 12 - Reproducible Reporting</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="far fa-bookmark"></span>
+     
+    References
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="ref-getting-help.html">
+        <span class="fa fa-question-circle"></span>
+         
+        Getting Help
+      </a>
+    </li>
+    <li>
+      <a href="ref-programming.html">
+        <span class="fa fa-terminal"></span>
+         
+        Programming in R
+      </a>
+    </li>
+    <li>
+      <a href="ref-visualizing-data.html">
+        <span class="fa fa-chart-bar"></span>
+         
+        Visualizing Data
+      </a>
+    </li>
+    <li>
+      <a href="ref-rmarkdown.html">
+        <span class="fa fa-feather-alt"></span>
+         
+        R Markdown
+      </a>
+    </li>
+    <li>
+      <a href="ref-other.html">
+        <span class="fa fa-expand"></span>
+         
+        Other
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-tools"></span>
+     
+    Tools
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="autograder.html">
+        <span class="fas fa-tasks"></span>
+         
+        Autograder
+      </a>
+    </li>
+    <li>
+      <a href="https://emse-p4a-s22.slack.com">
+        <span class="fab fa-slack"></span>
+         
+        Slack
+      </a>
+    </li>
+    <li>
+      <a href="https://rstudio.seas.gwu.edu/">
+        <span class="fab fa-r-project"></span>
+         
+        RStudio Server
+      </a>
+    </li>
+    <li>
+      <a href="https://jhelvy.appointlet.com/b/professor-helveston">
+        <span class="fas fa-user-clock"></span>
+         
+        Schedule a meeting w/Prof. Helveston
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-bars"></span>
+     
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="about.html">
+        <span class="fa fa-info-circle"></span>
+         
+        About
+      </a>
+    </li>
+    <li>
+      <a href="LICENSE.html">
+        <span class="fa fa-gavel"></span>
+         
+        License
+      </a>
+    </li>
+    <li>
+      <a href="mailto:jph@gwu.edu">
+        <span class="fa fa-envelope"></span>
+         
+        Contact
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/emse-p4a-gwu/2022-Spring/">
+        <span class="fa fa-github"></span>
+         
+        Source files
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Functions &amp; Packages</h1>
+
+</div>
+
+
+<blockquote>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<ul>
+<li>Know some common functions in R.</li>
+<li>Know how R handles function arguments and named arguments.</li>
+<li>Know how to install, load, and use functions from external R packages.</li>
+<li>Practice programming with functions using the TurtleGraphics package.</li>
+</ul>
+<h3 id="suggested-readings">Suggested Readings</h3>
+<ul>
+<li>Chapter 3.5 of Danielle Navarro’s book <a href="https://learningstatisticswithr.com/book/introR.html#usingfunctions">“Learning Statistics With R”</a></li>
+</ul>
+</blockquote>
+<div id="functions" class="section level1">
+<h1>Functions</h1>
+<p>You can do a lot with the basic operators like <code>+</code>, <code>-</code>, and <code>*</code>, but to do more advanced calculations you’re going to need to start using functions.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<blockquote>
+<p><a href="https://vimeo.com/220490105">Watch this 1-minute video for a quick summary of <strong>functions</strong></a></p>
+</blockquote>
+<p>R has a lot of very useful built-in functions. For example, if I wanted to take the square root of 225, I could use R’s built-in square root function <code>sqrt()</code>:</p>
+<pre class="r"><code>sqrt(225)</code></pre>
+<pre><code>#&gt; [1] 15</code></pre>
+<p>Here the letters <code>sqrt</code> are short for “square root,” and the value inside the <code>()</code> is the “argument” to the function. In the example above, the value <code>225</code> is the “argument”.</p>
+<p>Keep in mind that not all functions have (or require) arguments:</p>
+<pre class="r"><code>date() # Returns the current date and time</code></pre>
+<pre><code>#&gt; [1] &quot;Wed Dec 22 06:27:35 2021&quot;</code></pre>
+<p>(the date above is the date this page was last built)</p>
+<div id="multiple-arguments" class="section level2">
+<h2>Multiple arguments</h2>
+<p>Some functions have more than one argument. For example, the <code>round()</code> function can be used to round some value to the nearest integer or to a specified decimal place:</p>
+<pre class="r"><code>round(3.14165)    # Rounds to the nearest integer</code></pre>
+<pre><code>#&gt; [1] 3</code></pre>
+<pre class="r"><code>round(3.14165, 2) # Rounds to the 2nd decimal place</code></pre>
+<pre><code>#&gt; [1] 3.14</code></pre>
+<p>Not all arguments are mandatory. With the <code>round()</code> function, the decimal place is an <em>optional</em> input - if nothing is provided, the function will round to the nearest integer by default.</p>
+</div>
+<div id="argument-names" class="section level2">
+<h2>Argument names</h2>
+<p>In the case of <code>round()</code>, it’s not too hard to remember which argument comes first and which one comes second. But it starts to get very difficult once you start using complicated functions that have lots of arguments. Fortunately, most R functions use <strong>argument names</strong> to make your life a little easier. For the <code>round()</code> function, for example, the number that needs to be rounded is specified using the <code>x</code> argument, and the number of decimal points that you want it rounded to is specified using the <code>digits</code> argument, like this:</p>
+<pre class="r"><code>round(x = 3.1415, digits = 2)</code></pre>
+<pre><code>#&gt; [1] 3.14</code></pre>
+</div>
+<div id="default-values" class="section level2">
+<h2>Default values</h2>
+<p>Notice that the first time I called the <code>round()</code> function I didn’t actually specify the <code>digits</code> argument at all, and yet R somehow knew that this meant it should round to the nearest whole number. How did that happen? The answer is that the <code>digits</code> argument has a <strong>default value</strong> of <code>0</code>, meaning that if you decide not to specify a value for <code>digits</code> then R will act as if you had typed <code>digits = 0</code>.</p>
+<p>This is quite handy: most of the time when you want to round a number you want to round it to the nearest <em>whole</em> number, and it would be pretty annoying to have to specify the <code>digits</code> argument every single time. On the other hand, sometimes you actually do want to round to something other than the nearest whole number, and it would be even more annoying if R didn’t allow this! Thus, by having <code>digits = 0</code> as the default value, we get the best of both worlds.</p>
+</div>
+<div id="function-help" class="section level2">
+<h2>Function help</h2>
+<p>Not sure what a function does, how many arguments it has, or what the argument names are? Ask R for help by typing <code>?</code> and then the function name, and R will return some documentation about it. For example, type <code>?round()</code> into the console and R will return information about how to use the <code>round()</code> function.</p>
+</div>
+<div id="combining-functions" class="section level2">
+<h2>Combining functions</h2>
+<p>In the same way that R allows us to put multiple operations together into a longer command (like <code>1 + 2 * 4</code> for instance), it also lets us put functions together and even combine functions with operators if we so desire. For example, the following is a perfectly legitimate command:</p>
+<pre class="r"><code>round(sqrt(7), digits = 2)</code></pre>
+<pre><code>#&gt; [1] 2.65</code></pre>
+<p>When R executes this command, starts out by calculating the value of <code>sqrt(7)</code>, which produces an intermediate value of <code>2.645751</code>. The command then simplifies to <code>round(2.645751, digits = 2)</code>, which rounds the value to <code>2.65</code>.</p>
+</div>
+</div>
+<div id="frequently-used-functions" class="section level1">
+<h1>Frequently used functions</h1>
+<div id="math-functions" class="section level2">
+<h2>Math functions</h2>
+<p>R has LOTS of functions. Many of the basic math functions are somewhat self-explanatory, but it can be hard to remember the specific function name. Below is a reference table of some frequently used math functions.</p>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="29%" />
+<col width="29%" />
+<col width="24%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+<th>Example input</th>
+<th>Example output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>round(x, digits=0)</code></td>
+<td>Round <code>x</code> to the <code>digits</code> decimal place</td>
+<td><code>round(3.1415, digits=2)</code></td>
+<td><code>3.14</code></td>
+</tr>
+<tr class="even">
+<td><code>floor(x)</code></td>
+<td>Round <code>x</code> <strong>down</strong> the nearest integer</td>
+<td><code>floor(3.1415)</code></td>
+<td><code>3</code></td>
+</tr>
+<tr class="odd">
+<td><code>ceiling(x)</code></td>
+<td>Round <code>x</code> <strong>up</strong> the nearest integer</td>
+<td><code>ceiling(3.1415)</code></td>
+<td><code>4</code></td>
+</tr>
+<tr class="even">
+<td><code>abs()</code></td>
+<td>Absolute value</td>
+<td><code>abs(-42)</code></td>
+<td><code>42</code></td>
+</tr>
+<tr class="odd">
+<td><code>min()</code></td>
+<td>Minimum value</td>
+<td><code>min(1, 2, 3)</code></td>
+<td><code>1</code></td>
+</tr>
+<tr class="even">
+<td><code>max()</code></td>
+<td>Maximum value</td>
+<td><code>max(1, 2, 3)</code></td>
+<td><code>3</code></td>
+</tr>
+<tr class="odd">
+<td><code>sqrt()</code></td>
+<td>Square root</td>
+<td><code>sqrt(64)</code></td>
+<td><code>8</code></td>
+</tr>
+<tr class="even">
+<td><code>exp()</code></td>
+<td>Exponential</td>
+<td><code>exp(0)</code></td>
+<td><code>1</code></td>
+</tr>
+<tr class="odd">
+<td><code>log()</code></td>
+<td>Natural log</td>
+<td><code>log(1)</code></td>
+<td><code>0</code></td>
+</tr>
+<tr class="even">
+<td><code>factorial()</code></td>
+<td>Factorial</td>
+<td><code>factorial(5)</code></td>
+<td><code>120</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="functions-for-manipulating-data-types" class="section level2">
+<h2>Functions for manipulating data types</h2>
+<p>You will often need to check the data type of objects and convert them to other types. To handle this, use these patterns:</p>
+<ul>
+<li>Check the type of <code>x</code>: <code>is.______()</code></li>
+<li>Convert the type of <code>x</code>: <code>as.______()</code></li>
+</ul>
+<p>In each of these patterns, replace “<code>______</code>” with:</p>
+<ul>
+<li><code>character</code></li>
+<li><code>logical</code></li>
+<li><code>numeric</code> / <code>double</code> / <code>integer</code></li>
+</ul>
+<div id="converting-data-types" class="section level3">
+<h3>Converting data types</h3>
+<p>You can convert an object from one type to another using <code>as.______()</code>, replacing “<code>______</code>” with a data type:</p>
+<p>Convert <strong>numeric</strong> types:</p>
+<pre class="r"><code>as.numeric(&quot;3.1415&quot;)</code></pre>
+<pre><code>#&gt; [1] 3.1415</code></pre>
+<pre class="r"><code>as.double(&quot;3.1415&quot;)</code></pre>
+<pre><code>#&gt; [1] 3.1415</code></pre>
+<pre class="r"><code>as.integer(&quot;3.1415&quot;)</code></pre>
+<pre><code>#&gt; [1] 3</code></pre>
+<p>Convert <strong>non-numeric</strong> types:</p>
+<pre class="r"><code>as.character(3.1415)</code></pre>
+<pre><code>#&gt; [1] &quot;3.1415&quot;</code></pre>
+<pre class="r"><code>as.logical(3.1415)</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<p>A few notes to keep in mind:</p>
+<ol style="list-style-type: decimal">
+<li><p>When converting from a <strong>numeric</strong> to a <strong>logical</strong>, <code>as.logical()</code> will always return <code>TRUE</code> for any numeric value other than <code>0</code>, for which it returns <code>FALSE</code>.</p>
+<pre class="r"><code>as.logical(7)</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<pre class="r"><code>as.logical(0)</code></pre>
+<pre><code>#&gt; [1] FALSE</code></pre>
+<p>The reverse is also true</p>
+<pre class="r"><code>as.numeric(TRUE)</code></pre>
+<pre><code>#&gt; [1] 1</code></pre>
+<pre class="r"><code>as.numeric(FALSE)</code></pre>
+<pre><code>#&gt; [1] 0</code></pre></li>
+<li><p>Not everything can be converted. For example, if you try to coerce a character that contains letters into a number, R will return <code>NA</code>, because it doesn’t know what number to choose:</p>
+<pre class="r"><code>as.numeric(&#39;foo&#39;)</code></pre>
+<pre><code>#&gt; [1] NA</code></pre></li>
+<li><p>The <code>as.integer()</code> function behaves the same as <code>floor()</code>:</p>
+<pre class="r"><code>as.integer(3.14)</code></pre>
+<pre><code>#&gt; [1] 3</code></pre>
+<pre class="r"><code>as.integer(3.99)</code></pre>
+<pre><code>#&gt; [1] 3</code></pre></li>
+</ol>
+</div>
+<div id="checking-data-types" class="section level3">
+<h3>Checking data types</h3>
+<p>Similar to the <code>as.______()</code> format, you can check if an object is a specific data type using <code>is.______()</code>, replacing “<code>______</code>” with a data type.</p>
+<p>Checking <strong>numeric</strong> types:</p>
+<pre class="r"><code>is.numeric(3.1415)</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<pre class="r"><code>is.double(3.1415)</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<pre class="r"><code>is.integer(3.1415)</code></pre>
+<pre><code>#&gt; [1] FALSE</code></pre>
+<p>Checking <strong>non-numeric</strong> types:</p>
+<pre class="r"><code>is.character(3.1415)</code></pre>
+<pre><code>#&gt; [1] FALSE</code></pre>
+<pre class="r"><code>is.logical(3.1415)</code></pre>
+<pre><code>#&gt; [1] FALSE</code></pre>
+<p>One thing you’ll notice is that <code>is.integer()</code> often gives you a surprising result. For example, why did <code>is.integer(7)</code> return <code>FALSE</code>?. Well, this is because numbers are <em>doubles</em> by default in R, so even though <code>7</code> <em>looks</em> like an integer, R thinks it’s a double.</p>
+<p>The safer way to check if a number is an integer in <em>value</em> is to compare it against itself converted into an integer:</p>
+<pre class="r"><code>7 == as.integer(7)</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+</div>
+</div>
+</div>
+<div id="more-functions-with-packages" class="section level1">
+<h1>More functions with <strong>packages</strong></h1>
+<p>When you start R, it only loads the “Base R” functions (e.g. <code>sqrt()</code>, <code>round()</code>, etc.), but there are thousands and thousands of additional functions stored in external <strong>packages</strong>.</p>
+<blockquote>
+<p><a href="https://vimeo.com/220490447">Watch this 1-minute video for a quick summary of <strong>packages</strong></a></p>
+</blockquote>
+<div id="installing-packages" class="section level2">
+<h2>Installing packages</h2>
+<p>To install a package, use the <code>install.packages()</code> function. Make sure you put the package name in quotes:</p>
+<pre class="r"><code>install.packages(&quot;packagename&quot;) # This works
+install.packages(packagename)   # This doesn&#39;t work</code></pre>
+<p>Just like most software, you only need to <em>install</em> a package once.</p>
+</div>
+<div id="using-packages" class="section level2">
+<h2>Using packages</h2>
+<p>After installing a package, you can’t immediately use the functions that the package contains. This is because when you start up R only the “base” functions are loaded. If you want R to also load the functions inside a package, you have to <em>load</em> that package, which you do with the <code>library()</code> function. In contrast to the <code>install.packages()</code> function, you don’t need quotes around the package name to load it:</p>
+<pre class="r"><code>library(&quot;packagename&quot;) # This works
+library(packagename)   # This also works</code></pre>
+<p>Here’s a helpful image to keep the two ideas of <em>installing</em> vs <em>loading</em> separate:</p>
+<p><img src="images/package_lightbulb.png" width="800" /></p>
+</div>
+<div id="example-wikifacts" class="section level2">
+<h2>Example: <strong>wikifacts</strong></h2>
+<p>As an example, try installing the <a href="https://github.com/keithmcnulty/wikifacts">Wikifacts</a> package, by Keith McNulty:</p>
+<pre class="r"><code>install.packages(&quot;wikifacts&quot;) # Remember - you only have to do this once!</code></pre>
+<p>Now that you have the package installed on your computer, try loading it using <code>library(wikifacts)</code>, then trying using some of it’s functions:</p>
+<pre class="r"><code>library(wikifacts) # Load the library</code></pre>
+<pre class="r"><code>wiki_randomfact()</code></pre>
+<pre><code>#&gt; [1] &quot;Here&#39;s some news from 05 December 2018. Ukrainian president Petro Poroshenko declares martial law after Russian forces seize three ships in the disputed Kerch Strait near Crimea. (Courtesy of Wikipedia)&quot;</code></pre>
+<pre class="r"><code>wiki_didyouknow()</code></pre>
+<pre><code>#&gt; [1] &quot;Did you know that among the live venues Japanese singer and voice actress Aimi performed at prior to her major debut was a steakhouse? (Courtesy of Wikipedia)&quot;</code></pre>
+<p>In case you’re wondering, the only thing this package does is generate messages containing random facts from <a href="https://www.wikipedia.org/">Wikipedia</a>.</p>
+</div>
+<div id="using-only-some-package-functions" class="section level2">
+<h2>Using only <em>some</em> package functions</h2>
+<p>Sometimes you may only want to use a single function from a library without having to load the whole thing. To do so, use this recipe:</p>
+<blockquote>
+<p>packagename::functionname()</p>
+</blockquote>
+<p>Here I use the name of the <em>package</em> followed by <code>::</code> to tell R that I’m looking for a function that is in that package. For example, if I didn’t want to load the whole <strong>wikifacts</strong> library but still wanted to use the <code>wiki_randomfact()</code> function, I could do this:</p>
+<pre class="r"><code>wikifacts::wiki_randomfact()</code></pre>
+<pre><code>#&gt; [1] &quot;Here&#39;s some news from 05 May 2017. Mark Selby (pictured) defeats John Higgins to win the World Snooker Championship. (Courtesy of Wikipedia)&quot;</code></pre>
+<p>Where this is particularly handy is when two packages have a function with the same name. If you load both library, R might not know which function to use. In those cases, it’s best to also provide the <strong>package</strong> name. For example, let’s say there was a package called <strong>apples</strong> and another called <strong>bananas</strong>, and each had a function named <code>fruitName()</code>. If I wanted to use each of them in my code, I would need to specify the package names like this:</p>
+<pre class="r"><code>apples::fruitName()
+bananas::fruitName()</code></pre>
+</div>
+</div>
+<div id="turtle-graphics" class="section level1">
+<h1>Turtle Graphics</h1>
+<p><a href="https://en.wikipedia.org/wiki/Turtle_graphics">Turtle graphics</a> is a classic teaching tool in computer science, originally invented in the 1960s and re-implemented over and over again in different programming languages.</p>
+<p>In R, there is a similar package called <a href="http://www.gagolewski.com/software/TurtleGraphics/?section=software&amp;subsection=TurtleGraphics"><strong>TurtleGraphics</strong></a>. To get started, install the package (remember, you only need to do this once on your computer):</p>
+<pre class="r"><code>install.packages(&#39;TurtleGraphics&#39;)</code></pre>
+<p>Once installed, load the package (remember, you have to load this every time you restart R to use the package!):</p>
+<pre class="r"><code>library(TurtleGraphics)</code></pre>
+<div id="getting-to-know-your-turtle" class="section level2">
+<h2>Getting to know your turtle</h2>
+<p>Here’s the idea. You have a turtle, and she lives in a nice warm terrarium. The terrarium is 100 x 100 units in size, where the lower-left corner is at the <code>(x, y)</code> position of <code>(0, 0)</code>. When you call <code>turtle_init()</code>, the turtle is initially positioned in the center of the terrarium at <code>(50, 50)</code>:</p>
+<pre class="r"><code>turtle_init()</code></pre>
+<p><img src="images/turtle_init.png" width="456" /></p>
+<p>You can move the turtle using a variety of movement functions (see <code>?turtle_move()</code>), and she will leave a trail where ever she goes. For example, you can move her 10 units forward from her starting position:</p>
+<pre class="r"><code>turtle_init()
+turtle_forward(distance = 10)</code></pre>
+<p><img src="images/turtle_forward.png" width="456" /></p>
+<p>You can also make the turtle jump to a new position (without drawing a line) by using the <code>turtle_setpos(x, y)</code>, where <code>(x, y)</code> is a coordinate within the 100 x 100 terrarium:</p>
+<pre class="r"><code>turtle_init()
+turtle_setpos(x=10, y=10)</code></pre>
+<p><img src="images/turtle_setpos.png" width="456" /></p>
+</div>
+<div id="turtle-loops" class="section level2">
+<h2>Turtle loops</h2>
+<p>Simple enough, right? But what if I want my turtle to draw a more complicated shape? Let’s say I want her to draw a hexagon. There are six sides to the hexagon, so the most natural way to write code for this is to write a <code>for</code> loop that loops over the sides (don’t worry if this doesn’t make sense yet - we’ll get to <a href="L5-loops.html">loops in week 5</a>!). At each iteration within the loop, I’ll have the turtle walk forwards, and then turn 60 degrees to the left. Here’s what happens:</p>
+<!-- ```{r, fig.show='animate', interval=0.05, cache=TRUE, message=FALSE} -->
+<!-- ffmpeg is a pain, so manually sticking video in -->
+<pre class="r"><code>turtle_init()
+for (side in 1:6) {
+    turtle_forward(distance = 10)
+    turtle_left(angle = 60)
+}</code></pre>
+<video width="456" controls="" loop="">
+<source src="images/turtle_hexagon.webm">
+</video>
+<p>Cool! As you draw more complex shapes, you can speed up the process by wrapping your turtle commands inside the <code>turtle_do({})</code> function. This will skip the animations of the turtle moving and will jump straight to the final position. For example, here’s the hexagon again without animations:</p>
+<pre class="r"><code>turtle_init()
+turtle_do({
+    for (side in 1:6) {
+        turtle_forward(distance = 10)
+        turtle_left(angle = 60)
+    }
+})</code></pre>
+<p><img src="images/turtle_hexagon.png" width="456" /></p>
+<hr />
+<p><strong>Page sources</strong>:</p>
+<p>Some content on this page has been modified from other courses, including:</p>
+<ul>
+<li>Danielle Navarro’s book <a href="https://learningstatisticswithr.com/book/introR.html#usingfunctions">“Learning Statistics With R”</a></li>
+<li>Danielle Navarro’s website <a href="https://psyr.djnavarro.net/">“R for Psychological Science”</a></li>
+<li>Jenny Bryan’s <a href="http://stat545.com/">STAT 545 Course</a></li>
+<li><a href="https://rstudio.cloud/learn/primers/1.2">RStudio primers</a></li>
+<li>Xiao Ping Song’s <a href="https://github.com/xp-song/Intro2R">Intro2R crash course</a></li>
+</ul>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Technically speaking, operators are functions in R: the addition operator <code>+</code> is a convenient way of calling the addition function <code>'+'()</code>. Thus <code>10+20</code> is equivalent to the function call <code>'+'(20, 30)</code>. Not surprisingly, no-one ever uses this version.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+<hr>
+
+<div>
+<center>
+    EMSE 4571: Intro to Programming for Analytics (Spring 2022)
+
+    <br>
+
+    <i class="far fa-calendar-alt"></i> Thursdays |
+    <i class="far fa-clock"></i> 12:45 - 3:15 PM |
+    <a href="https://acadtech.gwu.edu/location?staging&id=351&selected=Tompkins&method=building"><i class="fa fa-map-marker-alt"></i> Tompkins 208</a> |
+    <a href="https://www.jhelvy.com"><i class="fas fa-user"></i> Dr. John Paul Helveston</a> |
+    <a href="mailto:jph@gwu.edu"><i class="fas fa-envelope"></i> jph@gwu.edu</a>
+
+    <br>
+
+    <a href="LICENSE.html">LICENSE: CC-BY-SA <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i><i class="fab fa-creative-commons-sa"></i></a>
+</center>
+</div>
+
+<!-- Add function to open links to external links in new tab, from: -->
+<!-- https://yihui.name/en/2018/09/target-blank/ -->
+
+<script src="js/external-link.js"></script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

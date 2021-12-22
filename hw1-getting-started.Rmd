@@ -1,0 +1,12 @@
+---
+title: "Homework 1 - Getting Started"
+output:
+  html_document:
+    number_sections: false
+    toc: no
+---
+
+```{r child = "_knitr_setup.Rmd"}
+```
+
+Coming soon!

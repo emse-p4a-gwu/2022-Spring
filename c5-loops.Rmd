@@ -1,0 +1,14 @@
+---
+title: "Loops"
+output:
+  html_document:
+    number_sections: false
+    toc: no
+params:
+  class: "5-loops"
+---
+
+```{r child = "_knitr_setup.Rmd"}
+```
+
+Coming soon!

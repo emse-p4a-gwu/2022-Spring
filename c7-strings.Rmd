@@ -1,0 +1,12 @@
+---
+title: "Strings"
+output:
+  html_document:
+    number_sections: false
+    toc: no
+params:
+  class: "7-strings"
+---
+
+```{r child = "_knitr_setup.Rmd"}
+```

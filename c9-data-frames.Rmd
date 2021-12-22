@@ -1,0 +1,14 @@
+---
+title: "Data Frames"
+output:
+  html_document:
+    number_sections: false
+    toc: no
+params:
+  class: "9-data-frames"
+---
+
+```{r child = "_knitr_setup.Rmd"}
+```
+
+Coming soon!

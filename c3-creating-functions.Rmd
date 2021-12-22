@@ -1,0 +1,14 @@
+---
+title: "Creating Functions"
+output:
+  html_document:
+    number_sections: false
+    toc: no
+params:
+  class: "3-creating-functions"
+---
+
+```{r child = "_knitr_setup.Rmd"}
+```
+
+Coming soon!

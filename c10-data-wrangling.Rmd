@@ -1,0 +1,14 @@
+---
+title: "Data Wrangling"
+output:
+  html_document:
+    number_sections: false
+    toc: no
+params:
+  class: "10-data-wrangling"
+---
+
+```{r child = "_knitr_setup.Rmd"}
+```
+
+Coming soon!

@@ -1,0 +1,12 @@
+---
+title: "Homework 12 - Reproducible Reporting"
+output:
+  html_document:
+    number_sections: false
+    toc: no
+---
+
+```{r child = "_knitr_setup.Rmd"}
+```
+
+Coming soon!

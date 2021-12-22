@@ -1,0 +1,14 @@
+---
+title: "Conditionals & Testing"
+output:
+  html_document:
+    number_sections: false
+    toc: no
+params:
+  class: "4-conditionals-testing"
+---
+
+```{r child = "_knitr_setup.Rmd"}
+```
+
+Coming soon!
