@@ -11,7 +11,7 @@ output:
 
 # Slack
 
-All course communication will be managed through [Slack](https://emse-p4a-s22.slack.com). A link to sign up for the course slack page can be found on the one (and only) announcement on Blackboard.
+All course communication will be managed through [Slack](`r settings$slack`). A link to sign up for the course slack page can be found on the one (and only) announcement on Blackboard.
 
 **You can use Slack to**:
 
@@ -21,12 +21,8 @@ All course communication will be managed through [Slack](https://emse-p4a-s22.sl
 
 **Asking for help on Slack**:
 
-- When you have a question, post it in the most relevant channel (e.g. use `#hw01` for questions about homework 1).
+- When you have a question, post it in the most relevant channel.
 - Be specific: if your code has an error you don't understand, **include the code and the error message** in your question.
-
-Never heard of Slack? Watch this 2-minute video to see what it's all about:
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9RJZMSsH7-g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Appointments w/Prof. Helveston
 

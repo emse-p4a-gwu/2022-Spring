@@ -18,7 +18,7 @@ output:
 
 ### Description
 
-```{r child = '_description.Rmd'}
+```{r child = file.path("child", "description.Rmd")}
 ```
 
 For more details, please see the [course website](http://p4a.seas.gwu.edu/2022-Spring/).

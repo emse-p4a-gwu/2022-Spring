@@ -7,8 +7,8 @@
 
 ![Render & Deploy
 Site](https://github.com/emse-p4a-gwu/2022-Spring/workflows/Render%20&%20Deploy%20Site/badge.svg)
-[![License: CC-BY-SA
-4.0](https://img.shields.io/badge/License-CC%20BY--SA-lightgrey)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![License:
+CC-BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA-lightgrey)](https://creativecommons.org/licenses/by-sa/4.0/)
 <!-- badges: end -->
 
 ### Description

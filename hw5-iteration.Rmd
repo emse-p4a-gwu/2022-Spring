@@ -1,0 +1,12 @@
+---
+title: "Homework 5 - Iteration"
+output:
+  html_document:
+    number_sections: false
+    toc: no
+---
+
+```{r child = file.path("child", "setup.Rmd")}
+```
+
+Coming soon!

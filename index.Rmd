@@ -1,12 +1,13 @@
 ---
-title: "Intro to Programming for Analytics - Spring 2022"
+title: "Intro to Programming for Analytics"
+subtitle: "EMSE 4571, Spring 2022"
 output:
   html_document:
     number_sections: false
     toc: no
 ---
 
-```{r child = "_knitr_setup.Rmd"}
+```{r child = file.path("child", "setup.Rmd")}
 ```
 
 <div class = "row">
@@ -23,17 +24,17 @@ output:
 
 **Description**:
 
-```{r child = '_description.Rmd'}
+```{r child = file.path("child", "description.Rmd")}
 ```
 
 **Learning Objectives**:
 
-```{r child = '_learning-objectives.Rmd'}
+```{r child = file.path("child", "learning-objectives.Rmd")}
 ```
 
 **Prerequisites**:
 
-```{r child = '_prerequisites.Rmd'}
+```{r child = file.path("child", "prerequisites.Rmd")}
 ```
 </div>
 </div>

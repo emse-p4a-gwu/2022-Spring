@@ -14,72 +14,99 @@ navbar:
     - text: "Schedule"
       icon: far fa-calendar-alt
       href: schedule.html
+    - text: "Class"
+      icon: fas fa-laptop-code
+      menu:
+        - text: "Jan 13: Getting Started"
+          href: c1-getting-started.html
+        - text: "Jan 20: Functions & Packages"
+          href: c2-functions-packages.html
+        - text: "Jan 27: Creating Functions"
+          href: c3-creating-functions.html
+        - text: "Feb 03: Conditionals & Testing"
+          href: c4-conditionals-testing.html
+        - text: "Feb 10: Iteration"
+          href: c5-iteration.html
+        - text: "Feb 17: Vectors"
+          href: c6-vectors.html
+        - text: "Feb 24: Strings"
+          href: c7-strings.html
+        - text: "Mar 03: Python in R"
+          href: c8-python.html
+        - text: "Mar 24: Data Frames"
+          href: c9-data-frames.html
+        - text: "Mar 31: Data Wrangling"
+          href: c10-data-wrangling.html
+        - text: "Apr 07: Data Visualization"
+          href: c11-data-visualization.html
+        - text: "Apr 14: Reproducible Reporting"
+          href: c12-reproducible-reporting.html
+        - text: "Apr 21: Monte Carlo Methods"
+          href: c13-monte-carlo-methods.html
     - text: "Lessons"
       icon: fa fa-book
       menu:
         - text: "0: Course Prep"
           href: L0-course-prep.html
-        - text: "Week 1.1: Course Introduction"
-          href: L1.1-course-introduction.html
-        - text: "Week 1.2: Getting Started"
-          href: L1.2-getting-started.html
-        - text: "Week 1.3: Operations & Data Types"
-          href: L1.3-operations-data-types.html
-        - text: "Week 2: Functions & Packages"
+        - text: "1.1: Getting Started"
+          href: L1.1-getting-started.html
+        - text: "1.2: Operations & Data Types"
+          href: L1.2-operations-data-types.html
+        - text: "2: Functions & Packages"
           href: L2-functions-packages.html
-        - text: "Week 3: Creating functions"
+        - text: "3: Creating functions"
           href: L3-creating-functions.html
-        - text: "Week 4.1: Conditionals"
+        - text: "4.1: Conditionals"
           href: L4.1-conditionals.html
-        - text: "Week 4.2: Testing & Debugging"
+        - text: "4.2: Testing & Debugging"
           href: L4.2-testing-debugging.html
-        - text: "Week 5: Loops"
-          href: L5-loops.html
-        - text: "Week 6: Vectors"
+        - text: "5: Iteration"
+          href: L5-iteration.html
+        - text: "6: Vectors"
           href: L6-vectors.html
-        - text: "Week 7: Strings"
+        - text: "7: Strings"
           href: L7-strings.html
-        - text: "Week 9: Introduction to Python"
+        - text: "8: Introduction to Python"
           icon: fab fa-python
-          href: L9-python-intro.html
-        - text: "Week 11-1: Data Analysis Prelude"
-          href: L11.1-data-analysis-prelude.html
-        - text: "Week 11-2: Data Frames"
-          href: L11.2-data-frames.html
-        - text: "Week 12: Data Wrangling"
-          href: L12-data-wrangling.html
-        - text: "Week 13: Data Visualization"
-          href: L13-data-visualization.html
-        - text: "Week 14: Reproducible Reporting"
-          href: L14-reproducible-reporting.html
-        - text: "Week 15: Monte Carlo Methods"
-          href: L15-monte-carlo-methods.html
+          href: L8-python.html
+        - text: "9.1: Data Analysis Prelude"
+          href: L9.1-data-analysis-prelude.html
+        - text: "9.2: Data Frames"
+          href: L9.2-data-frames.html
+        - text: "10: Data Wrangling"
+          href: L10-data-wrangling.html
+        - text: "11: Data Visualization"
+          href: L11-data-visualization.html
+        - text: "12: Reproducible Reporting"
+          href: L12-reproducible-reporting.html
+        - text: "13: Monte Carlo Methods"
+          href: L13-monte-carlo-methods.html
     - text: "Assignments"
       icon: fa fa-laptop
       menu:
-        - text: "HW 1 - Getting Started"
+        - text: "Jan 13: Getting Started (Due 01/19)"
           href: hw1-getting-started.html
-        - text: "HW 2 - Functions & Packages"
+        - text: "Jan 20: Functions & Packages (Due 01/26)"
           href: hw2-functions-packages.html
-        - text: "HW 3 - Creating Functions"
+        - text: "Jan 27: Creating Functions (Due 02/02)"
           href: hw3-creating-functions.html
-        - text: "HW 4 - Conditionals & Testing"
+        - text: "Feb 02: Conditionals & Testing (Due 02/09)"
           href: hw4-conditionals-testing.html
-        - text: "HW 5 - Loops"
-          href: hw5-loops.html
-        - text: "HW 6 - Vectors"
+        - text: "Feb 10: Iteration (Due 02/16)"
+          href: hw5-iteration.html
+        - text: "Feb 17: Vectors (Due 02/23)"
           href: hw6-vectors.html
-        - text: "HW 7 - Strings"
+        - text: "Feb 24: Strings (Due 03/02)"
           href: hw7-strings.html
-        - text: "HW 8 - Python"
+        - text: "Mar 03: Python (Due 03/09)"
           href: hw8-python.html
-        - text: "HW 9 - Data Frames"
+        - text: "Mar 24: Data Frames (Due 03/30)"
           href: hw9-data-frames.html
-        - text: "HW 10 - Data Wrangling"
+        - text: "Mar 31: Data Wrangling (Due 04/06)"
           href: hw10-data-wrangling.html
-        - text: "HW 11 - Data Visualization"
+        - text: "Apr 07: Data Visualization (Due 04/13)"
           href: hw11-data-visualization.html
-        - text: "HW 12 - Reproducible Reporting"
+        - text: "Apr 14: Reproducible Reporting (Due 04/20)"
           href: hw12-reproducible-reporting.html
     - text: "References"
       icon: far fa-bookmark
@@ -99,25 +126,19 @@ navbar:
         - text: "Other"
           icon: fa fa-expand
           href: ref-other.html
-    - text: "Tools"
-      icon: fas fa-tools
-      menu:
-        - text: "Autograder"
-          icon: fas fa-tasks
-          href: autograder.html
-        - text: "Slack"
-          icon: fab fa-slack
-          href: https://emse-p4a-s22.slack.com
-        - text: "RStudio Server"
-          icon: fab fa-r-project
-          href: https://rstudio.seas.gwu.edu/
-        - text: "Schedule a meeting w/Prof. Helveston"
-          icon: fas fa-user-clock
-          href: https://jhelvy.appointlet.com/b/professor-helveston
+    - text: ""
+      icon: fab fa-slack
+      href: https://emse-p4a-s22.slack.com
 
   right:
   - icon: fa fa-bars
     menu:
+    - text: "Autograder"
+      icon: fas fa-tasks
+      href: autograder.html
+    - text: "Schedule a meeting w/Prof. Helveston"
+      icon: fas fa-user-clock
+      href: https://jhelvy.appointlet.com/b/professor-helveston
     - text: About
       icon: fa fa-info-circle
       href: about.html
