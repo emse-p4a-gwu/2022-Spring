@@ -4,11 +4,61 @@ output:
   html_document:
     number_sections: false
     toc: no
-    css:
-      - css/custom.css
 ---
 
 ```{r child = file.path("child", "setup.Rmd")}
 ```
 
-Coming soon!
+```{r echo=FALSE}
+library(kableExtra)
+library(tidyverse)
+
+# Setup some common values
+fa <- list(
+  quiz        = '[<i class="fas fa-edit"></i>]',
+  assignments = '[<i class="fas fa-book-reader"></i>]',
+  class       = '[<i class="fas fa-laptop-code"></i>]',
+  project     = '[<i class="fas fa-pencil-ruler"></i>]'
+)
+
+# Make the schedule data frame
+schedule <- gsheet::gsheet2tbl(settings$schedule_url) %>%
+  select(-notes) %>% 
+  mutate(
+    date_raw = date,
+    date = format(date, format = "%b %d"),
+    assign_due = lead(date_raw, 1) - 1,
+    assign_due = format(assign_due, format = "%b %d"),
+    description = ifelse(is.na(description), "", description),
+    quiz = ifelse(is.na(quiz), "", quiz),
+    assign_num = ifelse(class_num == 13, NA, class_num),
+    assign_url = ifelse(
+      is.na(assign_num), "", 
+      paste0(fa$class, "(a", assign_num, "-",  stub, ".html)")),
+    assignments = ifelse(
+      is.na(assign_num), "",
+      paste0(
+        fa$assignments, assign_url, " **",
+        class, "**<br>Due ", assign_due)),
+    class_url = ifelse(
+      is.na(class_num), "", 
+      paste0(fa$class, "(c", class_num, "-",  stub, ".html)")),
+    class = ifelse(
+      is.na(class), "",
+      paste0("**", class, "**<br>", description)),
+    class = paste(class_url, class, sep = " ")
+)
+
+highlight <- which(Sys.Date() > schedule$date_raw)
+
+# Make the final schedule
+names(schedule) <- str_to_title(names(schedule))
+schedule %>%
+  select(Week, Date, Quiz, Class, Assignments) %>%
+  kable(format = 'html', escape = FALSE,
+        align = c('c', 'c', 'c', 'l', 'l')) %>%
+  kable_styling(full_width = F, bootstrap_options = c("striped", "hover")) %>%
+  column_spec(column = 4, width = '16em') %>% 
+  column_spec(column = 5, width = '16em') %>% 
+  row_spec(highlight, background = "#e1e1e1")
+```
