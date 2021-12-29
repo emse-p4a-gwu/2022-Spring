@@ -13,7 +13,7 @@
 
 <title>Monte Carlo Methods</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -434,22 +434,19 @@ div.tocify {
       <a href="c8-python.html">Mar 03: Python in R</a>
     </li>
     <li>
-      <a href="c9-midterm.html">Mar 10: Midterm</a>
+      <a href="c9-data-frames.html">Mar 24: Data Frames</a>
     </li>
     <li>
-      <a href="c10-data-frames.html">Mar 24: Data Frames</a>
+      <a href="c10-data-wrangling.html">Mar 31: Data Wrangling</a>
     </li>
     <li>
-      <a href="c11-data-wrangling.html">Mar 31: Data Wrangling</a>
+      <a href="c11-data-visualization.html">Apr 07: Data Visualization</a>
     </li>
     <li>
-      <a href="c12-data-visualization.html">Apr 07: Data Visualization</a>
+      <a href="c12-reproducible-reporting.html">Apr 14: Reproducible Reporting</a>
     </li>
     <li>
-      <a href="c14-reproducible-reporting.html">Apr 14: Reproducible Reporting</a>
-    </li>
-    <li>
-      <a href="c15-monte-carlo-methods.html">Apr 21: Monte Carlo Methods</a>
+      <a href="c13-monte-carlo-methods.html">Apr 21: Monte Carlo Methods</a>
     </li>
   </ul>
 </li>
@@ -612,11 +609,19 @@ div.tocify {
     </li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-tools"></span>
+<li>
+  <a href="https://emse-p4a-s22.slack.com">
+    <span class="fab fa-slack"></span>
      
-    Tools
+    
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-bars"></span>
+     
      
     <span class="caret"></span>
   </a>
@@ -635,25 +640,6 @@ div.tocify {
         Schedule a meeting w/Prof. Helveston
       </a>
     </li>
-  </ul>
-</li>
-<li>
-  <a href="https://emse-p4a-s22.slack.com">
-    <span class="fab fa-slack"></span>
-     
-    
-  </a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-bars"></span>
-     
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
     <li>
       <a href="about.html">
         <span class="fa fa-info-circle"></span>
@@ -765,11 +751,11 @@ ratio &lt;- sum(belowCurve) / numTrials
 totalArea &lt;- (7 - 3) * 7^2 # Rectangle length x height = 196
 areaUnderCurve &lt;- ratio * totalArea
 areaUnderCurve</code></pre>
-<pre><code>#&gt; [1] 105.6362</code></pre>
-<p>So, using Monte Carlo simulation with 100,000 points, we estimate that the area under the curve is 105.63616. How’d we do? Well, if you’re familiar with calculus, the integral of <span class="math inline">\(f(x) = x^2\)</span> has a closed-form solution (<span class="math inline">\(\frac{x^3}{3} + C\)</span>), so we can check our estimate against the pure-math solution:</p>
+<pre><code>#&gt; [1] 105.3931</code></pre>
+<p>So, using Monte Carlo simulation with 100,000 points, we estimate that the area under the curve is 105.39312. How’d we do? Well, if you’re familiar with calculus, the integral of <span class="math inline">\(f(x) = x^2\)</span> has a closed-form solution (<span class="math inline">\(\frac{x^3}{3} + C\)</span>), so we can check our estimate against the pure-math solution:</p>
 <p><span class="math display">\[\int_{3}^{7} x^2 \mathrm{dx} = \left ( \frac{x^3}{3} \right ) \Big|_3^7 = \frac{7^3}{3} - \frac{3^3}{3} = 105.33\bar{3}\]</span></p>
-<p>So our estimate error is: <code>105.333 -</code> <code>105.63616</code> <code>=</code> <code>-0.3028267</code>.</p>
-<p>That’s an error of just 0.29 % - not bad!</p>
+<p>So our estimate error is: <code>105.333 -</code> <code>105.39312</code> <code>=</code> <code>-0.0597867</code>.</p>
+<p>That’s an error of just 0.06 % - not bad!</p>
 <hr />
 </div>
 <div id="monte-carlo-pi" class="section level1">
@@ -799,13 +785,13 @@ points &lt;- data.frame(
     x = runif(numTrials, -0.5, 0.5),
     y = runif(numTrials, -0.5, 0.5))
 head(points)</code></pre>
-<pre><code>#&gt;             x          y
-#&gt; 1  0.35926428 -0.2305928
-#&gt; 2 -0.01238637  0.3097642
-#&gt; 3  0.31109383  0.3711774
-#&gt; 4  0.13920499  0.1935348
-#&gt; 5 -0.29355079  0.0830123
-#&gt; 6 -0.39172610  0.4227721</code></pre>
+<pre><code>#&gt;            x          y
+#&gt; 1  0.3464377 -0.4252587
+#&gt; 2 -0.4941811 -0.4007383
+#&gt; 3 -0.2046626 -0.3964404
+#&gt; 4 -0.2267093  0.4949633
+#&gt; 5  0.1409760 -0.3340862
+#&gt; 6  0.1158933  0.2964176</code></pre>
 <p>For this example, we’re putting the points in a data frame to make it easier to work with. Now that we have random x and y points, let’s compute the radius to each point (the distance from <code>(x, y) = (0, 0)</code>) so we can determine which points fall inside the circle (which has a radius of 0.5):</p>
 <pre class="r"><code>library(dplyr)
 points &lt;- points %&gt;%
@@ -822,9 +808,9 @@ ggplot(points) +
 <pre class="r"><code>ratio &lt;- sum(points$pointInCircle) / nrow(points)
 piApprox &lt;- 4 * ratio
 piApprox</code></pre>
-<pre><code>#&gt; [1] 3.168</code></pre>
-<p>So our estimate error is: <code>3.1415 -</code> <code>3.168</code> <code>=</code> <code>0.0264073</code>.</p>
-<p>That’s an error of just 0.84 % - not bad for only 1,000 points!</p>
+<pre><code>#&gt; [1] 3.124</code></pre>
+<p>So our estimate error is: <code>3.1415 -</code> <code>3.124</code> <code>=</code> <code>-0.0175927</code>.</p>
+<p>That’s an error of just 0.56 % - not bad for only 1,000 points!</p>
 <p>To get an even better estimate of <span class="math inline">\(\pi\)</span>, we can increase N. Let’s see what we get with 100,000 trials:</p>
 <pre class="r"><code>numTrials &lt;- 100000
 points &lt;- data.frame(
@@ -836,13 +822,13 @@ points &lt;- data.frame(
 ratio &lt;- sum(points$pointInCircle) / nrow(points)
 piApprox &lt;- 4 * ratio
 piApprox</code></pre>
-<pre><code>#&gt; [1] 3.14976</code></pre>
+<pre><code>#&gt; [1] 3.14684</code></pre>
 <pre class="r"><code># Compute error:
 error &lt;- piApprox - pi
 percentError &lt;- round(100*abs(error / pi), 2)
 percentError</code></pre>
-<pre><code>#&gt; [1] 0.26</code></pre>
-<p>By increasing the number of trials from 1,000 to 100,000, we improved our estimate error from 0.84 % to 0.26 %!</p>
+<pre><code>#&gt; [1] 0.17</code></pre>
+<p>By increasing the number of trials from 1,000 to 100,000, we improved our estimate error from 0.56 % to 0.17 %!</p>
 <hr />
 <p><strong>Page sources</strong>:</p>
 <p>Some content on this page has been modified from other courses, including:</p>

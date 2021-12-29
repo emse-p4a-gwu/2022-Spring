@@ -13,7 +13,7 @@
 
 <title>Functions &amp; Packages</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -434,22 +434,19 @@ div.tocify {
       <a href="c8-python.html">Mar 03: Python in R</a>
     </li>
     <li>
-      <a href="c9-midterm.html">Mar 10: Midterm</a>
+      <a href="c9-data-frames.html">Mar 24: Data Frames</a>
     </li>
     <li>
-      <a href="c10-data-frames.html">Mar 24: Data Frames</a>
+      <a href="c10-data-wrangling.html">Mar 31: Data Wrangling</a>
     </li>
     <li>
-      <a href="c11-data-wrangling.html">Mar 31: Data Wrangling</a>
+      <a href="c11-data-visualization.html">Apr 07: Data Visualization</a>
     </li>
     <li>
-      <a href="c12-data-visualization.html">Apr 07: Data Visualization</a>
+      <a href="c12-reproducible-reporting.html">Apr 14: Reproducible Reporting</a>
     </li>
     <li>
-      <a href="c14-reproducible-reporting.html">Apr 14: Reproducible Reporting</a>
-    </li>
-    <li>
-      <a href="c15-monte-carlo-methods.html">Apr 21: Monte Carlo Methods</a>
+      <a href="c13-monte-carlo-methods.html">Apr 21: Monte Carlo Methods</a>
     </li>
   </ul>
 </li>
@@ -612,11 +609,19 @@ div.tocify {
     </li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-tools"></span>
+<li>
+  <a href="https://emse-p4a-s22.slack.com">
+    <span class="fab fa-slack"></span>
      
-    Tools
+    
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-bars"></span>
+     
      
     <span class="caret"></span>
   </a>
@@ -635,25 +640,6 @@ div.tocify {
         Schedule a meeting w/Prof. Helveston
       </a>
     </li>
-  </ul>
-</li>
-<li>
-  <a href="https://emse-p4a-s22.slack.com">
-    <span class="fab fa-slack"></span>
-     
-    
-  </a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-bars"></span>
-     
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
     <li>
       <a href="about.html">
         <span class="fa fa-info-circle"></span>
@@ -723,7 +709,7 @@ div.tocify {
 <p>Here the letters <code>sqrt</code> are short for “square root,” and the value inside the <code>()</code> is the “argument” to the function. In the example above, the value <code>225</code> is the “argument”.</p>
 <p>Keep in mind that not all functions have (or require) arguments:</p>
 <pre class="r"><code>date() # Returns the current date and time</code></pre>
-<pre><code>#&gt; [1] &quot;Wed Dec 29 15:45:20 2021&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Wed Dec 29 21:01:56 2021&quot;</code></pre>
 <p>(the date above is the date this page was last built)</p>
 <div id="multiple-arguments" class="section level2">
 <h2>Multiple arguments</h2>
@@ -941,9 +927,9 @@ library(packagename)   # This also works</code></pre>
 <p>Now that you have the package installed on your computer, try loading it using <code>library(wikifacts)</code>, then trying using some of it’s functions:</p>
 <pre class="r"><code>library(wikifacts) # Load the library</code></pre>
 <pre class="r"><code>wiki_randomfact()</code></pre>
-<pre><code>#&gt; [1] &quot;Did you know that on June 23 in 1894 – Led by French historian Pierre de Coubertin (pictured), an international congress at the Sorbonne in Paris formed the International Olympic Committee to revive the ancient Olympic Games. (Courtesy of Wikipedia)&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Here&#39;s some news from 12 September 2018. Jocelyn Bell Burnell  (pictured), who co-discovered pulsars but was omitted from the related Nobel Prize, receives the Special Breakthrough Prize in Fundamental Physics. (Courtesy of Wikipedia)&quot;</code></pre>
 <pre class="r"><code>wiki_didyouknow()</code></pre>
-<pre><code>#&gt; [1] &quot;Did you know that the burrow of the spoon worm Maxmuelleria lankesteri is sometimes modified by fish and crustaceans that take up occupancy there? (Courtesy of Wikipedia)&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Did you know that Luciano Berio based Quattro versioni originali della \&quot;Ritirata notturna di Madrid\&quot; on Boccherini&#39;s night street music of Madrid? (Courtesy of Wikipedia)&quot;</code></pre>
 <p>In case you’re wondering, the only thing this package does is generate messages containing random facts from <a href="https://www.wikipedia.org/">Wikipedia</a>.</p>
 </div>
 <div id="using-only-some-package-functions" class="section level2">
@@ -954,7 +940,7 @@ library(packagename)   # This also works</code></pre>
 </blockquote>
 <p>Here I use the name of the <em>package</em> followed by <code>::</code> to tell R that I’m looking for a function that is in that package. For example, if I didn’t want to load the whole <strong>wikifacts</strong> library but still wanted to use the <code>wiki_randomfact()</code> function, I could do this:</p>
 <pre class="r"><code>wikifacts::wiki_randomfact()</code></pre>
-<pre><code>#&gt; [1] &quot;Did you know that on January 1 in 1801 – Italian astronomer Giuseppe Piazzi discovered the dwarf planet Ceres (pictured), naming it after the Roman goddess of growing plants and of motherly love. (Courtesy of Wikipedia)&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Did you know that on September 11 in 1981 – Iranian politician Ayatollah Madani and three others were assassinated by an agent of the MEK who detonated a grenade during Friday prayers in Tabriz. (Courtesy of Wikipedia)&quot;</code></pre>
 <p>Where this is particularly handy is when two packages have a function with the same name. If you load both library, R might not know which function to use. In those cases, it’s best to also provide the <strong>package</strong> name. For example, let’s say there was a package called <strong>apples</strong> and another called <strong>bananas</strong>, and each had a function named <code>fruitName()</code>. If I wanted to use each of them in my code, I would need to specify the package names like this:</p>
 <pre class="r"><code>apples::fruitName()
 bananas::fruitName()</code></pre>
