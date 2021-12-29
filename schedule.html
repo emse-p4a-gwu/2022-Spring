@@ -31,6 +31,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 <link rel="icon" href="images/favicon.ico">
@@ -120,7 +122,6 @@ if (window.hljs) {
 
 
 
-<link rel="stylesheet" href="css/custom.css" type="text/css" />
 
 
 
@@ -603,7 +604,301 @@ $(document).ready(function () {
 </div>
 
 
-<p>Coming soon!</p>
+<table class="table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+Week
+</th>
+<th style="text-align:center;">
+Date
+</th>
+<th style="text-align:center;">
+Quiz
+</th>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:left;">
+Assignments
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+Jan 13
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;width: 16em; ">
+<a href="c1-getting-started.html"><i class="fas fa-laptop-code"></i></a> <strong>Getting Started</strong><br>Class orientation, intro to R, workflow, problem solving
+</td>
+<td style="text-align:left;width: 16em; ">
+[<i class="fas fa-book-reader"></i>][<i class="fas fa-laptop-code"></i>](a1-getting-started.html) <strong>Getting Started</strong><br>Due Jan 19
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+Jan 20
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:left;width: 16em; ">
+<a href="c2-functions-packages.html"><i class="fas fa-laptop-code"></i></a> <strong>Functions &amp; Packages</strong><br>Functions, arguments, installing external packages
+</td>
+<td style="text-align:left;width: 16em; ">
+[<i class="fas fa-book-reader"></i>][<i class="fas fa-laptop-code"></i>](a2-functions-packages.html) <strong>Functions &amp; Packages</strong><br>Due Jan 26
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+Jan 27
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:left;width: 16em; ">
+<a href="c3-creating-functions.html"><i class="fas fa-laptop-code"></i></a> <strong>Creating Functions</strong><br>Defining your own functions, top-down structure
+</td>
+<td style="text-align:left;width: 16em; ">
+[<i class="fas fa-book-reader"></i>][<i class="fas fa-laptop-code"></i>](a3-creating-functions.html) <strong>Creating Functions</strong><br>Due Feb 02
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+Feb 03
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;width: 16em; ">
+<a href="c4-conditionals-testing.html"><i class="fas fa-laptop-code"></i></a> <strong>Conditionals &amp; Testing</strong><br>If / else statements, writing unit tests
+</td>
+<td style="text-align:left;width: 16em; ">
+[<i class="fas fa-book-reader"></i>][<i class="fas fa-laptop-code"></i>](a4-conditionals-testing.html) <strong>Conditionals &amp; Testing</strong><br>Due Feb 09
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+Feb 10
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:left;width: 16em; ">
+<a href="c5-iteration.html"><i class="fas fa-laptop-code"></i></a> <strong>Iteration</strong><br>Ins and outs of loops
+</td>
+<td style="text-align:left;width: 16em; ">
+[<i class="fas fa-book-reader"></i>][<i class="fas fa-laptop-code"></i>](a5-iteration.html) <strong>Iteration</strong><br>Due Feb 16
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+Feb 17
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;width: 16em; ">
+<a href="c6-vectors.html"><i class="fas fa-laptop-code"></i></a> <strong>Vectors</strong><br>Creating and slicing collections of values
+</td>
+<td style="text-align:left;width: 16em; ">
+[<i class="fas fa-book-reader"></i>][<i class="fas fa-laptop-code"></i>](a6-vectors.html) <strong>Vectors</strong><br>Due Feb 23
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+Feb 24
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:left;width: 16em; ">
+<a href="c7-strings.html"><i class="fas fa-laptop-code"></i></a> <strong>Strings</strong><br>All things between quotes
+</td>
+<td style="text-align:left;width: 16em; ">
+[<i class="fas fa-book-reader"></i>][<i class="fas fa-laptop-code"></i>](a7-strings.html) <strong>Strings</strong><br>Due Mar 02
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+Mar 03
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;width: 16em; ">
+<a href="c8-python.html"><i class="fas fa-laptop-code"></i></a> <strong>Python in R</strong><br>Python basics, and using python in R
+</td>
+<td style="text-align:left;width: 16em; ">
+[<i class="fas fa-book-reader"></i>][<i class="fas fa-laptop-code"></i>](a8-python.html) <strong>Python in R</strong><br>Due Mar 09
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+Mar 10
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;width: 16em; ">
+<strong>Midterm</strong><br>Don’t panic!
+</td>
+<td style="text-align:left;width: 16em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+Mar 17
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;width: 16em; ">
+<strong>Spring Break</strong><br>No class
+</td>
+<td style="text-align:left;width: 16em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+11
+</td>
+<td style="text-align:center;">
+Mar 24
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:left;width: 16em; ">
+<a href="c9-data-frames.html"><i class="fas fa-laptop-code"></i></a> <strong>Data Frames</strong><br>Rows and columns of data
+</td>
+<td style="text-align:left;width: 16em; ">
+[<i class="fas fa-book-reader"></i>][<i class="fas fa-laptop-code"></i>](a9-data-frames.html) <strong>Data Frames</strong><br>Due Mar 30
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+12
+</td>
+<td style="text-align:center;">
+Mar 31
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;width: 16em; ">
+<a href="c10-data-wrangling.html"><i class="fas fa-laptop-code"></i></a> <strong>Data Wrangling</strong><br>Modifying data frames
+</td>
+<td style="text-align:left;width: 16em; ">
+[<i class="fas fa-book-reader"></i>][<i class="fas fa-laptop-code"></i>](a10-data-wrangling.html) <strong>Data Wrangling</strong><br>Due Apr 06
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+13
+</td>
+<td style="text-align:center;">
+Apr 07
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:left;width: 16em; ">
+<a href="c11-data-visualization.html"><i class="fas fa-laptop-code"></i></a> <strong>Data Visualization</strong><br>Visualizing your data
+</td>
+<td style="text-align:left;width: 16em; ">
+[<i class="fas fa-book-reader"></i>][<i class="fas fa-laptop-code"></i>](a11-data-visualization.html) <strong>Data Visualization</strong><br>Due Apr 13
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+14
+</td>
+<td style="text-align:center;">
+Apr 14
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:left;width: 16em; ">
+<a href="c12-reproducible-reporting.html"><i class="fas fa-laptop-code"></i></a> <strong>Reproducible Reporting</strong><br>Combinging text and code with RMarkdown
+</td>
+<td style="text-align:left;width: 16em; ">
+[<i class="fas fa-book-reader"></i>][<i class="fas fa-laptop-code"></i>](a12-reproducible-reporting.html) <strong>Reproducible Reporting</strong><br>Due Apr 20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+15
+</td>
+<td style="text-align:center;">
+Apr 21
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;width: 16em; ">
+<a href="c13-monte-carlo-methods.html"><i class="fas fa-laptop-code"></i></a> <strong>Monte Carlo Methods</strong><br>Using simulation to solve problems
+</td>
+<td style="text-align:left;width: 16em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+16
+</td>
+<td style="text-align:center;">
+Apr 28
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;width: 16em; ">
+</td>
+<td style="text-align:left;width: 16em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+17
+</td>
+<td style="text-align:center;">
+May 05
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:left;width: 16em; ">
+</td>
+<td style="text-align:left;width: 16em; ">
+</td>
+</tr>
+</tbody>
+</table>
 
 <hr>
 
