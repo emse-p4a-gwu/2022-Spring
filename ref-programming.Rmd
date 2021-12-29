@@ -6,7 +6,7 @@ output:
     toc: no
 ---
 
-```{r child = "_knitr_setup.Rmd"}
+```{r child = file.path("child", "setup.Rmd")}
 ```
 
 # Programming in R

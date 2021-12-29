@@ -8,7 +8,7 @@ output:
 
 <!-- Note: None of the Python chunks evaluate. Outputs are all hard-coded so that rmarkdown doesn't have to call Python. This is because the page will be build with Github Actions and Python is having problems for some reason with that -->
 
-```{r child = "_knitr_setup.Rmd"}
+```{r child = file.path("child", "setup.Rmd")}
 ```
 
 > ### Learning Objectives

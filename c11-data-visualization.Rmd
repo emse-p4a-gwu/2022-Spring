@@ -8,7 +8,7 @@ params:
   class: "11-data-visualization"
 ---
 
-```{r child = "_knitr_setup.Rmd"}
+```{r child = file.path("child", "setup.Rmd")}
 ```
 
 Coming soon!

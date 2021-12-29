@@ -6,7 +6,7 @@ output:
     toc: yes
 ---
 
-```{r child = "_knitr_setup.Rmd"}
+```{r child = file.path("child", "setup.Rmd")}
 ```
 
 When you hear the words "Monte Carlo", most people envision this:

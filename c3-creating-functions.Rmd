@@ -8,7 +8,7 @@ params:
   class: "3-creating-functions"
 ---
 
-```{r child = "_knitr_setup.Rmd"}
+```{r child = file.path("child", "setup.Rmd")}
 ```
 
 Coming soon!

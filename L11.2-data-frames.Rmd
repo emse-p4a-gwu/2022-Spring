@@ -5,7 +5,7 @@ output:
     toc: yes
 ---
 
-```{r child = "_knitr_setup.Rmd"}
+```{r child = file.path("child", "setup.Rmd")}
 ```
 
 This is the first lesson in a sequence on data analysis in R. Before reading this lesson, check out the ["Prelude to Data Analysis"](L11.1-data-analysis-prelude.html).

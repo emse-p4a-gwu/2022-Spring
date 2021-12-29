@@ -6,7 +6,7 @@ output:
     toc: no
 ---
 
-```{r child = "_knitr_setup.Rmd"}
+```{r child = file.path("child", "setup.Rmd")}
 ```
 
 > "Data science is not just about AI or machine learning. It is the discipline of turning raw data into understanding."

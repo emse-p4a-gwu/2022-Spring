@@ -8,7 +8,7 @@ params:
   class: "9-data-frames"
 ---
 
-```{r child = "_knitr_setup.Rmd"}
+```{r child = file.path("child", "setup.Rmd")}
 ```
 
 Coming soon!

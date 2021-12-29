@@ -6,7 +6,7 @@ output:
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r child = "_knitr_setup.Rmd"}
+```{r child = file.path("child", "setup.Rmd")}
 ```
 
 ## EMSE 4571: Intro to Programming for Analytics - Spring 2022 <a href='https://github.com/emse-p4a-gwu/2022-Spring'><img src='images/p4a_hex_sticker.png' align="right" height="139"/></a>

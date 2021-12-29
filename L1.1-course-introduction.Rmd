@@ -13,7 +13,7 @@ output:
 }
 </style>
 
-```{r child = "_knitr_setup.Rmd"}
+```{r child = file.path("child", "setup.Rmd")}
 ```
 
 # Before we start...
