@@ -109,18 +109,6 @@ navbar:
           href: hw11-data-visualization.html
         - text: "Apr 14: Reproducible Reporting (Due 04/20)"
           href: hw12-reproducible-reporting.html
-    - text: "Help"
-      icon: fas fa-question-circle
-      menu:
-        - text: "Slack"
-          icon: fab fa-slack
-          href: https://emse-p4a-s22.slack.com
-        - text: "Autograder"
-          icon: fas fa-tasks
-          href: autograder.html
-        - text: "Schedule a meeting w/Prof. Helveston"
-          icon: fas fa-user-clock
-          href: https://jhelvy.appointlet.com/b/professor-helveston
     - text: "References"
       icon: fa fa-bookmark
       menu:
@@ -139,6 +127,18 @@ navbar:
         - text: "Other"
           icon: fas fa-expand
           href: ref-other.html
+    - text: "Help"
+      icon: fas fa-question-circle
+      menu:
+        - text: "Slack"
+          icon: fab fa-slack
+          href: https://emse-p4a-s22.slack.com
+        - text: "Autograder"
+          icon: fas fa-tasks
+          href: autograder.html
+        - text: "Schedule a meeting w/Prof. Helveston"
+          icon: fas fa-user-clock
+          href: https://jhelvy.appointlet.com/b/professor-helveston
 
   right:
   - icon: fa fa-bars

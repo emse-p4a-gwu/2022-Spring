@@ -43,7 +43,8 @@ schedule <- gsheet::gsheet2tbl(settings$schedule_url) %>%
     class = ifelse(
       is.na(class), "",
       paste0("**", class, "**<br>", description)),
-    class = paste(class_url, class, sep = " ")
+    class = paste(class_url, class, sep = " "),
+    reading = ifelse(is.na(reading), "", paste0(fa$reading, reading))
 )
 
 highlight <- which(Sys.Date() > schedule$date_raw)
@@ -51,9 +52,9 @@ highlight <- which(Sys.Date() > schedule$date_raw)
 # Make the final schedule
 names(schedule) <- str_to_title(names(schedule))
 schedule %>%
-  select(Week, Date, Quiz, Class, Assignments) %>%
+  select(Week, Date, Quiz, Class, Assignments, Reading) %>%
   kable(format = 'html', escape = FALSE,
-        align = c('c', 'c', 'l', 'l', 'l')) %>%
+        align = c('c', 'c', 'l', 'l', 'l', 'l')) %>%
   kable_styling(full_width = F, bootstrap_options = c("striped", "hover")) %>%
   column_spec(column = 2, width = '2em') %>%
   column_spec(column = 4, width = '20em') %>% 

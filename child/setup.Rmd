@@ -19,5 +19,5 @@ knitr::opts_chunk$set(
 )
 
 # Load class settings
-source(file.path('child', 'settings.R'))
+source('settings.R')
 ```
