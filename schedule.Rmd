@@ -9,16 +9,17 @@ output:
 ```{r child = file.path("child", "setup.Rmd")}
 ```
 
+All assignments are due by 11:59pm on the due date.
+
 ```{r echo=FALSE}
 library(kableExtra)
 library(tidyverse)
 
 # Setup some common values
 fa <- list(
-  quiz        = '[<i class="fas fa-edit"></i>]',
-  assignments = '[<i class="fas fa-book-reader"></i>]',
-  class       = '[<i class="fas fa-laptop-code"></i>]',
-  project     = '[<i class="fas fa-pencil-ruler"></i>]'
+  assignment = '[<i class="fas fa-pencil-ruler"></i>]',
+  class      = '[<i class="fas fa-laptop-code"></i>]',
+  reading    = '[<i class="fas fa-book"></i>]'
 )
 
 # Make the schedule data frame
@@ -33,8 +34,9 @@ schedule <- gsheet::gsheet2tbl(settings$schedule_url) %>%
     quiz = ifelse(is.na(quiz), "", quiz),
     assign_num = ifelse(class_num == 13, NA, class_num),
     assignments = ifelse(
-      is.na(assign_num), "", 
-      paste0(fa$assignments, "(a", assign_num, "-",  stub, ".html) Due ", assign_due)),
+      is.na(assign_num), "", paste0(
+        fa$assignment, "(a", assign_num, "-",  stub, ".html) **HW ",
+        assign_num, "**<br>Due: ", assign_due)),
     class_url = ifelse(
       is.na(class_num), "", 
       paste0(fa$class, "(c", class_num, "-",  stub, ".html)")),
@@ -51,8 +53,9 @@ names(schedule) <- str_to_title(names(schedule))
 schedule %>%
   select(Week, Date, Quiz, Class, Assignments) %>%
   kable(format = 'html', escape = FALSE,
-        align = c('c', 'c', 'c', 'l', 'l')) %>%
+        align = c('c', 'c', 'l', 'l', 'l')) %>%
   kable_styling(full_width = F, bootstrap_options = c("striped", "hover")) %>%
+  column_spec(column = 2, width = '2em') %>%
   column_spec(column = 4, width = '20em') %>% 
   column_spec(column = 5, width = '9em') %>% 
   row_spec(highlight, background = "#e1e1e1")

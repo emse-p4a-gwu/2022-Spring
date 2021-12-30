@@ -5,14 +5,17 @@ exclude:
 - LICENSE
 new_session: true
 navbar:
-  title: "P4A - Spring 2022"
+  title: ""
   type: inverse
   left:
+    - text: ""
+      icon: fas fa-home
+      href: index.html
     - text: Syllabus
-      icon: far fa-map
+      icon: fa fa-map
       href: syllabus.html
     - text: "Schedule"
-      icon: far fa-calendar-alt
+      icon: fa fa-calendar-alt
       href: schedule.html
     - text: "Class"
       icon: fas fa-laptop-code
@@ -43,46 +46,44 @@ navbar:
           href: c12-reproducible-reporting.html
         - text: "Apr 21: Monte Carlo Methods"
           href: c13-monte-carlo-methods.html
-    - text: "Lessons"
+    - text: "Readings"
       icon: fa fa-book
       menu:
-        - text: "0: Course Prep"
-          href: L0-course-prep.html
         - text: "1.1: Getting Started"
-          href: L1.1-getting-started.html
+          href: r1.1-getting-started.html
         - text: "1.2: Operations & Data Types"
-          href: L1.2-operations-data-types.html
+          href: r1.2-operations-data-types.html
         - text: "2: Functions & Packages"
-          href: L2-functions-packages.html
+          href: r2-functions-packages.html
         - text: "3: Creating functions"
-          href: L3-creating-functions.html
+          href: r3-creating-functions.html
         - text: "4.1: Conditionals"
-          href: L4.1-conditionals.html
+          href: r4.1-conditionals.html
         - text: "4.2: Testing & Debugging"
-          href: L4.2-testing-debugging.html
+          href: r4.2-testing-debugging.html
         - text: "5: Iteration"
-          href: L5-iteration.html
+          href: r5-iteration.html
         - text: "6: Vectors"
-          href: L6-vectors.html
+          href: r6-vectors.html
         - text: "7: Strings"
-          href: L7-strings.html
+          href: r7-strings.html
         - text: "8: Introduction to Python"
           icon: fab fa-python
-          href: L8-python.html
+          href: r8-python.html
         - text: "9.1: Data Analysis Prelude"
-          href: L9.1-data-analysis-prelude.html
+          href: r9.1-data-analysis-prelude.html
         - text: "9.2: Data Frames"
-          href: L9.2-data-frames.html
+          href: r9.2-data-frames.html
         - text: "10: Data Wrangling"
-          href: L10-data-wrangling.html
+          href: r10-data-wrangling.html
         - text: "11: Data Visualization"
-          href: L11-data-visualization.html
+          href: r11-data-visualization.html
         - text: "12: Reproducible Reporting"
-          href: L12-reproducible-reporting.html
+          href: r12-reproducible-reporting.html
         - text: "13: Monte Carlo Methods"
-          href: L13-monte-carlo-methods.html
-    - text: "Assignments"
-      icon: fa fa-laptop
+          href: r13-monte-carlo-methods.html
+    - text: "HW"
+      icon: fa fa-pencil-ruler
       menu:
         - text: "Jan 13: Getting Started (Due 01/19)"
           href: hw1-getting-started.html
@@ -108,37 +109,40 @@ navbar:
           href: hw11-data-visualization.html
         - text: "Apr 14: Reproducible Reporting (Due 04/20)"
           href: hw12-reproducible-reporting.html
-    - text: "References"
-      icon: far fa-bookmark
+    - text: "Help"
+      icon: fas fa-question-circle
       menu:
-        - text: "Getting Help"
-          icon: fa fa-question-circle
-          href: ref-getting-help.html
-        - text: "Programming in R"
-          icon: fa fa-terminal
-          href: ref-programming.html
+        - text: "Slack"
+          icon: fab fa-slack
+          href: https://emse-p4a-s22.slack.com
+        - text: "Autograder"
+          icon: fas fa-tasks
+          href: autograder.html
+        - text: "Schedule a meeting w/Prof. Helveston"
+          icon: fas fa-user-clock
+          href: https://jhelvy.appointlet.com/b/professor-helveston
+    - text: "References"
+      icon: fa fa-bookmark
+      menu:
+        - text: "Course Software"
+          icon: fas fa-hdd
+          href: ref-course-software.html
         - text: "Visualizing Data"
-          icon: fa fa-chart-bar
+          icon: fas fa-chart-bar
           href: ref-visualizing-data.html
+        - text: "Programming in R"
+          icon: fas fa-terminal
+          href: ref-programming.html
         - text: "R Markdown"
-          icon: fa fa-feather-alt
+          icon: fas fa-feather-alt
           href: ref-rmarkdown.html
         - text: "Other"
-          icon: fa fa-expand
+          icon: fas fa-expand
           href: ref-other.html
-    - text: ""
-      icon: fab fa-slack
-      href: https://emse-p4a-s22.slack.com
 
   right:
   - icon: fa fa-bars
     menu:
-    - text: "Autograder"
-      icon: fas fa-tasks
-      href: autograder.html
-    - text: "Schedule a meeting w/Prof. Helveston"
-      icon: fas fa-user-clock
-      href: https://jhelvy.appointlet.com/b/professor-helveston
     - text: About
       icon: fa fa-info-circle
       href: about.html

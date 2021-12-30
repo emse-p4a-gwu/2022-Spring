@@ -1,0 +1,34 @@
+---
+title: "Course Software"
+output:
+  html_document:
+    number_sections: false
+    toc: no
+---
+
+```{r child = file.path("child", "setup.Rmd")}
+```
+
+This page lists all the software we'll be using in class.
+
+> You should install and set everything here _before_ the first day of class.
+
+1. Install / setup these tools:
+
+- [Slack](`r settings$slack`): You can find a sign up link on the announcement in Blackboard.
+- Install the Slack app on your phone and **Turn notifications on!**
+
+2. Install the latest version of R and RStudio:
+
+- [Download and install R](https://cloud.r-project.org) (version 4.0.2 or higher)
+- [Download and install RStudio](https://rstudio.com/products/rstudio/download/) (Desktop version)
+
+**We will always work in RStudio**, so be careful to open RStudio and not the default R application that comes with R:
+
+<div style="width:200px">
+Open this   | Not this!
+:----------:|:----------:
+![](images/rstudio_ball.png){ width=50 }  |  ![](images/Rlogo.png){ width=50 }
+</div>
+
+That's it - you're all set for class!
