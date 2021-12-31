@@ -530,40 +530,40 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="hw1-getting-started.html">Jan 13: Getting Started (Due 01/19)</a>
+      <a href="hw1-getting-started.html">HW 1: Getting Started (Due 01/19)</a>
     </li>
     <li>
-      <a href="hw2-functions-packages.html">Jan 20: Functions &amp; Packages (Due 01/26)</a>
+      <a href="hw2-functions-packages.html">HW 2: Functions &amp; Packages (Due 01/26)</a>
     </li>
     <li>
-      <a href="hw3-creating-functions.html">Jan 27: Creating Functions (Due 02/02)</a>
+      <a href="hw3-creating-functions.html">HW 3: Creating Functions (Due 02/02)</a>
     </li>
     <li>
-      <a href="hw4-conditionals-testing.html">Feb 02: Conditionals &amp; Testing (Due 02/09)</a>
+      <a href="hw4-conditionals-testing.html">HW 4: Conditionals &amp; Testing (Due 02/09)</a>
     </li>
     <li>
-      <a href="hw5-iteration.html">Feb 10: Iteration (Due 02/16)</a>
+      <a href="hw5-iteration.html">HW 5: Iteration (Due 02/16)</a>
     </li>
     <li>
-      <a href="hw6-vectors.html">Feb 17: Vectors (Due 02/23)</a>
+      <a href="hw6-vectors.html">HW 6: Vectors (Due 02/23)</a>
     </li>
     <li>
-      <a href="hw7-strings.html">Feb 24: Strings (Due 03/02)</a>
+      <a href="hw7-strings.html">HW 7: Strings (Due 03/02)</a>
     </li>
     <li>
-      <a href="hw8-python.html">Mar 03: Python (Due 03/09)</a>
+      <a href="hw8-python.html">HW 8: Python (Due 03/09)</a>
     </li>
     <li>
-      <a href="hw9-data-frames.html">Mar 24: Data Frames (Due 03/30)</a>
+      <a href="hw9-data-frames.html">HW 9: Data Frames (Due 03/30)</a>
     </li>
     <li>
-      <a href="hw10-data-wrangling.html">Mar 31: Data Wrangling (Due 04/06)</a>
+      <a href="hw10-data-wrangling.html">HW 10: Data Wrangling (Due 04/06)</a>
     </li>
     <li>
-      <a href="hw11-data-visualization.html">Apr 07: Data Visualization (Due 04/13)</a>
+      <a href="hw11-data-visualization.html">HW 11: Data Visualization (Due 04/13)</a>
     </li>
     <li>
-      <a href="hw12-reproducible-reporting.html">Apr 14: Reproducible Reporting (Due 04/20)</a>
+      <a href="hw12-reproducible-reporting.html">HW 12: Reproducible Reporting (Due 04/20)</a>
     </li>
   </ul>
 </li>
@@ -766,11 +766,11 @@ ratio &lt;- sum(belowCurve) / numTrials
 totalArea &lt;- (7 - 3) * 7^2 # Rectangle length x height = 196
 areaUnderCurve &lt;- ratio * totalArea
 areaUnderCurve</code></pre>
-<pre><code>#&gt; [1] 105.2696</code></pre>
-<p>So, using Monte Carlo simulation with 100,000 points, we estimate that the area under the curve is 105.26964. How’d we do? Well, if you’re familiar with calculus, the integral of <span class="math inline">\(f(x) = x^2\)</span> has a closed-form solution (<span class="math inline">\(\frac{x^3}{3} + C\)</span>), so we can check our estimate against the pure-math solution:</p>
+<pre><code>#&gt; [1] 104.9854</code></pre>
+<p>So, using Monte Carlo simulation with 100,000 points, we estimate that the area under the curve is 104.98544. How’d we do? Well, if you’re familiar with calculus, the integral of <span class="math inline">\(f(x) = x^2\)</span> has a closed-form solution (<span class="math inline">\(\frac{x^3}{3} + C\)</span>), so we can check our estimate against the pure-math solution:</p>
 <p><span class="math display">\[\int_{3}^{7} x^2 \mathrm{dx} = \left ( \frac{x^3}{3} \right ) \Big|_3^7 = \frac{7^3}{3} - \frac{3^3}{3} = 105.33\bar{3}\]</span></p>
-<p>So our estimate error is: <code>105.333 -</code> <code>105.26964</code> <code>=</code> <code>0.0636933</code>.</p>
-<p>That’s an error of just 0.06 % - not bad!</p>
+<p>So our estimate error is: <code>105.333 -</code> <code>104.98544</code> <code>=</code> <code>0.3478933</code>.</p>
+<p>That’s an error of just 0.33 % - not bad!</p>
 <hr />
 </div>
 <div id="monte-carlo-pi" class="section level1">
@@ -800,13 +800,13 @@ points &lt;- data.frame(
     x = runif(numTrials, -0.5, 0.5),
     y = runif(numTrials, -0.5, 0.5))
 head(points)</code></pre>
-<pre><code>#&gt;             x           y
-#&gt; 1 -0.28922661  0.35449192
-#&gt; 2  0.06378862 -0.14007399
-#&gt; 3  0.46666914 -0.16236263
-#&gt; 4 -0.32845878 -0.04813115
-#&gt; 5 -0.48897175  0.47354815
-#&gt; 6  0.21510892 -0.24295146</code></pre>
+<pre><code>#&gt;            x            y
+#&gt; 1 -0.3294610 -0.074380045
+#&gt; 2  0.1428084 -0.225318437
+#&gt; 3  0.2996282  0.465224543
+#&gt; 4 -0.4625579 -0.208043883
+#&gt; 5  0.3759533  0.004202641
+#&gt; 6 -0.2666783  0.297870151</code></pre>
 <p>For this example, we’re putting the points in a data frame to make it easier to work with. Now that we have random x and y points, let’s compute the radius to each point (the distance from <code>(x, y) = (0, 0)</code>) so we can determine which points fall inside the circle (which has a radius of 0.5):</p>
 <pre class="r"><code>library(dplyr)
 points &lt;- points %&gt;%
@@ -823,9 +823,9 @@ ggplot(points) +
 <pre class="r"><code>ratio &lt;- sum(points$pointInCircle) / nrow(points)
 piApprox &lt;- 4 * ratio
 piApprox</code></pre>
-<pre><code>#&gt; [1] 3.044</code></pre>
-<p>So our estimate error is: <code>3.1415 -</code> <code>3.044</code> <code>=</code> <code>-0.0975927</code>.</p>
-<p>That’s an error of just 3.11 % - not bad for only 1,000 points!</p>
+<pre><code>#&gt; [1] 3.16</code></pre>
+<p>So our estimate error is: <code>3.1415 -</code> <code>3.16</code> <code>=</code> <code>0.0184073</code>.</p>
+<p>That’s an error of just 0.59 % - not bad for only 1,000 points!</p>
 <p>To get an even better estimate of <span class="math inline">\(\pi\)</span>, we can increase N. Let’s see what we get with 100,000 trials:</p>
 <pre class="r"><code>numTrials &lt;- 100000
 points &lt;- data.frame(
@@ -837,13 +837,13 @@ points &lt;- data.frame(
 ratio &lt;- sum(points$pointInCircle) / nrow(points)
 piApprox &lt;- 4 * ratio
 piApprox</code></pre>
-<pre><code>#&gt; [1] 3.15344</code></pre>
+<pre><code>#&gt; [1] 3.13756</code></pre>
 <pre class="r"><code># Compute error:
 error &lt;- piApprox - pi
 percentError &lt;- round(100*abs(error / pi), 2)
 percentError</code></pre>
-<pre><code>#&gt; [1] 0.38</code></pre>
-<p>By increasing the number of trials from 1,000 to 100,000, we improved our estimate error from 3.11 % to 0.38 %!</p>
+<pre><code>#&gt; [1] 0.13</code></pre>
+<p>By increasing the number of trials from 1,000 to 100,000, we improved our estimate error from 0.59 % to 0.13 %!</p>
 <hr />
 <p><strong>Page sources</strong>:</p>
 <p>Some content on this page has been modified from other courses, including:</p>
