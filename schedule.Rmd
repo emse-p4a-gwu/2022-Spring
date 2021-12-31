@@ -24,7 +24,6 @@ fa <- list(
 
 # Make the schedule data frame
 schedule <- gsheet::gsheet2tbl(settings$schedule_url) %>%
-  select(-notes) %>% 
   mutate(
     date_raw = date,
     date = format(date, format = "%b %d"),
@@ -44,15 +43,32 @@ schedule <- gsheet::gsheet2tbl(settings$schedule_url) %>%
       is.na(class), "",
       paste0("**", class, "**<br>", description)),
     class = paste(class_url, class, sep = " "),
-    reading = ifelse(is.na(reading), "", paste0(fa$reading, reading))
+    reading = ifelse(is.na(reading), "", reading),
+    reading = str_split(reading, '\n'),
+    reading_name = ifelse(is.na(reading_name), "", reading_name),
+    reading_name = str_split(reading_name, '\n')
 )
+
+# Fix reading names
+schedule$reading_good <- ""
+for (i in 1:nrow(schedule)) {
+  reading <- schedule[i,]$reading[[1]]
+  if ('' %in% reading) {
+    schedule[i,]$reading_good <- reading
+  } else {
+      reading_name <- schedule[i,]$reading_name [[1]]
+      reading <- paste0(fa$reading, '(', reading, ')')
+      reading <- paste(paste(reading, reading_name), collapse = '<br>')
+      schedule[i,]$reading_good <- reading
+  }
+}
 
 highlight <- which(Sys.Date() > schedule$date_raw)
 
 # Make the final schedule
 names(schedule) <- str_to_title(names(schedule))
 schedule %>%
-  select(Week, Date, Quiz, Class, Assignments, Reading) %>%
+  select(Week, Date, Quiz, Class, Assignments, Reading = Reading_good) %>%
   kable(format = 'html', escape = FALSE,
         align = c('c', 'c', 'l', 'l', 'l', 'l')) %>%
   kable_styling(full_width = F, bootstrap_options = c("striped", "hover")) %>%
