@@ -112,7 +112,7 @@ Here's a visual breakdown by category:
 library(viridis)
 library(ggrepel)
 
-df <- data.frame(
+data.frame(
     category = c(
       'Homeworks & Readings', 'Quizzes', 'Midterm', 'Final'),
     percent = c(52, 18, 10, 20)) %>%
@@ -120,13 +120,13 @@ df <- data.frame(
     mutate(
       cumpercent = cumsum(percent),
       label_y = cumpercent - (percent / 2),
-      category = fct_reorder(category, percent))
-
-ggplot(df) +
-    geom_col(aes(x = "", y = percent, fill = category),
-             width = 1.1, alpha = 0.8) +
-    geom_label(data = df,
-               aes(x = "", y = label_y, label = category)) +
+      category = fct_reorder(category, percent)) %>% 
+    ggplot() +
+    geom_col(
+      aes(x = "", y = percent, fill = category),
+      width = 1.1, alpha = 0.8) +
+    geom_label(
+      aes(x = "", y = label_y, label = category)) +
     coord_flip() +
     scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
     scale_fill_viridis(discrete = TRUE) +

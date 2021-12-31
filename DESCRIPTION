@@ -20,6 +20,7 @@ Imports:
     fastDummies,
     fontawesome,
     gapminder,
+    ggrepel,
     ggthemes,
     gsheet,
     here,
