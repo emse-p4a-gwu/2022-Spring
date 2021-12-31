@@ -459,6 +459,53 @@ div.tocify {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-pencil-ruler"></span>
+     
+    Assignments
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="hw1-getting-started.html">HW 1: Getting Started (Due 01/19)</a>
+    </li>
+    <li>
+      <a href="hw2-functions-packages.html">HW 2: Functions &amp; Packages (Due 01/26)</a>
+    </li>
+    <li>
+      <a href="hw3-creating-functions.html">HW 3: Creating Functions (Due 02/02)</a>
+    </li>
+    <li>
+      <a href="hw4-conditionals-testing.html">HW 4: Conditionals &amp; Testing (Due 02/09)</a>
+    </li>
+    <li>
+      <a href="hw5-iteration.html">HW 5: Iteration (Due 02/16)</a>
+    </li>
+    <li>
+      <a href="hw6-vectors.html">HW 6: Vectors (Due 02/23)</a>
+    </li>
+    <li>
+      <a href="hw7-strings.html">HW 7: Strings (Due 03/02)</a>
+    </li>
+    <li>
+      <a href="hw8-python.html">HW 8: Python (Due 03/09)</a>
+    </li>
+    <li>
+      <a href="hw9-data-frames.html">HW 9: Data Frames (Due 03/30)</a>
+    </li>
+    <li>
+      <a href="hw10-data-wrangling.html">HW 10: Data Wrangling (Due 04/06)</a>
+    </li>
+    <li>
+      <a href="hw11-data-visualization.html">HW 11: Data Visualization (Due 04/13)</a>
+    </li>
+    <li>
+      <a href="hw12-reproducible-reporting.html">HW 12: Reproducible Reporting (Due 04/20)</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     Readings
@@ -517,53 +564,6 @@ div.tocify {
     </li>
     <li>
       <a href="r13-monte-carlo-methods.html">13: Monte Carlo Methods</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-pencil-ruler"></span>
-     
-    HW
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="hw1-getting-started.html">HW 1: Getting Started (Due 01/19)</a>
-    </li>
-    <li>
-      <a href="hw2-functions-packages.html">HW 2: Functions &amp; Packages (Due 01/26)</a>
-    </li>
-    <li>
-      <a href="hw3-creating-functions.html">HW 3: Creating Functions (Due 02/02)</a>
-    </li>
-    <li>
-      <a href="hw4-conditionals-testing.html">HW 4: Conditionals &amp; Testing (Due 02/09)</a>
-    </li>
-    <li>
-      <a href="hw5-iteration.html">HW 5: Iteration (Due 02/16)</a>
-    </li>
-    <li>
-      <a href="hw6-vectors.html">HW 6: Vectors (Due 02/23)</a>
-    </li>
-    <li>
-      <a href="hw7-strings.html">HW 7: Strings (Due 03/02)</a>
-    </li>
-    <li>
-      <a href="hw8-python.html">HW 8: Python (Due 03/09)</a>
-    </li>
-    <li>
-      <a href="hw9-data-frames.html">HW 9: Data Frames (Due 03/30)</a>
-    </li>
-    <li>
-      <a href="hw10-data-wrangling.html">HW 10: Data Wrangling (Due 04/06)</a>
-    </li>
-    <li>
-      <a href="hw11-data-visualization.html">HW 11: Data Visualization (Due 04/13)</a>
-    </li>
-    <li>
-      <a href="hw12-reproducible-reporting.html">HW 12: Reproducible Reporting (Due 04/20)</a>
     </li>
   </ul>
 </li>
@@ -766,11 +766,11 @@ ratio &lt;- sum(belowCurve) / numTrials
 totalArea &lt;- (7 - 3) * 7^2 # Rectangle length x height = 196
 areaUnderCurve &lt;- ratio * totalArea
 areaUnderCurve</code></pre>
-<pre><code>#&gt; [1] 105.3245</code></pre>
-<p>So, using Monte Carlo simulation with 100,000 points, we estimate that the area under the curve is 105.32452. How’d we do? Well, if you’re familiar with calculus, the integral of <span class="math inline">\(f(x) = x^2\)</span> has a closed-form solution (<span class="math inline">\(\frac{x^3}{3} + C\)</span>), so we can check our estimate against the pure-math solution:</p>
+<pre><code>#&gt; [1] 105.7596</code></pre>
+<p>So, using Monte Carlo simulation with 100,000 points, we estimate that the area under the curve is 105.75964. How’d we do? Well, if you’re familiar with calculus, the integral of <span class="math inline">\(f(x) = x^2\)</span> has a closed-form solution (<span class="math inline">\(\frac{x^3}{3} + C\)</span>), so we can check our estimate against the pure-math solution:</p>
 <p><span class="math display">\[\int_{3}^{7} x^2 \mathrm{dx} = \left ( \frac{x^3}{3} \right ) \Big|_3^7 = \frac{7^3}{3} - \frac{3^3}{3} = 105.33\bar{3}\]</span></p>
-<p>So our estimate error is: <code>105.333 -</code> <code>105.32452</code> <code>=</code> <code>0.0088133</code>.</p>
-<p>That’s an error of just 0.01 % - not bad!</p>
+<p>So our estimate error is: <code>105.333 -</code> <code>105.75964</code> <code>=</code> <code>-0.4263067</code>.</p>
+<p>That’s an error of just 0.4 % - not bad!</p>
 <hr />
 </div>
 <div id="monte-carlo-pi" class="section level1">
@@ -800,13 +800,13 @@ points &lt;- data.frame(
     x = runif(numTrials, -0.5, 0.5),
     y = runif(numTrials, -0.5, 0.5))
 head(points)</code></pre>
-<pre><code>#&gt;             x          y
-#&gt; 1 -0.24620608 -0.3799945
-#&gt; 2  0.22913681  0.4645623
-#&gt; 3 -0.29883011 -0.4025231
-#&gt; 4  0.02022602  0.1148479
-#&gt; 5  0.12675618  0.4884864
-#&gt; 6 -0.33954462 -0.2831926</code></pre>
+<pre><code>#&gt;            x          y
+#&gt; 1  0.3822699  0.2289566
+#&gt; 2 -0.1425622  0.3819686
+#&gt; 3 -0.4232666 -0.1556224
+#&gt; 4 -0.1249425  0.1675975
+#&gt; 5  0.1681652 -0.1035814
+#&gt; 6  0.4567917 -0.2902596</code></pre>
 <p>For this example, we’re putting the points in a data frame to make it easier to work with. Now that we have random x and y points, let’s compute the radius to each point (the distance from <code>(x, y) = (0, 0)</code>) so we can determine which points fall inside the circle (which has a radius of 0.5):</p>
 <pre class="r"><code>library(dplyr)
 points &lt;- points %&gt;%
@@ -823,9 +823,9 @@ ggplot(points) +
 <pre class="r"><code>ratio &lt;- sum(points$pointInCircle) / nrow(points)
 piApprox &lt;- 4 * ratio
 piApprox</code></pre>
-<pre><code>#&gt; [1] 3.124</code></pre>
-<p>So our estimate error is: <code>3.1415 -</code> <code>3.124</code> <code>=</code> <code>-0.0175927</code>.</p>
-<p>That’s an error of just 0.56 % - not bad for only 1,000 points!</p>
+<pre><code>#&gt; [1] 3.104</code></pre>
+<p>So our estimate error is: <code>3.1415 -</code> <code>3.104</code> <code>=</code> <code>-0.0375927</code>.</p>
+<p>That’s an error of just 1.2 % - not bad for only 1,000 points!</p>
 <p>To get an even better estimate of <span class="math inline">\(\pi\)</span>, we can increase N. Let’s see what we get with 100,000 trials:</p>
 <pre class="r"><code>numTrials &lt;- 100000
 points &lt;- data.frame(
@@ -837,13 +837,13 @@ points &lt;- data.frame(
 ratio &lt;- sum(points$pointInCircle) / nrow(points)
 piApprox &lt;- 4 * ratio
 piApprox</code></pre>
-<pre><code>#&gt; [1] 3.14388</code></pre>
+<pre><code>#&gt; [1] 3.1384</code></pre>
 <pre class="r"><code># Compute error:
 error &lt;- piApprox - pi
 percentError &lt;- round(100*abs(error / pi), 2)
 percentError</code></pre>
-<pre><code>#&gt; [1] 0.07</code></pre>
-<p>By increasing the number of trials from 1,000 to 100,000, we improved our estimate error from 0.56 % to 0.07 %!</p>
+<pre><code>#&gt; [1] 0.1</code></pre>
+<p>By increasing the number of trials from 1,000 to 100,000, we improved our estimate error from 1.2 % to 0.1 %!</p>
 <hr />
 <p><strong>Page sources</strong>:</p>
 <p>Some content on this page has been modified from other courses, including:</p>

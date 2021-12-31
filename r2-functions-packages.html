@@ -459,6 +459,53 @@ div.tocify {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-pencil-ruler"></span>
+     
+    Assignments
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="hw1-getting-started.html">HW 1: Getting Started (Due 01/19)</a>
+    </li>
+    <li>
+      <a href="hw2-functions-packages.html">HW 2: Functions &amp; Packages (Due 01/26)</a>
+    </li>
+    <li>
+      <a href="hw3-creating-functions.html">HW 3: Creating Functions (Due 02/02)</a>
+    </li>
+    <li>
+      <a href="hw4-conditionals-testing.html">HW 4: Conditionals &amp; Testing (Due 02/09)</a>
+    </li>
+    <li>
+      <a href="hw5-iteration.html">HW 5: Iteration (Due 02/16)</a>
+    </li>
+    <li>
+      <a href="hw6-vectors.html">HW 6: Vectors (Due 02/23)</a>
+    </li>
+    <li>
+      <a href="hw7-strings.html">HW 7: Strings (Due 03/02)</a>
+    </li>
+    <li>
+      <a href="hw8-python.html">HW 8: Python (Due 03/09)</a>
+    </li>
+    <li>
+      <a href="hw9-data-frames.html">HW 9: Data Frames (Due 03/30)</a>
+    </li>
+    <li>
+      <a href="hw10-data-wrangling.html">HW 10: Data Wrangling (Due 04/06)</a>
+    </li>
+    <li>
+      <a href="hw11-data-visualization.html">HW 11: Data Visualization (Due 04/13)</a>
+    </li>
+    <li>
+      <a href="hw12-reproducible-reporting.html">HW 12: Reproducible Reporting (Due 04/20)</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     Readings
@@ -517,53 +564,6 @@ div.tocify {
     </li>
     <li>
       <a href="r13-monte-carlo-methods.html">13: Monte Carlo Methods</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-pencil-ruler"></span>
-     
-    HW
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="hw1-getting-started.html">HW 1: Getting Started (Due 01/19)</a>
-    </li>
-    <li>
-      <a href="hw2-functions-packages.html">HW 2: Functions &amp; Packages (Due 01/26)</a>
-    </li>
-    <li>
-      <a href="hw3-creating-functions.html">HW 3: Creating Functions (Due 02/02)</a>
-    </li>
-    <li>
-      <a href="hw4-conditionals-testing.html">HW 4: Conditionals &amp; Testing (Due 02/09)</a>
-    </li>
-    <li>
-      <a href="hw5-iteration.html">HW 5: Iteration (Due 02/16)</a>
-    </li>
-    <li>
-      <a href="hw6-vectors.html">HW 6: Vectors (Due 02/23)</a>
-    </li>
-    <li>
-      <a href="hw7-strings.html">HW 7: Strings (Due 03/02)</a>
-    </li>
-    <li>
-      <a href="hw8-python.html">HW 8: Python (Due 03/09)</a>
-    </li>
-    <li>
-      <a href="hw9-data-frames.html">HW 9: Data Frames (Due 03/30)</a>
-    </li>
-    <li>
-      <a href="hw10-data-wrangling.html">HW 10: Data Wrangling (Due 04/06)</a>
-    </li>
-    <li>
-      <a href="hw11-data-visualization.html">HW 11: Data Visualization (Due 04/13)</a>
-    </li>
-    <li>
-      <a href="hw12-reproducible-reporting.html">HW 12: Reproducible Reporting (Due 04/20)</a>
     </li>
   </ul>
 </li>
@@ -724,7 +724,7 @@ div.tocify {
 <p>Here the letters <code>sqrt</code> are short for “square root,” and the value inside the <code>()</code> is the “argument” to the function. In the example above, the value <code>225</code> is the “argument”.</p>
 <p>Keep in mind that not all functions have (or require) arguments:</p>
 <pre class="r"><code>date() # Returns the current date and time</code></pre>
-<pre><code>#&gt; [1] &quot;Fri Dec 31 20:26:53 2021&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Fri Dec 31 20:34:47 2021&quot;</code></pre>
 <p>(the date above is the date this page was last built)</p>
 <div id="multiple-arguments" class="section level2">
 <h2>Multiple arguments</h2>
@@ -942,9 +942,9 @@ library(packagename)   # This also works</code></pre>
 <p>Now that you have the package installed on your computer, try loading it using <code>library(wikifacts)</code>, then trying using some of it’s functions:</p>
 <pre class="r"><code>library(wikifacts) # Load the library</code></pre>
 <pre class="r"><code>wiki_randomfact()</code></pre>
-<pre><code>#&gt; [1] &quot;Here&#39;s some news from 20 May 2018. In association football, the English Premier League concludes with Manchester City winning the title. (Courtesy of Wikipedia)&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Did you know that despite being a prolific artist of 19th-century London, Robert Blemmell Schnebbelie died of starvation in Camden Town? (Courtesy of Wikipedia)&quot;</code></pre>
 <pre class="r"><code>wiki_didyouknow()</code></pre>
-<pre><code>#&gt; [1] &quot;Did you know that Rudyard Kipling&#39;s first novel, The Light That Failed, was published in at least four different versions over a two-year period? (Courtesy of Wikipedia)&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Did you know that Sir Lancelot Barrington-Ward removed the appendix of Prince Albert, who later became King George VI? (Courtesy of Wikipedia)&quot;</code></pre>
 <p>In case you’re wondering, the only thing this package does is generate messages containing random facts from <a href="https://www.wikipedia.org/">Wikipedia</a>.</p>
 </div>
 <div id="using-only-some-package-functions" class="section level2">
@@ -955,7 +955,7 @@ library(packagename)   # This also works</code></pre>
 </blockquote>
 <p>Here I use the name of the <em>package</em> followed by <code>::</code> to tell R that I’m looking for a function that is in that package. For example, if I didn’t want to load the whole <strong>wikifacts</strong> library but still wanted to use the <code>wiki_randomfact()</code> function, I could do this:</p>
 <pre class="r"><code>wikifacts::wiki_randomfact()</code></pre>
-<pre><code>#&gt; [1] &quot;Did you know that on November 17 in 2009 – Administrators at the University of East Anglia&#39;s Climatic Research Unit discovered that their servers had been hacked and thousands of emails and files on climate change had been stolen. (Courtesy of Wikipedia)&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Did you know that on March 29 in 1981 – Dick Beardsley and Inge Simonsen jointly won the Men&#39;s Elite Race and Joyce Smith won the Women&#39;s Elite Race in the inaugural London Marathon. (Courtesy of Wikipedia)&quot;</code></pre>
 <p>Where this is particularly handy is when two packages have a function with the same name. If you load both library, R might not know which function to use. In those cases, it’s best to also provide the <strong>package</strong> name. For example, let’s say there was a package called <strong>apples</strong> and another called <strong>bananas</strong>, and each had a function named <code>fruitName()</code>. If I wanted to use each of them in my code, I would need to specify the package names like this:</p>
 <pre class="r"><code>apples::fruitName()
 bananas::fruitName()</code></pre>
