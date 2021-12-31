@@ -46,6 +46,33 @@ navbar:
           href: c12-reproducible-reporting.html
         - text: "Apr 21: Monte Carlo Methods"
           href: c13-monte-carlo-methods.html
+    - text: "Assignments"
+      icon: fa fa-pencil-ruler
+      menu:
+        - text: "HW 1: Getting Started (Due 01/19)"
+          href: hw1-getting-started.html
+        - text: "HW 2: Functions & Packages (Due 01/26)"
+          href: hw2-functions-packages.html
+        - text: "HW 3: Creating Functions (Due 02/02)"
+          href: hw3-creating-functions.html
+        - text: "HW 4: Conditionals & Testing (Due 02/09)"
+          href: hw4-conditionals-testing.html
+        - text: "HW 5: Iteration (Due 02/16)"
+          href: hw5-iteration.html
+        - text: "HW 6: Vectors (Due 02/23)"
+          href: hw6-vectors.html
+        - text: "HW 7: Strings (Due 03/02)"
+          href: hw7-strings.html
+        - text: "HW 8: Python (Due 03/09)"
+          href: hw8-python.html
+        - text: "HW 9: Data Frames (Due 03/30)"
+          href: hw9-data-frames.html
+        - text: "HW 10: Data Wrangling (Due 04/06)"
+          href: hw10-data-wrangling.html
+        - text: "HW 11: Data Visualization (Due 04/13)"
+          href: hw11-data-visualization.html
+        - text: "HW 12: Reproducible Reporting (Due 04/20)"
+          href: hw12-reproducible-reporting.html
     - text: "Readings"
       icon: fa fa-book
       menu:
@@ -82,33 +109,6 @@ navbar:
           href: r12-reproducible-reporting.html
         - text: "13: Monte Carlo Methods"
           href: r13-monte-carlo-methods.html
-    - text: "HW"
-      icon: fa fa-pencil-ruler
-      menu:
-        - text: "HW 1: Getting Started (Due 01/19)"
-          href: hw1-getting-started.html
-        - text: "HW 2: Functions & Packages (Due 01/26)"
-          href: hw2-functions-packages.html
-        - text: "HW 3: Creating Functions (Due 02/02)"
-          href: hw3-creating-functions.html
-        - text: "HW 4: Conditionals & Testing (Due 02/09)"
-          href: hw4-conditionals-testing.html
-        - text: "HW 5: Iteration (Due 02/16)"
-          href: hw5-iteration.html
-        - text: "HW 6: Vectors (Due 02/23)"
-          href: hw6-vectors.html
-        - text: "HW 7: Strings (Due 03/02)"
-          href: hw7-strings.html
-        - text: "HW 8: Python (Due 03/09)"
-          href: hw8-python.html
-        - text: "HW 9: Data Frames (Due 03/30)"
-          href: hw9-data-frames.html
-        - text: "HW 10: Data Wrangling (Due 04/06)"
-          href: hw10-data-wrangling.html
-        - text: "HW 11: Data Visualization (Due 04/13)"
-          href: hw11-data-visualization.html
-        - text: "HW 12: Reproducible Reporting (Due 04/20)"
-          href: hw12-reproducible-reporting.html
     - text: "References"
       icon: fa fa-bookmark
       menu:
