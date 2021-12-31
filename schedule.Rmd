@@ -34,7 +34,7 @@ schedule <- gsheet::gsheet2tbl(settings$schedule_url) %>%
     assign_num = ifelse(class_num == 13, NA, class_num),
     assignments = ifelse(
       is.na(assign_num), "", paste0(
-        fa$assignment, "(a", assign_num, "-",  stub, ".html) **HW ",
+        fa$assignment, "(hw", assign_num, "-",  stub, ".html) **HW ",
         assign_num, "**<br>Due: ", assign_due)),
     class_url = ifelse(
       is.na(class_num), "", 
