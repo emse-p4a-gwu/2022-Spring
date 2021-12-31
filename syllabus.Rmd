@@ -69,16 +69,6 @@ This course does not require any textbooks. All learning materials and resources
 
 # Assignments
 
-## Class Participation
-
-Regular class attendance is **essential** to succeed in this class. Multiple unexcused absences, inappropriate or unprofessional behavior during class (such as monopolizing discussions or being rude or disruptive), not participating in classroom exercises, and not being prepared for class will result in a lower grade for the class participation component. As a rule of thumb, the participation grade will be assigned according to the following rubric:
-
-Score | Attendance | Classroom
-----|---------------|-------------------------------
-Low      | Frequently absent | Rude; disruptive; distracting; monopolizes discussions
-Moderate | Attended most classes, but often arrived late or left early | Takes notes; attentive; occasionally contributes in class discussion / exercises
-High     | Attends on time and prepared | Takes notes; attentive; regularly contributes in class discussion / exercises; does not dominate conversation; listens and responds thoughtfully to comments made by others
-
 ## Homework Assignments
 
 Homework assignments contain a mix of coding exercises and written exercises. They assess the material taught the week(s) they are assigned, and should take several hours to complete. **Start homeworks early**.
@@ -87,11 +77,15 @@ Read the [Collaboration Policy](#collaboration-policy) about collaborating with 
 
 Homeworks will be graded based on style (modularity, readability, commenting, etc.) and functionality (correctness on a series of tests). Your code should be properly annotated with comments that are well-placed, concise, and informative. Your assignments will be graded by an automated grader and the instructional team.
 
+## Readings
+
+In addition to weekly homework assignments, students are expected to read through the assigned weekly reading to prepare for the next class. Check the [schedule](schedule.html) for the reading assignments.
+
 ## Quizzes
 
-There will be several quizzes given about once every two weeks immediately at the beginning of class. Quizzes cover material presented in previous classes and assignments during the weeks since the most-recent quiz. Quizzes are designed to be time-intensive, to test for fluency, and to demonstrate where additional study is needed. **Quizzes are low-stakes** - your worst one is dropped, and the rest count for just 15% of your final grade. If you do poorly on one, use that as feedback on where you need to focus more of your energy for improvement.
+There will be seven quizzes given about once every two weeks immediately at the beginning of class. Quizzes cover material presented in previous classes and assignments during the weeks since the most-recent quiz. Quizzes are **short** (~5 minutes) and are designed to identify areas where additional study is needed. **Quizzes are low-stakes** - your worst one is dropped, and the rest count for just 12% of your final grade. If you do poorly on one, use that as feedback on where you need additional improvement.
 
-> **Why quiz at all?** Research shows that giving small quizzes throughout a class can dramatically help with retention. It's a phenomenon known as the "retrieval effect" - basically, you have to _practice_ remembering things, otherwise your brain won't remember them. The phenomenon and research on it is explained in detail in the book ["Make It Stick: The Science of Successful Learning"](https://www.hup.harvard.edu/catalog.php?isbn=9780674729018), by Brown, Roediger, and McDaniel.
+> **Why quiz at all?** Research shows that giving small quizzes throughout a class can dramatically help with *retention*. It's a phenomenon known as the "retrieval effect" - basically, you have to _practice_ remembering things, otherwise your brain won't remember them. The phenomenon and research on it is explained in detail in the book ["Make It Stick: The Science of Successful Learning,"](https://www.hup.harvard.edu/catalog.php?isbn=9780674729018) by Brown, Roediger, and McDaniel.
 
 ## Exams
 
@@ -104,18 +98,46 @@ There will be one midterm exam covering the first 6 weeks of class, and a standa
 Final grades will be calculated as follows:
 
 <div style="width:500px">
-Course Component     | Weight | Notes
----------------------|--------|-----------------------------------
-Homeworks            | 48%    | 12 x 4% each
-Quizzes              | 15%    | 5  x 3% each; lowest two dropped
-Midterm Exam         | 12%    |
-Final Exam           | 20%    |
-Participation        | 5%     |
+Component                  | Weight | Notes
+---------------------------|--------|----------------
+Homeworks & Readings (12x) | 52%    | Lowest dropped
+Quizzes (7x)               | 18%    | Lowest dropped
+Midterm Exam               | 10%    |
+Final Exam                 | 20%    |
 </div>
+
+Here's a visual breakdown by category:
+
+```{r grade-breakdown, echo=FALSE, fig.height=3, fig.align='left'}
+library(viridis)
+library(ggrepel)
+
+df <- data.frame(
+    category = c(
+      'Homeworks & Readings', 'Quizzes', 'Midterm', 'Final'),
+    percent = c(52, 18, 10, 20)) %>%
+    arrange(desc(percent)) %>%
+    mutate(
+      cumpercent = cumsum(percent),
+      label_y = cumpercent - (percent / 2),
+      category = fct_reorder(category, percent))
+
+ggplot(df) +
+    geom_col(aes(x = "", y = percent, fill = category),
+             width = 1.1, alpha = 0.8) +
+    geom_label(data = df,
+               aes(x = "", y = label_y, label = category)) +
+    coord_flip() +
+    scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+    scale_fill_viridis(discrete = TRUE) +
+    theme_minimal_vgrid() +
+    theme(legend.position = 'none') +
+    labs(y = 'Percent of final grade', x = NULL)
+```
 
 ## AMG Grading
 
-This Alternative Minimum Grading (AMG) policy is available to everybody, but is designed specifically for students who struggle in the first part of the course, and then through sustained hard work and dedication manage to elevate their performance in the latter part of the course to a level that merits passing with a C (even if their Standard Grade might be lower than that).
+An Alternative Minimum Grading (AMG) policy is available to everybody, but is designed specifically for students who struggle in the first part of the course, and then through sustained hard work and dedication manage to elevate their performance in the latter part of the course to a level that merits passing with a C (even if their Standard Grade might be lower than that).
 
 Student cannot "sign up" for AMG grading. Every student will be considered both for Standard Grading and AMG, and the instructor can choose to assign the AMG grade if a student's effort merits it. To qualify for AMG you must put forth sustained effort, which means meeting the following requirements:
 
@@ -139,15 +161,19 @@ Final Exam         | 40%
 <div style="width:350px">
 Grade  | Range       | Grade | Range
 -------|-------------|-------|------------
-A      | 93 - 100%   | C     | 73 - 76.99%
-A-     | 90 - 92.99% | C-    | 70 - 72.99%
+A      | 94 - 100%   | C     | 74 - 76.99%
+A-     | 90 - 93.99% | C-    | 70 - 73.99%
 B+     | 87 - 89.99% | D+    | 67 - 69.99%
-B      | 83 - 86.99% | D     | 63 - 66.99%
-B-     | 80 - 82.99% | D-    | 60 - 62.99%
+B      | 84 - 86.99% | D     | 64 - 66.99%
+B-     | 80 - 83.99% | D-    | 60 - 63.99%
 C+     | 77 - 79.99% | F     | < 60%
 </div>
 
 The course instructors may choose to change the scales at their discretion. You are guaranteed that your letter grade will never become worse as a result of changing scales.
+
+## Rounding
+
+**I do not round final grades**. Rather, I grade generously throughout the semester. For example, if you give a quiz your best shot and completely fail it, you will likely get a 50% instead of a 0%. The 50% is for trying (if you simply don't take it, you'll get a 0%). As a result, I will not modify or round your final score, even if you're very close to a different letter grade (e.g., a 93.98 is an "A-" and will not be rounded up to an "A").
 
 # Getting Help
 
