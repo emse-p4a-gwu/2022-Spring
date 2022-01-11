@@ -100,8 +100,8 @@ Final grades will be calculated as follows:
 <div style="width:500px">
 Component                  | Weight | Notes
 ---------------------------|--------|----------------
-Homeworks & Readings (12x) | 52%    | Lowest dropped
-Quizzes (7x)               | 18%    | Lowest dropped
+Homeworks & Readings (12x) | 55%    | Lowest 1 dropped
+Quizzes (7x)               | 15%    | Lowest 2 dropped
 Midterm Exam               | 10%    |
 Final Exam                 | 20%    |
 </div>
@@ -115,7 +115,7 @@ library(ggrepel)
 data.frame(
     category = c(
       'Homeworks & Readings', 'Quizzes', 'Midterm', 'Final'),
-    percent = c(52, 18, 10, 20)) %>%
+    percent = c(55, 15, 10, 20)) %>%
     arrange(desc(percent)) %>%
     mutate(
       cumpercent = cumsum(percent),
