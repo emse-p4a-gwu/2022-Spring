@@ -11,4 +11,5 @@ params:
 ```{r child = file.path("child", "setup.Rmd")}
 ```
 
-Coming soon!
+```{r child = file.path("child", "class_no_notes.Rmd")}
+```
