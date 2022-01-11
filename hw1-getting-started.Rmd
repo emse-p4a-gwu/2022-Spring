@@ -110,7 +110,7 @@ Write code to answer the following questions:
 a) Write a statement with both _relational_ & _logical_ operators that compares the four objects `number`, `character`, `false`, and `true` and returns `TRUE`.
 b) Write a statement with both _relational_ & _logical_ operators that compares the four objects `number`, `character`, `false`, and `true` and returns `FALSE`.
 
-### 8) Read and reflect [SOLO, 10%]
+### 7) Read and reflect [SOLO, 10%]
 
 Read and reflect on next week's readings on [functions & packages](r2-functions-packages.html). Afterwards, in a comment (`#`) in your R file, write a short reflection on what you've learned and any questions or points of confusion you have about what we've covered thus far. This can just few a few sentences related to this assignment, next week's readings, things going on in the world that remind you something from class, etc. If there's anything that jumped out at you, write it down.
 
