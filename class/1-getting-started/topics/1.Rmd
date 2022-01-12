@@ -3,7 +3,7 @@ class: inverse, middle
 
 # Week `r rmarkdown::metadata$week`: .fancy[`r rmarkdown::metadata$title`]
 
-### 1. Course orientation
+### 1. .orange[Course orientation]
 
 ### BREAK
 

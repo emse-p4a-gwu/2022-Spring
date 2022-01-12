@@ -7,6 +7,6 @@ class: inverse, middle
 
 ### BREAK
 
-### 2. Getting started with R & RStudio
+### 2. .orange[Getting started with R & RStudio]
 ### 3. Operators & data types
 ### 4. Preview of HW 1
