@@ -93,7 +93,7 @@ Assistant Professor, Engineering Management & Systems Engineering
 
 ## `r fa('globe')` Everything you need will be on the course website:
 
-### https://p4a.seas.gwu.edu/2020-Fall/
+### https://p4a.seas.gwu.edu/2022-Spring/
 
 --
 
@@ -136,6 +136,16 @@ Assistant Professor, Engineering Management & Systems Engineering
 
 ### 1. Mar. 10 (HWs 1-7)
 ### 2. May. 05 (HWs 8-12)
+
+---
+
+# Late submissions
+
+<br>
+
+### - **5** late days - use them anytime, no questions asked
+### - No more than **2** late days on any one assignment
+### - Contact me for special cases (I'm expecting a lot of these)
 
 ---
 
@@ -220,13 +230,9 @@ Final Exam         | 40%
 
 ---
 
-# Late submissions
+class: middle, center
 
-<br>
-
-### - **5** late days - use them anytime, no questions asked
-### - No more than **2** late days on any one assignment
-### - Contact me for special cases (I'm expecting a lot of these)
+# **Don't copy-paste others' code!**
 
 ---
 
