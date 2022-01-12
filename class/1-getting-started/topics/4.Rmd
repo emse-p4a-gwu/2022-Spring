@@ -9,4 +9,4 @@ class: inverse, middle
 
 ### 2. Getting started with R & RStudio
 ### 3. Operators & data types
-### 4. Preview of HW 1
+### 4. .orange[Preview of HW 1]

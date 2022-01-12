@@ -319,6 +319,74 @@ countdown(
 
 ---
 
+class: center 
+
+## What is `r fa('r-project')`? ([Read a brief history here](https://bookdown.org/rdpeng/rprogdatascience/history-and-overview-of-r.html))
+
+Chambers creates "S" (1976, Bell Labs)<br>
+Ross & Robert create "R" (1991, U. of Auckland)
+
+.cols3[
+## .center[[John Chambers](https://en.wikipedia.org/wiki/John_Chambers_(statistician)]
+<center>
+<img src="https://datascience.stanford.edu/sites/g/files/sbiybj18491/f/styles/large-square/public/john-chambers.png?itok=o9PvzKwG" width=280>
+</center>
+]
+
+.cols3[
+## .center[[Ross Ihaka](https://en.wikipedia.org/wiki/Ross_Ihaka)]
+<center>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Ross_Ihaka_%285189180796%29.jpg/1280px-Ross_Ihaka_%285189180796%29.jpg" width=100%>
+</center>
+]
+
+.cols3[
+## .center[[Robert Gentleman](https://en.wikipedia.org/wiki/Robert_Gentleman_(statistician)]
+<center>
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Rober_Gentleman.png" width=250>
+</center>
+]
+
+---
+
+class: center, middle 
+
+.leftcol[
+## `r fa('r-project')`
+<center>
+<img src="images/engine.jpg" width=500>
+</center>
+]
+
+.rightcol[
+## `r fa('r-project')`Studio
+<center>
+<img src="images/dashboard.jpg" width=600>
+</center>
+]
+
+---
+
+class: center 
+
+# RStudio Orientation
+
+.leftcol[
+## Open this
+<center>
+<img src="images/rstudio_ball.png" width=300>
+</center>
+]
+
+.rightcol[
+## Not this
+<center>
+<img src="images/Rlogo.png" width=400>
+</center>
+]
+
+---
+
 # RStudio Orientation
 
 .leftcol70[
