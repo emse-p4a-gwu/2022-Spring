@@ -17,7 +17,7 @@ url_template <- paste0(
 
 > **Due**: `r due`
 >
-> **Submit**: To submit this assignment, create a zip file of all the files in your R project folder for this assignment. Name the zip file `r paste0('"hw', params$number, '-netID.zip"')`, replacing "netID" with your netID (e.g., `r paste0('"hw', params$number, '-jph.zip"')`). Use [this link](`r params$submit`) to submit your file.
+> **Submit**: To submit this assignment, create a zip file of all the files in your R project folder for this assignment. Name the zip file ``r paste0('hw', params$number, '-netID.zip')``, replacing `netID` with your netID (e.g., ``r paste0('hw', params$number, '-jph.zip')``). Use [this link](`r params$submit`) to submit your file.
 >
 > **Weight**: This assignment is worth 5% of your final grade.
 >

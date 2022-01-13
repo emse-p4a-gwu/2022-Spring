@@ -485,17 +485,6 @@ x
 
 ### (but it's more R-like to use `<-`)
 
---
-
-&zwj;Example:
-
-```{r}
-x = 42
-x
-y <- 42
-y
-```
-
 ---
 
 # Storing values
@@ -734,7 +723,7 @@ countdown(
 
 1). Create objects to store the values in this table:
 
-| City              | Area (sq. mi.) | Population (thousands) |
+| City              | Area (sq mi) | Population (thousands) |
 |-------------------|----------------|------------------------|
 | San Francisco, CA | 47             | 884                    |
 | Chicago, IL       | 228            | 2,716                  |
@@ -1127,6 +1116,12 @@ The `&` operator takes precedence over `|`
 (2 == 2) | (2 == 3) & (4 == 7)
 ```
 
+--
+
+```{r}
+((2 == 2) | (2 == 3)) & (4 == 7)
+```
+
 ---
 
 # Comparing things: **Logical operators**
@@ -1217,12 +1212,20 @@ Write code to answer the following questions:
 |`character` | Text (aka "string") | `"this is some text"`
 |`logical`   | Used for comparing objects | `TRUE`, `FALSE`
 
---
+---
 
-Use `typeof()` to assess the type of any variable:
+## Use `typeof()` to find the type
+
+```{r}
+typeof(2)
+```
 
 ```{r}
 typeof("hello")
+```
+
+```{r}
+typeof(TRUE)
 ```
 
 ---
@@ -1335,17 +1338,25 @@ Example: Is `1` greater than `2`?
 
 ## Special values
 
+--
+
 `Inf`: Infinity (_or really big numbers_)
 ```{r}
 1/0
 ```
+
+--
 
 `NaN`: Not a Number
 ```{r}
 0/0
 ```
 
+--
+
 `NA`: Not available (_value is missing_)
+
+--
 
 `NULL`: no value whatsoever
 
