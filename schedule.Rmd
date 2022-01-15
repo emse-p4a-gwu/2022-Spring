@@ -57,7 +57,7 @@ for (i in 1:nrow(schedule)) {
     schedule[i,]$reading_good <- reading
   } else {
       reading_name <- schedule[i,]$reading_name [[1]]
-      reading <- paste0(fa$reading, '(', reading, ')')
+      reading <- paste0(fa$reading, '(', reading, '.html)')
       reading <- paste(paste(reading, reading_name), collapse = '<br>')
       schedule[i,]$reading_good <- reading
   }
