@@ -1058,6 +1058,21 @@ div.tocify {
 <pre class="r"><code>(1 + 2) * 4</code></pre>
 <pre><code>#&gt; [1] 12</code></pre>
 <p>A helpful rule of thumb to remember is that <strong>brackets always come first</strong>. So, if you’re ever unsure about what order R will do things in, an easy solution is to enclose the thing you want it to do first in brackets.</p>
+<blockquote>
+<p>Note that for logical operators, the order precedence is <code>! &gt; &amp; &gt; |</code></p>
+</blockquote>
+<p>For example, consider the following statement:</p>
+<pre class="r"><code>TRUE | FALSE &amp; FALSE</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<p>This returns <code>TRUE</code> because the <code>&amp;</code> statement (<code>FALSE &amp; FALSE</code>) is evaluated first, so the whole statement simplifies to <code>TRUE | FALSE</code>, which returns <code>TRUE</code>. If you put parentheses around the <code>|</code> statement, it would evaluate first and the whole statement would return <code>FALSE</code>:</p>
+<pre class="r"><code>(TRUE | FALSE) &amp; FALSE</code></pre>
+<pre><code>#&gt; [1] FALSE</code></pre>
+<p>Similarly, consider the following statement:</p>
+<pre class="r"><code>! TRUE | TRUE</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<p>This returns <code>TRUE</code> because the <code>!</code> statement is evaluated first (<code>! TRUE</code> is <code>FALSE</code>), and the simplified statement <code>FALSE | TRUE</code> returns <code>TRUE</code>. Again, if you put parentheses around the <code>|</code> statement the whole statement becomes <code>FALSE</code>:</p>
+<pre class="r"><code>! (TRUE | TRUE)</code></pre>
+<pre><code>#&gt; [1] FALSE</code></pre>
 </div>
 </div>
 <div id="data-types" class="section level1">
