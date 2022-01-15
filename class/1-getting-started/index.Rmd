@@ -1108,19 +1108,23 @@ The "not" (`!`) symbol produces the _opposite_ statement:
 
 # Comparing things: **Logical operators**
 
-### `& > |`
-
-The `&` operator takes precedence over `|`
-
-```{r}
-(2 == 2) | (2 == 3) & (4 == 7)
-```
+### Order precedence for logical operators: `! > & > |`
 
 --
 
+.leftcol[
 ```{r}
-((2 == 2) | (2 == 3)) & (4 == 7)
+TRUE | FALSE & FALSE
+(TRUE | FALSE) & FALSE
 ```
+]
+
+.rightcol[
+```{r}
+! TRUE | TRUE
+! (TRUE | TRUE)
+```
+]
 
 ---
 

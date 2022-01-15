@@ -362,7 +362,7 @@ class: inverse, center
 
 ## <svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M576 304v96c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48v-96c0-26.51 21.49-48 48-48h480c26.51 0 48 21.49 48 48zm-48-80a79.557 79.557 0 0 1 30.777 6.165L462.25 85.374A48.003 48.003 0 0 0 422.311 64H153.689a48 48 0 0 0-39.938 21.374L17.223 230.165A79.557 79.557 0 0 1 48 224h480zm-48 96c-17.673 0-32 14.327-32 32s14.327 32 32 32 32-14.327 32-32-14.327-32-32-32zm-96 0c-17.673 0-32 14.327-32 32s14.327 32 32 32 32-14.327 32-32-14.327-32-32-32z"/></svg> Install [course software](https://p4a.seas.gwu.edu/2022-Spring/ref-course-software.html) if you haven't
 
-<div class="countdown" id="timer_61e03ff0" style="top:1;right:0;bottom:0;left:0;margin:5%;font-size:8em;" data-warnwhen="30">
+<div class="countdown" id="timer_61e337d6" style="top:1;right:0;bottom:0;left:0;margin:5%;font-size:8em;" data-warnwhen="30">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -866,7 +866,7 @@ objects()
 
 class: inverse
 
-<div class="countdown blink-colon noupdate-15" id="timer_61e03dca" style="bottom:0;left:0;font-size:2em;" data-warnwhen="30">
+<div class="countdown blink-colon noupdate-15" id="timer_61e33643" style="bottom:0;left:0;font-size:2em;" data-warnwhen="30">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1427,29 +1427,47 @@ The "not" (`!`) symbol produces the _opposite_ statement:
 
 # Comparing things: **Logical operators**
 
-### `&amp; &gt; |`
+### Order precedence for logical operators: `! &gt; &amp; &gt; |`
 
-The `&amp;` operator takes precedence over `|`
+--
 
+.leftcol[
 
 ```r
-(2 == 2) | (2 == 3) &amp; (4 == 7)
+TRUE | FALSE &amp; FALSE
 ```
 
 ```
 #&gt; [1] TRUE
 ```
 
---
-
-
 ```r
-((2 == 2) | (2 == 3)) &amp; (4 == 7)
+(TRUE | FALSE) &amp; FALSE
 ```
 
 ```
 #&gt; [1] FALSE
 ```
+]
+
+.rightcol[
+
+```r
+! TRUE | TRUE
+```
+
+```
+#&gt; [1] TRUE
+```
+
+```r
+! (TRUE | TRUE)
+```
+
+```
+#&gt; [1] FALSE
+```
+]
 
 ---
 
@@ -1517,7 +1535,7 @@ The `&amp;` operator takes precedence over `|`
 
 class: inverse
 
-<div class="countdown blink-colon noupdate-15" id="timer_61e03fcf" style="top:0;right:0;font-size:2em;" data-warnwhen="30">
+<div class="countdown blink-colon noupdate-15" id="timer_61e33699" style="top:0;right:0;font-size:2em;" data-warnwhen="30">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1794,7 +1812,7 @@ class: inverse
 
 # Your turn
 
-<div class="countdown blink-colon noupdate-15" id="timer_61e03ee9" style="top:0;right:0;font-size:2em;" data-warnwhen="30">
+<div class="countdown blink-colon noupdate-15" id="timer_61e3377b" style="top:0;right:0;font-size:2em;" data-warnwhen="30">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
