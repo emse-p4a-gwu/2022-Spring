@@ -324,6 +324,32 @@ R first computes `2 * 4` and then adds `1`. If what you actually wanted was for 
 
 A helpful rule of thumb to remember is that **brackets always come first**. So, if you're ever unsure about what order R will do things in, an easy solution is to enclose the thing you want it to do first in brackets.
 
+> Note that for logical operators, the order precedence is `! > & > |`
+
+For example, consider the following statement:
+
+```{r}
+TRUE | FALSE & FALSE
+```
+
+This returns `TRUE` because the `&` statement (`FALSE & FALSE`) is evaluated first, so the whole statement simplifies to `TRUE | FALSE`, which returns `TRUE`. If you put parentheses around the `|` statement, it would evaluate first and the whole statement would return `FALSE`:
+
+```{r}
+(TRUE | FALSE) & FALSE
+```
+
+Similarly, consider the following statement:
+
+```{r}
+! TRUE | TRUE
+```
+
+This returns `TRUE` because the `!` statement is evaluated first (`! TRUE` is `FALSE`), and the simplified statement `FALSE | TRUE` returns `TRUE`. Again, if you put parentheses around the `|` statement the whole statement becomes `FALSE`:
+
+```{r}
+! (TRUE | TRUE)
+```
+
 # Data types
 
 Every programming language has the ability to store data of different types. R recognizes several important basic data types (there are others, but these cover most cases):
