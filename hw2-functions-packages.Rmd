@@ -63,7 +63,7 @@ Your task is to find out if the triangle formed by the points A, B, and C is a [
 
 ### 3) Polya problem solving 2 [COLLABORATIVE, 20%]
 
-Kevin is deciding between purchasing a Chevy Bolt, which sells for $29,390 (after subsidies), and a Toyota Camry, which sells for $24,000. The Bolt efficiency is 28 kWh of electricity per 100 miles while the Camry efficiency is 28 miles per gallon (mpg) on average. The average price of electricity (in DC, where Kevin lives) is $0.13 / kWh, and the average price of gasoline is $2.20 / gallon. Kevin drives 12,000 miles each year on average.
+Kevin is deciding between purchasing a Chevy Bolt, which sells for $29,390 (after subsidies), and a Toyota Camry, which sells for $24,000. The Bolt efficiency is 28 kWh of electricity per 100 miles while the Camry efficiency is 28 miles per gallon (mpg) on average. The average price of electricity (in DC, where Kevin lives) is $0.13 / kWh, and the average price of gasoline is $3.00 / gallon. Kevin drives 12,000 miles each year on average.
 
 To help him make a decision about which car to buy, answer the following questions:
 
