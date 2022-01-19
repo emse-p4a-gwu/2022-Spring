@@ -9,9 +9,8 @@ xaringanBuilder::build_pdf("index.html", paste0(lesson, ".pdf"))
 zip::zipr(
     zipfile = paste0(lesson, ".zip"),
     files = c(
-        'practice.Rmd',
-        'solutions.html',
-        'solutions.Rmd',
+        'notes-blank.R',
+        'notes-complete.R',
         paste0(lesson, ".Rproj")))
 
 
