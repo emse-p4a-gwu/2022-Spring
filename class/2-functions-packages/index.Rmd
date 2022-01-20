@@ -2,7 +2,7 @@
 title: "Functions & Packages"
 subtitle: "EMSE 4571: Intro to Programming for Analytics"
 date: January 20, 2022
-week: 1
+week: 2
 class: "2-functions-packages"
 author: "John Paul Helveston"
 institute: "The George Washington University | Dept. of Engineering Management and Systems Engineering"
