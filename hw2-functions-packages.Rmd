@@ -105,7 +105,7 @@ remotes::install_github("brooke-watson/BRRR")
 
 > Note: Packges on GitHub are _in development_ and often require other packges to work. So if you get an installation error about some other package dependency, try restarting your R session and try again. 
 
-Not sure what this package does? Well, one of the other nice things about packages listed on GitHub is the authors tend to write detailed descriptions - check out the [GitHub page for the BRRR package](https://github.com/brooke-watson/BRRR). Then try using the `BRRR::skrrrahh()` function with different number arguments (turn your volume up). In the `#hw2` channel on slack, post your favorite argument to `skrrrahh()` (mine is 24).
+Not sure what this package does? Well, one of the other nice things about packages listed on GitHub is the authors tend to write detailed descriptions - check out the [GitHub page for the BRRR package](https://github.com/brooke-watson/BRRR). Then try using the `BRRR::skrrrahh()` function with different number arguments (turn your volume up). In the `#hw` channel on slack, post your favorite argument to `skrrrahh()` (mine is 24).
 
 ### 6) Turtle practice [COLLABORATIVE, 20%]
 
