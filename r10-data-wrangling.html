@@ -973,18 +973,18 @@ select(df, state, damage, time_of_day)</code></pre>
 <p>To select all columns <em>except</em> certain ones, put a <code>-</code> sign in front of the variable to exclude it:</p>
 <pre class="r"><code>select(df, -state, -damage, -time_of_day)</code></pre>
 <pre><code>#&gt; # A tibble: 56,978 × 18
-#&gt;    incident_date       airport_id airport    operator  atype type_eng species_id
-#&gt;    &lt;dttm&gt;              &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;     
-#&gt;  1 2018-12-31 00:00:00 KMIA       MIAMI INTL AMERICAN… B-73… D        UNKBL     
-#&gt;  2 2018-12-29 00:00:00 KIND       INDIANAPO… AMERICAN… B-73… D        R         
-#&gt;  3 2018-12-29 00:00:00 ZZZZ       UNKNOWN    AMERICAN… UNKN… &lt;NA&gt;     R2004     
-#&gt;  4 2018-12-27 00:00:00 ZZZZ       UNKNOWN    AMERICAN… B-73… D        N5205     
-#&gt;  5 2018-12-27 00:00:00 ZZZZ       UNKNOWN    AMERICAN… B-73… D        J2139     
-#&gt;  6 2018-12-27 00:00:00 KMIA       MIAMI INTL AMERICAN… A-319 D        UNKB      
-#&gt;  7 2018-12-27 00:00:00 KMCO       ORLANDO I… AMERICAN… A-321 D        UNKBS     
-#&gt;  8 2018-12-26 00:00:00 ZZZZ       UNKNOWN    AMERICAN… B-73… D        ZT001     
-#&gt;  9 2018-12-23 00:00:00 ZZZZ       UNKNOWN    AMERICAN… A-321 D        ZT101     
-#&gt; 10 2018-12-23 00:00:00 KFLL       FORT LAUD… AMERICAN… B-73… D        I1301     
+#&gt;    incident_date       airport_id airport     operator atype type_eng species_id
+#&gt;    &lt;dttm&gt;              &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;     
+#&gt;  1 2018-12-31 00:00:00 KMIA       MIAMI INTL  AMERICA… B-73… D        UNKBL     
+#&gt;  2 2018-12-29 00:00:00 KIND       INDIANAPOL… AMERICA… B-73… D        R         
+#&gt;  3 2018-12-29 00:00:00 ZZZZ       UNKNOWN     AMERICA… UNKN… &lt;NA&gt;     R2004     
+#&gt;  4 2018-12-27 00:00:00 ZZZZ       UNKNOWN     AMERICA… B-73… D        N5205     
+#&gt;  5 2018-12-27 00:00:00 ZZZZ       UNKNOWN     AMERICA… B-73… D        J2139     
+#&gt;  6 2018-12-27 00:00:00 KMIA       MIAMI INTL  AMERICA… A-319 D        UNKB      
+#&gt;  7 2018-12-27 00:00:00 KMCO       ORLANDO IN… AMERICA… A-321 D        UNKBS     
+#&gt;  8 2018-12-26 00:00:00 ZZZZ       UNKNOWN     AMERICA… B-73… D        ZT001     
+#&gt;  9 2018-12-23 00:00:00 ZZZZ       UNKNOWN     AMERICA… A-321 D        ZT101     
+#&gt; 10 2018-12-23 00:00:00 KFLL       FORT LAUDE… AMERICA… B-73… D        I1301     
 #&gt; # … with 56,968 more rows, and 11 more variables: species &lt;chr&gt;,
 #&gt; #   num_engs &lt;dbl&gt;, incident_month &lt;dbl&gt;, incident_year &lt;dbl&gt;, time &lt;dbl&gt;,
 #&gt; #   height &lt;dbl&gt;, speed &lt;dbl&gt;, phase_of_flt &lt;chr&gt;, sky &lt;chr&gt;, precip &lt;chr&gt;,
@@ -1003,18 +1003,18 @@ select(df, state, damage, time_of_day)</code></pre>
 <p>Filter the rows for wildlife impacts that occurred in DC:</p>
 <pre class="r"><code>filter(df, state == &#39;DC&#39;)</code></pre>
 <pre><code>#&gt; # A tibble: 1,228 × 21
-#&gt;    incident_date       state airport_id airport        operator   atype type_eng
-#&gt;    &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;   
-#&gt;  1 2018-10-23 00:00:00 DC    KDCA       RONALD REAGAN… AMERICAN … B-73… D       
-#&gt;  2 2018-10-17 00:00:00 DC    KDCA       RONALD REAGAN… AMERICAN … B-73… D       
-#&gt;  3 2018-10-16 00:00:00 DC    KDCA       RONALD REAGAN… AMERICAN … B-73… D       
-#&gt;  4 2018-10-12 00:00:00 DC    KDCA       RONALD REAGAN… AMERICAN … B-73… D       
-#&gt;  5 2018-09-04 00:00:00 DC    KDCA       RONALD REAGAN… AMERICAN … A-319 D       
-#&gt;  6 2018-09-01 00:00:00 DC    KDCA       RONALD REAGAN… AMERICAN … A-321 D       
-#&gt;  7 2018-08-31 00:00:00 DC    KIAD       WASHINGTON DU… AMERICAN … A-319 D       
-#&gt;  8 2018-08-23 00:00:00 DC    KDCA       RONALD REAGAN… AMERICAN … EMB-… D       
-#&gt;  9 2018-08-13 00:00:00 DC    KIAD       WASHINGTON DU… AMERICAN … MD-82 D       
-#&gt; 10 2018-08-01 00:00:00 DC    KIAD       WASHINGTON DU… AMERICAN … CRJ7… D       
+#&gt;    incident_date       state airport_id airport          operator atype type_eng
+#&gt;    &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   
+#&gt;  1 2018-10-23 00:00:00 DC    KDCA       RONALD REAGAN W… AMERICA… B-73… D       
+#&gt;  2 2018-10-17 00:00:00 DC    KDCA       RONALD REAGAN W… AMERICA… B-73… D       
+#&gt;  3 2018-10-16 00:00:00 DC    KDCA       RONALD REAGAN W… AMERICA… B-73… D       
+#&gt;  4 2018-10-12 00:00:00 DC    KDCA       RONALD REAGAN W… AMERICA… B-73… D       
+#&gt;  5 2018-09-04 00:00:00 DC    KDCA       RONALD REAGAN W… AMERICA… A-319 D       
+#&gt;  6 2018-09-01 00:00:00 DC    KDCA       RONALD REAGAN W… AMERICA… A-321 D       
+#&gt;  7 2018-08-31 00:00:00 DC    KIAD       WASHINGTON DULL… AMERICA… A-319 D       
+#&gt;  8 2018-08-23 00:00:00 DC    KDCA       RONALD REAGAN W… AMERICA… EMB-… D       
+#&gt;  9 2018-08-13 00:00:00 DC    KIAD       WASHINGTON DULL… AMERICA… MD-82 D       
+#&gt; 10 2018-08-01 00:00:00 DC    KIAD       WASHINGTON DULL… AMERICA… CRJ7… D       
 #&gt; # … with 1,218 more rows, and 14 more variables: species_id &lt;chr&gt;,
 #&gt; #   species &lt;chr&gt;, damage &lt;chr&gt;, num_engs &lt;dbl&gt;, incident_month &lt;dbl&gt;,
 #&gt; #   incident_year &lt;dbl&gt;, time_of_day &lt;chr&gt;, time &lt;dbl&gt;, height &lt;dbl&gt;,
@@ -1023,18 +1023,18 @@ select(df, state, damage, time_of_day)</code></pre>
 <p>Filter the rows for wildlife impacts that cost more than $1 million in damages:</p>
 <pre class="r"><code>filter(df, cost_repairs_infl_adj &gt; 10^6)</code></pre>
 <pre><code>#&gt; # A tibble: 41 × 21
-#&gt;    incident_date       state airport_id airport        operator   atype type_eng
-#&gt;    &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;   
-#&gt;  1 2015-05-26 00:00:00 N/A   SVMI       SIMON BOLIVAR… AMERICAN … B-73… D       
-#&gt;  2 2015-04-25 00:00:00 FL    KJAX       JACKSONVILLE … AMERICAN … A-319 D       
-#&gt;  3 2015-04-02 00:00:00 MA    KBOS       GENERAL EDWAR… AMERICAN … B-73… D       
-#&gt;  4 2001-04-02 00:00:00 N/A   LFPG       CHARLES DE GA… AMERICAN … B-76… D       
-#&gt;  5 2015-10-08 00:00:00 WA    KSEA       SEATTLE-TACOM… DELTA AIR… A-330 D       
-#&gt;  6 2015-09-23 00:00:00 UT    KSLC       SALT LAKE CIT… DELTA AIR… B-73… D       
-#&gt;  7 2008-10-25 00:00:00 UT    KSLC       SALT LAKE CIT… DELTA AIR… DC-9… D       
-#&gt;  8 2007-12-02 00:00:00 N/A   GOOY       DAKAY-YOFF-LE… DELTA AIR… B-76… D       
-#&gt;  9 2007-11-22 00:00:00 N/A   LFMN       NICE COTE D&#39;A… DELTA AIR… B-76… D       
-#&gt; 10 2011-07-30 00:00:00 CA    KBUR       BOB HOPE ARPT  SOUTHWEST… B-73… D       
+#&gt;    incident_date       state airport_id airport          operator atype type_eng
+#&gt;    &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   
+#&gt;  1 2015-05-26 00:00:00 N/A   SVMI       SIMON BOLIVAR I… AMERICA… B-73… D       
+#&gt;  2 2015-04-25 00:00:00 FL    KJAX       JACKSONVILLE IN… AMERICA… A-319 D       
+#&gt;  3 2015-04-02 00:00:00 MA    KBOS       GENERAL EDWARD … AMERICA… B-73… D       
+#&gt;  4 2001-04-02 00:00:00 N/A   LFPG       CHARLES DE GAUL… AMERICA… B-76… D       
+#&gt;  5 2015-10-08 00:00:00 WA    KSEA       SEATTLE-TACOMA … DELTA A… A-330 D       
+#&gt;  6 2015-09-23 00:00:00 UT    KSLC       SALT LAKE CITY … DELTA A… B-73… D       
+#&gt;  7 2008-10-25 00:00:00 UT    KSLC       SALT LAKE CITY … DELTA A… DC-9… D       
+#&gt;  8 2007-12-02 00:00:00 N/A   GOOY       DAKAY-YOFF-LEOP… DELTA A… B-76… D       
+#&gt;  9 2007-11-22 00:00:00 N/A   LFMN       NICE COTE D&#39;AZU… DELTA A… B-76… D       
+#&gt; 10 2011-07-30 00:00:00 CA    KBUR       BOB HOPE ARPT    SOUTHWE… B-73… D       
 #&gt; # … with 31 more rows, and 14 more variables: species_id &lt;chr&gt;, species &lt;chr&gt;,
 #&gt; #   damage &lt;chr&gt;, num_engs &lt;dbl&gt;, incident_month &lt;dbl&gt;, incident_year &lt;dbl&gt;,
 #&gt; #   time_of_day &lt;chr&gt;, time &lt;dbl&gt;, height &lt;dbl&gt;, speed &lt;dbl&gt;,
@@ -1107,18 +1107,18 @@ head(dc_impacts)</code></pre>
 df %&gt;%
     arrange(cost_repairs_infl_adj)</code></pre>
 <pre><code>#&gt; # A tibble: 56,978 × 21
-#&gt;    incident_date       state airport_id airport        operator   atype type_eng
-#&gt;    &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;   
-#&gt;  1 2013-09-05 00:00:00 MI    KFNT       BISHOP INTL A… SOUTHWEST… B-73… D       
-#&gt;  2 2011-04-17 00:00:00 TX    KDFW       DALLAS/FORT W… AMERICAN … MD-80 D       
-#&gt;  3 2018-07-10 00:00:00 NM    KABQ       ALBUQUERQUE I… SOUTHWEST… B-73… D       
-#&gt;  4 2017-10-31 00:00:00 PA    KPIT       PITTSBURGH IN… AMERICAN … B-73… D       
-#&gt;  5 2014-01-17 00:00:00 UT    KSLC       SALT LAKE CIT… SOUTHWEST… B-73… D       
-#&gt;  6 2006-04-28 00:00:00 TX    KIAH       GEORGE BUSH I… UNITED AI… B-73… D       
-#&gt;  7 2005-04-13 00:00:00 N/A   ZZZZ       UNKNOWN        UNITED AI… B-76… D       
-#&gt;  8 2004-06-17 00:00:00 N/A   ZZZZ       UNKNOWN        UNITED AI… B-73… D       
-#&gt;  9 2004-04-22 00:00:00 N/A   ZZZZ       UNKNOWN        UNITED AI… B-76… D       
-#&gt; 10 2018-10-20 00:00:00 TX    KDAL       DALLAS LOVE F… SOUTHWEST… B-73… D       
+#&gt;    incident_date       state airport_id airport          operator atype type_eng
+#&gt;    &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   
+#&gt;  1 2013-09-05 00:00:00 MI    KFNT       BISHOP INTL ARPT SOUTHWE… B-73… D       
+#&gt;  2 2011-04-17 00:00:00 TX    KDFW       DALLAS/FORT WOR… AMERICA… MD-80 D       
+#&gt;  3 2018-07-10 00:00:00 NM    KABQ       ALBUQUERQUE INT… SOUTHWE… B-73… D       
+#&gt;  4 2017-10-31 00:00:00 PA    KPIT       PITTSBURGH INTL… AMERICA… B-73… D       
+#&gt;  5 2014-01-17 00:00:00 UT    KSLC       SALT LAKE CITY … SOUTHWE… B-73… D       
+#&gt;  6 2006-04-28 00:00:00 TX    KIAH       GEORGE BUSH INT… UNITED … B-73… D       
+#&gt;  7 2005-04-13 00:00:00 N/A   ZZZZ       UNKNOWN          UNITED … B-76… D       
+#&gt;  8 2004-06-17 00:00:00 N/A   ZZZZ       UNKNOWN          UNITED … B-73… D       
+#&gt;  9 2004-04-22 00:00:00 N/A   ZZZZ       UNKNOWN          UNITED … B-76… D       
+#&gt; 10 2018-10-20 00:00:00 TX    KDAL       DALLAS LOVE FIE… SOUTHWE… B-73… D       
 #&gt; # … with 56,968 more rows, and 14 more variables: species_id &lt;chr&gt;,
 #&gt; #   species &lt;chr&gt;, damage &lt;chr&gt;, num_engs &lt;dbl&gt;, incident_month &lt;dbl&gt;,
 #&gt; #   incident_year &lt;dbl&gt;, time_of_day &lt;chr&gt;, time &lt;dbl&gt;, height &lt;dbl&gt;,
@@ -1129,18 +1129,18 @@ df %&gt;%
 df %&gt;%
     arrange(desc(cost_repairs_infl_adj))</code></pre>
 <pre><code>#&gt; # A tibble: 56,978 × 21
-#&gt;    incident_date       state airport_id airport       operator    atype type_eng
-#&gt;    &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;   
-#&gt;  1 2009-02-03 00:00:00 CO    KDEN       DENVER INTL … UNITED AIR… B-75… D       
-#&gt;  2 2007-11-22 00:00:00 N/A   LFMN       NICE COTE D&#39;… DELTA AIR … B-76… D       
-#&gt;  3 2011-09-26 00:00:00 CO    KDEN       DENVER INTL … UNITED AIR… B-75… D       
-#&gt;  4 2017-07-11 00:00:00 CO    KDEN       DENVER INTL … UNITED AIR… B-73… D       
-#&gt;  5 2008-10-25 00:00:00 UT    KSLC       SALT LAKE CI… DELTA AIR … DC-9… D       
-#&gt;  6 2011-07-30 00:00:00 CA    KBUR       BOB HOPE ARPT SOUTHWEST … B-73… D       
-#&gt;  7 2001-12-06 00:00:00 MI    KDTW       DETROIT METR… SOUTHWEST … B-73… D       
-#&gt;  8 2003-04-15 00:00:00 CA    KSFO       SAN FRANCISC… UNITED AIR… B-73… D       
-#&gt;  9 2005-09-06 00:00:00 CO    KDEN       DENVER INTL … UNITED AIR… B-73… D       
-#&gt; 10 2005-04-20 00:00:00 N/A   ZZZZ       UNKNOWN       UNITED AIR… B-77… D       
+#&gt;    incident_date       state airport_id airport          operator atype type_eng
+#&gt;    &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   
+#&gt;  1 2009-02-03 00:00:00 CO    KDEN       DENVER INTL AIR… UNITED … B-75… D       
+#&gt;  2 2007-11-22 00:00:00 N/A   LFMN       NICE COTE D&#39;AZU… DELTA A… B-76… D       
+#&gt;  3 2011-09-26 00:00:00 CO    KDEN       DENVER INTL AIR… UNITED … B-75… D       
+#&gt;  4 2017-07-11 00:00:00 CO    KDEN       DENVER INTL AIR… UNITED … B-73… D       
+#&gt;  5 2008-10-25 00:00:00 UT    KSLC       SALT LAKE CITY … DELTA A… DC-9… D       
+#&gt;  6 2011-07-30 00:00:00 CA    KBUR       BOB HOPE ARPT    SOUTHWE… B-73… D       
+#&gt;  7 2001-12-06 00:00:00 MI    KDTW       DETROIT METRO W… SOUTHWE… B-73… D       
+#&gt;  8 2003-04-15 00:00:00 CA    KSFO       SAN FRANCISCO I… UNITED … B-73… D       
+#&gt;  9 2005-09-06 00:00:00 CO    KDEN       DENVER INTL AIR… UNITED … B-73… D       
+#&gt; 10 2005-04-20 00:00:00 N/A   ZZZZ       UNKNOWN          UNITED … B-77… D       
 #&gt; # … with 56,968 more rows, and 14 more variables: species_id &lt;chr&gt;,
 #&gt; #   species &lt;chr&gt;, damage &lt;chr&gt;, num_engs &lt;dbl&gt;, incident_month &lt;dbl&gt;,
 #&gt; #   incident_year &lt;dbl&gt;, time_of_day &lt;chr&gt;, time &lt;dbl&gt;, height &lt;dbl&gt;,
