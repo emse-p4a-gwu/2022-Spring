@@ -119,11 +119,16 @@ eggCartons <- function(eggs) {
     return(ceiling(eggs / 12))
 }
 
-Another approach:
+Another approach - go up then round down:
 
 eggCartons <- function(eggs) {
     return((eggs + 11) %/% 12)
 }
+
+eggCartons <- function(eggs) {
+    return(floor(eggs + 11) / 12)
+}
+
 
 # -----------------------------------------------------------------------------
 militaryTimeToStandardTime
