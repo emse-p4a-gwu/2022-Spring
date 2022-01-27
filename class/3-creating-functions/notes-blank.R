@@ -125,22 +125,6 @@ eggCartons(25) == 3
 # integer between 0 and 23 (representing the hour in military time),
 # and returns the same hour in standard time.
 
-# Plan: Start with x %% 12, then guess and check to modify
-
-# Make a table of x %% 12:
-# 1  %% 12 == 1
-# 11 %% 12 == 11
-# 12 %% 12 == 0
-# 13 %% 12 == 1
-# 23 %% 12 == 11
-
-# Make a table of ((x - 1) %% 12):
-# 1  %% 12 == 0
-# 11 %% 12 == 10
-# 12 %% 12 == 11
-# 13 %% 12 == 0
-# 23 %% 12 == 10
-
 
 
 # Tests:
