@@ -763,7 +763,7 @@ div.tocify {
 <p>Here the letters <code>sqrt</code> are short for “square root,” and the value inside the <code>()</code> is the “argument” to the function. In the example above, the value <code>225</code> is the “argument”.</p>
 <p>Keep in mind that not all functions have (or require) arguments:</p>
 <pre class="r"><code>date() # Returns the current date and time</code></pre>
-<pre><code>#&gt; [1] &quot;Thu Jan 27 14:58:43 2022&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Thu Jan 27 20:18:46 2022&quot;</code></pre>
 <p>(the date above is the date this page was last built)</p>
 <div id="multiple-arguments" class="section level2">
 <h2>Multiple arguments</h2>
@@ -981,9 +981,9 @@ library(packagename)   # This also works</code></pre>
 <p>Now that you have the package installed on your computer, try loading it using <code>library(wikifacts)</code>, then trying using some of it’s functions:</p>
 <pre class="r"><code>library(wikifacts) # Load the library</code></pre>
 <pre class="r"><code>wiki_randomfact()</code></pre>
-<pre><code>#&gt; [1] &quot;Did you know that on November 15 in 1943 – The Holocaust: Heinrich Himmler ordered that Romanies were to be put \&quot;on the same level as Jews and placed in concentration camps\&quot;. (Courtesy of Wikipedia)&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Here&#39;s some news from 22 September 2020. In golf, Bryson DeChambeau wins the U.S. Open. (Courtesy of Wikipedia)&quot;</code></pre>
 <pre class="r"><code>wiki_didyouknow()</code></pre>
-<pre><code>#&gt; [1] &quot;Did you know that minutes after a world record was set for Super Mario World, SethBling completed a faster run, validating a technique used previously only on an emulator? (Courtesy of Wikipedia)&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Did you know that James Kaliokalani and his brother, the future King Kalākaua, reportedly witnessed the execution of their grandfather Kamanawa II when they were children? (Courtesy of Wikipedia)&quot;</code></pre>
 <p>In case you’re wondering, the only thing this package does is generate messages containing random facts from <a href="https://www.wikipedia.org/">Wikipedia</a>.</p>
 </div>
 <div id="using-only-some-package-functions" class="section level2">
@@ -994,7 +994,7 @@ library(packagename)   # This also works</code></pre>
 </blockquote>
 <p>Here I use the name of the <em>package</em> followed by <code>::</code> to tell R that I’m looking for a function that is in that package. For example, if I didn’t want to load the whole <strong>wikifacts</strong> library but still wanted to use the <code>wiki_randomfact()</code> function, I could do this:</p>
 <pre class="r"><code>wikifacts::wiki_randomfact()</code></pre>
-<pre><code>#&gt; [1] &quot;Did you know that on July 10 in 1806 – Indian sepoys mutinied against the East India Company when they broke into Vellore Fort and killed or injured 200 British troops. (Courtesy of Wikipedia)&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Did you know that Herbert L. Packer proposed two models for the US criminal justice system, crime control and due process, which became influential in criminal policy debates? (Courtesy of Wikipedia)&quot;</code></pre>
 <p>Where this is particularly handy is when two packages have a function with the same name. If you load both library, R might not know which function to use. In those cases, it’s best to also provide the <strong>package</strong> name. For example, let’s say there was a package called <strong>apples</strong> and another called <strong>bananas</strong>, and each had a function named <code>fruitName()</code>. If I wanted to use each of them in my code, I would need to specify the package names like this:</p>
 <pre class="r"><code>apples::fruitName()
 bananas::fruitName()</code></pre>
