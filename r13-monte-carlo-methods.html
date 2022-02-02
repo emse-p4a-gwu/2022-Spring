@@ -805,11 +805,11 @@ ratio &lt;- sum(belowCurve) / numTrials
 totalArea &lt;- (7 - 3) * 7^2 # Rectangle length x height = 196
 areaUnderCurve &lt;- ratio * totalArea
 areaUnderCurve</code></pre>
-<pre><code>#&gt; [1] 105.5617</code></pre>
-<p>So, using Monte Carlo simulation with 100,000 points, we estimate that the area under the curve is 105.56168. How’d we do? Well, if you’re familiar with calculus, the integral of <span class="math inline">\(f(x) = x^2\)</span> has a closed-form solution (<span class="math inline">\(\frac{x^3}{3} + C\)</span>), so we can check our estimate against the pure-math solution:</p>
+<pre><code>#&gt; [1] 105.4892</code></pre>
+<p>So, using Monte Carlo simulation with 100,000 points, we estimate that the area under the curve is 105.48916. How’d we do? Well, if you’re familiar with calculus, the integral of <span class="math inline">\(f(x) = x^2\)</span> has a closed-form solution (<span class="math inline">\(\frac{x^3}{3} + C\)</span>), so we can check our estimate against the pure-math solution:</p>
 <p><span class="math display">\[\int_{3}^{7} x^2 \mathrm{dx} = \left ( \frac{x^3}{3} \right ) \Big|_3^7 = \frac{7^3}{3} - \frac{3^3}{3} = 105.33\bar{3}\]</span></p>
-<p>So our estimate error is: <code>105.333 -</code> <code>105.56168</code> <code>=</code> <code>-0.2283467</code>.</p>
-<p>That’s an error of just 0.22 % - not bad!</p>
+<p>So our estimate error is: <code>105.333 -</code> <code>105.48916</code> <code>=</code> <code>-0.1558267</code>.</p>
+<p>That’s an error of just 0.15 % - not bad!</p>
 <hr />
 </div>
 <div id="monte-carlo-pi" class="section level1">
@@ -839,13 +839,13 @@ points &lt;- data.frame(
     x = runif(numTrials, -0.5, 0.5),
     y = runif(numTrials, -0.5, 0.5))
 head(points)</code></pre>
-<pre><code>#&gt;            x           y
-#&gt; 1 -0.2174081 -0.03692134
-#&gt; 2 -0.1993691 -0.45585907
-#&gt; 3 -0.1145778  0.09873692
-#&gt; 4 -0.3142383  0.08977851
-#&gt; 5 -0.2936679  0.10767182
-#&gt; 6  0.1153041  0.21302587</code></pre>
+<pre><code>#&gt;             x           y
+#&gt; 1  0.23758939 -0.42013771
+#&gt; 2 -0.26035497  0.10062772
+#&gt; 3 -0.08663497 -0.44374130
+#&gt; 4  0.42265818 -0.48679966
+#&gt; 5 -0.23904837 -0.36556734
+#&gt; 6 -0.36221271 -0.01824987</code></pre>
 <p>For this example, we’re putting the points in a data frame to make it easier to work with. Now that we have random x and y points, let’s compute the radius to each point (the distance from <code>(x, y) = (0, 0)</code>) so we can determine which points fall inside the circle (which has a radius of 0.5):</p>
 <pre class="r"><code>library(dplyr)
 points &lt;- points %&gt;%
@@ -862,9 +862,9 @@ ggplot(points) +
 <pre class="r"><code>ratio &lt;- sum(points$pointInCircle) / nrow(points)
 piApprox &lt;- 4 * ratio
 piApprox</code></pre>
-<pre><code>#&gt; [1] 3.212</code></pre>
-<p>So our estimate error is: <code>3.1415 -</code> <code>3.212</code> <code>=</code> <code>0.0704073</code>.</p>
-<p>That’s an error of just 2.24 % - not bad for only 1,000 points!</p>
+<pre><code>#&gt; [1] 3.236</code></pre>
+<p>So our estimate error is: <code>3.1415 -</code> <code>3.236</code> <code>=</code> <code>0.0944073</code>.</p>
+<p>That’s an error of just 3.01 % - not bad for only 1,000 points!</p>
 <p>To get an even better estimate of <span class="math inline">\(\pi\)</span>, we can increase N. Let’s see what we get with 100,000 trials:</p>
 <pre class="r"><code>numTrials &lt;- 100000
 points &lt;- data.frame(
@@ -876,13 +876,13 @@ points &lt;- data.frame(
 ratio &lt;- sum(points$pointInCircle) / nrow(points)
 piApprox &lt;- 4 * ratio
 piApprox</code></pre>
-<pre><code>#&gt; [1] 3.14276</code></pre>
+<pre><code>#&gt; [1] 3.13036</code></pre>
 <pre class="r"><code># Compute error:
 error &lt;- piApprox - pi
 percentError &lt;- round(100*abs(error / pi), 2)
 percentError</code></pre>
-<pre><code>#&gt; [1] 0.04</code></pre>
-<p>By increasing the number of trials from 1,000 to 100,000, we improved our estimate error from 2.24 % to 0.04 %!</p>
+<pre><code>#&gt; [1] 0.36</code></pre>
+<p>By increasing the number of trials from 1,000 to 100,000, we improved our estimate error from 3.01 % to 0.36 %!</p>
 <hr />
 <p><strong>Page sources</strong>:</p>
 <p>Some content on this page has been modified from other courses, including:</p>
