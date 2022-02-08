@@ -34,6 +34,10 @@ Download and use [this template](templates/hw5.zip) for your assignment. Inside 
 >
 > For each of the following functions, write a test function first, and then write the function. **Your test functions will count for half of the available credit for each problem**. Think carefully about the test cases to include in your test functions.
 
+> ### **Using good style**
+>
+> For this assignment, you must use good style to receive full credit. Follow the best practices described in [this style guide](http://adv-r.had.co.nz/Style.html).
+
 ### 2) `loopFactorial(n)` [SOLO, 10%]
 
 Use a `for` loop to write the function `loopFactorial(n)` that should return `n!`, i.e. "n factorial", which is defined for all non-negative integers. For example, `3! = 3*2*1 = 6`, `4! = 4*3*2*1 = 24`, and `5! = 5*4*3*2*1 = 120`. Note that `0` is a special case, and `0! = 1`. Assume `n >= 0`.
