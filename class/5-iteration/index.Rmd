@@ -1,7 +1,7 @@
 ---
 title: "Iteration"
 subtitle: "EMSE 4571: Intro to Programming for Analytics"
-date: February 11, 2022
+date: February 10, 2022
 week: 5
 class: "5-iteration"
 author: "John Paul Helveston"
