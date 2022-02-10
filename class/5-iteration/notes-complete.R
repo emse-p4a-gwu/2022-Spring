@@ -132,8 +132,8 @@ for (i in 1:3) {
 # Practice 2: break and next
 
 # sumOfOddsFromMToNMax(m, n, max): Write a function that sums every odd
-# integer from m to n until the sum is less than the value max.
-# Your solution should use both break and next statements.
+# integer from m to n up until the sum is less than or equal to the value
+# max. Your solution should use both break and next statements.
 
 sumOfOddsFromMToNMax <- function(m, n, max) {
     total <- 0
