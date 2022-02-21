@@ -40,7 +40,7 @@ Download and use [this template](templates/hw6.zip) for your assignment. Inside 
 
 ### 2) `vectorFactorial(n)` [SOLO, 10%]
 
-Write the function `vectorFactorial(n)` which computes the factorial of `n` using vectors to avoid using a loop. Hint: there are some useful functions listed on the [vectors lesson page](L6-vectors.html#Numeric_vectors) for performing operators on a numeric vector.
+Write the function `vectorFactorial(n)` which computes the factorial of `n` using vectors to avoid using a loop. Hint: there are some useful functions listed on the [vectors lesson page](r6-vectors.html#Numeric_vectors) for performing operators on a numeric vector.
 
 ### 3) `nthHighestValue(n, x)` [SOLO, 15%]
 
