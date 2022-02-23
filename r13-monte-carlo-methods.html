@@ -805,11 +805,11 @@ ratio &lt;- sum(belowCurve) / numTrials
 totalArea &lt;- (7 - 3) * 7^2 # Rectangle length x height = 196
 areaUnderCurve &lt;- ratio * totalArea
 areaUnderCurve</code></pre>
-<pre><code>#&gt; [1] 105.3324</code></pre>
-<p>So, using Monte Carlo simulation with 100,000 points, we estimate that the area under the curve is 105.33236. How’d we do? Well, if you’re familiar with calculus, the integral of <span class="math inline">\(f(x) = x^2\)</span> has a closed-form solution (<span class="math inline">\(\frac{x^3}{3} + C\)</span>), so we can check our estimate against the pure-math solution:</p>
+<pre><code>#&gt; [1] 105.7087</code></pre>
+<p>So, using Monte Carlo simulation with 100,000 points, we estimate that the area under the curve is 105.70868. How’d we do? Well, if you’re familiar with calculus, the integral of <span class="math inline">\(f(x) = x^2\)</span> has a closed-form solution (<span class="math inline">\(\frac{x^3}{3} + C\)</span>), so we can check our estimate against the pure-math solution:</p>
 <p><span class="math display">\[\int_{3}^{7} x^2 \mathrm{dx} = \left ( \frac{x^3}{3} \right ) \Big|_3^7 = \frac{7^3}{3} - \frac{3^3}{3} = 105.33\bar{3}\]</span></p>
-<p>So our estimate error is: <code>105.333 -</code> <code>105.33236</code> <code>=</code> <code>9.7333333\times 10^{-4}</code>.</p>
-<p>That’s an error of just 0 % - not bad!</p>
+<p>So our estimate error is: <code>105.333 -</code> <code>105.70868</code> <code>=</code> <code>-0.3753467</code>.</p>
+<p>That’s an error of just 0.36 % - not bad!</p>
 <hr />
 </div>
 <div id="monte-carlo-pi" class="section level1">
@@ -840,12 +840,12 @@ points &lt;- data.frame(
     y = runif(numTrials, -0.5, 0.5))
 head(points)</code></pre>
 <pre><code>#&gt;             x           y
-#&gt; 1  0.34261432  0.07566473
-#&gt; 2  0.08416513 -0.16052346
-#&gt; 3  0.15960798  0.33650823
-#&gt; 4 -0.33862662 -0.26682344
-#&gt; 5  0.12760040 -0.08083390
-#&gt; 6  0.10494838 -0.03751910</code></pre>
+#&gt; 1 -0.02424033  0.39967725
+#&gt; 2 -0.23088695  0.03992898
+#&gt; 3 -0.44047936 -0.01450835
+#&gt; 4  0.35594402 -0.40271337
+#&gt; 5  0.29267542 -0.03420591
+#&gt; 6  0.43983254  0.21826422</code></pre>
 <p>For this example, we’re putting the points in a data frame to make it easier to work with. Now that we have random x and y points, let’s compute the radius to each point (the distance from <code>(x, y) = (0, 0)</code>) so we can determine which points fall inside the circle (which has a radius of 0.5):</p>
 <pre class="r"><code>library(dplyr)
 points &lt;- points %&gt;%
@@ -862,9 +862,9 @@ ggplot(points) +
 <pre class="r"><code>ratio &lt;- sum(points$pointInCircle) / nrow(points)
 piApprox &lt;- 4 * ratio
 piApprox</code></pre>
-<pre><code>#&gt; [1] 3.12</code></pre>
-<p>So our estimate error is: <code>3.1415 -</code> <code>3.12</code> <code>=</code> <code>-0.0215927</code>.</p>
-<p>That’s an error of just 0.69 % - not bad for only 1,000 points!</p>
+<pre><code>#&gt; [1] 3.088</code></pre>
+<p>So our estimate error is: <code>3.1415 -</code> <code>3.088</code> <code>=</code> <code>-0.0535927</code>.</p>
+<p>That’s an error of just 1.71 % - not bad for only 1,000 points!</p>
 <p>To get an even better estimate of <span class="math inline">\(\pi\)</span>, we can increase N. Let’s see what we get with 100,000 trials:</p>
 <pre class="r"><code>numTrials &lt;- 100000
 points &lt;- data.frame(
@@ -876,13 +876,13 @@ points &lt;- data.frame(
 ratio &lt;- sum(points$pointInCircle) / nrow(points)
 piApprox &lt;- 4 * ratio
 piApprox</code></pre>
-<pre><code>#&gt; [1] 3.1438</code></pre>
+<pre><code>#&gt; [1] 3.13664</code></pre>
 <pre class="r"><code># Compute error:
 error &lt;- piApprox - pi
 percentError &lt;- round(100*abs(error / pi), 2)
 percentError</code></pre>
-<pre><code>#&gt; [1] 0.07</code></pre>
-<p>By increasing the number of trials from 1,000 to 100,000, we improved our estimate error from 0.69 % to 0.07 %!</p>
+<pre><code>#&gt; [1] 0.16</code></pre>
+<p>By increasing the number of trials from 1,000 to 100,000, we improved our estimate error from 1.71 % to 0.16 %!</p>
 <hr />
 <p><strong>Page sources</strong>:</p>
 <p>Some content on this page has been modified from other courses, including:</p>
