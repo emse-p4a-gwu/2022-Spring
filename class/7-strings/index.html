@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Strings</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="John Paul Helveston" />
+    <meta name="date" content="2022-02-24" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <link href="libs/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <meta name="description" content="EMSE 4571: Intro to Programming for Analytics"/>
+    <meta name="generator" content="xaringan and remark.js"/>
+    <meta name="github-repo" content="emse-p4a-gwu/2022-Spring"/>
+    <meta name="twitter:title" content="Strings"/>
+    <meta name="twitter:description" content="EMSE 4571: Intro to Programming for Analytics"/>
+    <meta name="twitter:url" content="https://p4a.seas.gwu.edu/2022-Spring/"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@johnhelveston"/>
+    <meta name="twitter:site" content="@johnhelveston"/>
+    <meta property="og:title" content="Strings"/>
+    <meta property="og:description" content="EMSE 4571: Intro to Programming for Analytics"/>
+    <meta property="og:url" content="https://p4a.seas.gwu.edu/2022-Spring/"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="article:author" content="John Paul Helveston"/>
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
+    <link rel="stylesheet" href="css/lexis.css" type="text/css" />
+    <link rel="stylesheet" href="css/lexis-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+class: middle, inverse
+
+.leftcol30[
+&lt;center&gt;
+&lt;img src="https://github.com/emse-p4a-gwu/emse-p4a-gwu.github.io/raw/master/images/p4a_hex_sticker.png" width=250&gt;
+&lt;/center&gt;
+]
+
+.rightcol70[
+# Week 7: .fancy[Strings]
+
+### <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:white;overflow:visible;position:relative;"><path d="M496 128v16a8 8 0 0 1-8 8h-24v12c0 6.627-5.373 12-12 12H60c-6.627 0-12-5.373-12-12v-12H24a8 8 0 0 1-8-8v-16a8 8 0 0 1 4.941-7.392l232-88a7.996 7.996 0 0 1 6.118 0l232 88A8 8 0 0 1 496 128zm-24 304H40c-13.255 0-24 10.745-24 24v16a8 8 0 0 0 8 8h464a8 8 0 0 0 8-8v-16c0-13.255-10.745-24-24-24zM96 192v192H60c-6.627 0-12 5.373-12 12v20h416v-20c0-6.627-5.373-12-12-12h-36V192h-64v192h-64V192h-64v192h-64V192H96z"/></svg> EMSE 4571: Intro to Programming for Analytics
+### <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:white;overflow:visible;position:relative;"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg> John Paul Helveston
+### <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:white;overflow:visible;position:relative;"><path d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"/></svg> February 24, 2022
+]
+
+---
+
+class: inverse
+
+# Quiz 4
+
+<div class="countdown" id="timer_6216b018" style="top:0;right:0;font-size:3em;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+.leftcol[
+## Go to `#class` channel in Slack for quiz link
+
+## Open RStudio first!
+
+## Rules:
+
+- You may use your notes and RStudio
+- You may **not** use any other resources (e.g. the internet, your classmates, etc.)
+]
+
+.rightcol[
+&lt;br&gt;
+&lt;center&gt;
+&lt;img src="https://github.com/emse-p4a-gwu/2022-Spring/raw/main/images/quiz_doge.png" width="400"&gt;
+&lt;/center&gt;
+]
+
+---
+
+
+
+class: inverse, middle
+
+# Week 7: .fancy[Strings]
+
+### 1. Making strings
+### 2. Case conversion &amp; substrings
+### 3. Padding, splitting, &amp; merging
+
+### BREAK
+
+### 4. Detecting &amp; replacing
+
+---
+
+
+
+class: inverse, middle
+
+# Week 7: .fancy[Strings]
+
+### 1. .orange[Making strings]
+### 2. Case conversion &amp; substrings
+### 3. Padding, splitting, &amp; merging
+
+### BREAK
+
+### 4. Detecting &amp; replacing
+
+---
+
+.code90[
+
+## Install the `stringr` library
+
+
+```r
+install.packages("stringr")
+```
+
+(Only do this once...and you already did this in HW 2)
+
+]
+
+--
+
+&lt;br&gt;
+
+.code90[
+
+## Load the `stringr` library
+
+
+```r
+library(stringr)
+```
+
+(Do this every time you use the package)
+
+]
+
+---
+
+.leftcol[.code90[
+
+## Make a string with&lt;br&gt;'single' or "double" quotes
+
+
+```r
+cat("This is a string")
+```
+
+```
+#&gt; This is a string
+```
+
+```r
+cat('This is a string')
+```
+
+```
+#&gt; This is a string
+```
+
+]]
+
+--
+
+.rightcol[.code90[
+
+## Use them where&lt;br&gt;it makes sense
+
+Use double quotes when `'` is in the string
+
+
+```r
+cat("It's great!")
+```
+
+```
+#&gt; It's great!
+```
+
+Use single quotes when `"` is in the string
+
+
+```r
+cat('I said, "Hello"')
+```
+
+```
+#&gt; I said, "Hello"
+```
+
+]]
+
+---
+
+# What if a string has both `'` and `"` symbols?
+
+Example: `It's nice to say, "Hello"`
+
+--
+
+.code80[
+
+
+```r
+cat("It's nice to say, "Hello"")
+```
+
+```
+#&gt; Error: &lt;text&gt;:1:25: unexpected symbol
+#&gt; 1: cat("It's nice to say, "Hello
+#&gt;                             ^
+```
+
+]
+
+--
+
+.code80[
+
+
+```r
+cat('It's nice to say, "Hello"')
+```
+
+```
+#&gt; Error: &lt;text&gt;:1:9: unexpected symbol
+#&gt; 1: cat('It's
+#&gt;             ^
+```
+
+]
+
+---
+
+# "Escaping" to the rescue!
+
+--
+
+.leftcol[.code80[
+
+### Use the `\` symbol to "escape" a literal symbol
+
+
+```r
+cat("It's nice to say, \"Hello\"") # Double quote
+```
+
+```
+#&gt; It's nice to say, "Hello"
+```
+
+```r
+cat('It\'s nice to say, "Hello"') # Single quote
+```
+
+```
+#&gt; It's nice to say, "Hello"
+```
+
+]]
+
+--
+
+.rightcol[.code80[
+
+### Commonly escaped symbols:
+
+
+```r
+cat('This\nthat') # New line: \n
+```
+
+```
+#&gt; This
+#&gt; that
+```
+
+```r
+cat('This\tthat') # Tab space: \t
+```
+
+```
+#&gt; This	that
+```
+
+```r
+cat('This\\that') # Backslash: \\
+```
+
+```
+#&gt; This\that
+```
+
+]]
+
+---
+
+## **String constants**: Sets of common strings
+
+--
+
+
+```r
+letters
+```
+
+```
+#&gt;  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"
+```
+
+--
+
+
+```r
+LETTERS
+```
+
+```
+#&gt;  [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"
+```
+
+---
+
+## **String constants**: Sets of common strings
+
+
+```r
+month.name
+```
+
+```
+#&gt;  [1] "January"   "February"  "March"     "April"     "May"       "June"      "July"      "August"    "September" "October"   "November"  "December"
+```
+
+--
+
+
+```r
+month.abb
+```
+
+```
+#&gt;  [1] "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"
+```
+
+---
+
+## The **stringr** library has a few _longer_ string constants:
+### `fruit`, `words`, `sentences`
+
+--
+
+.leftcol[.code70[
+
+
+```r
+length(fruit)
+```
+
+```
+#&gt; [1] 80
+```
+
+```r
+fruit[1:4]
+```
+
+```
+#&gt; [1] "apple"   "apricot" "avocado" "banana"
+```
+
+```r
+length(words)
+```
+
+```
+#&gt; [1] 980
+```
+
+```r
+words[1:4]
+```
+
+```
+#&gt; [1] "a"        "able"     "about"    "absolute"
+```
+
+]]
+
+.rightcol[.code70[
+
+
+```r
+length(sentences)
+```
+
+```
+#&gt; [1] 720
+```
+
+```r
+sentences[1:4]
+```
+
+```
+#&gt; [1] "The birch canoe slid on the smooth planks."  "Glue the sheet to the dark blue background." "It's easy to tell the depth of a well."      "These days a chicken leg is a rare dish."
+```
+
+]]
+
+---
+
+
+
+class: inverse, middle
+
+# Week 7: .fancy[Strings]
+
+### 1. Making strings
+### 2. .orange[Case conversion &amp; substrings]
+### 3. Padding, splitting, &amp; merging
+
+### BREAK
+
+### 4. Detecting &amp; replacing
+
+---
+
+class: center
+
+## Case conversion &amp; substrings
+
+|Function         |  Description                            |
+|:----------------|:----------------------------------------|
+|`str_to_lower()` | converts string to lower case           |
+|`str_to_upper()` | converts string to upper case           |
+|`str_to_title()` | converts string to title case           |
+|`str_length()`   | number of characters                    |
+|`str_sub()`      | extracts substrings                     |
+|`str_locate()`   | returns indices of substrings           |
+|`str_dup()`      | duplicates characters                   |
+
+---
+
+# Case conversion
+
+
+```r
+x &lt;- "Want to hear a joke about paper? Never mind, it's tearable."
+```
+
+--
+
+
+```r
+str_to_lower(x)
+```
+
+```
+#&gt; [1] "want to hear a joke about paper? never mind, it's tearable."
+```
+
+--
+
+
+```r
+str_to_upper(x)
+```
+
+```
+#&gt; [1] "WANT TO HEAR A JOKE ABOUT PAPER? NEVER MIND, IT'S TEARABLE."
+```
+
+--
+
+
+```r
+str_to_title(x)
+```
+
+```
+#&gt; [1] "Want To Hear A Joke About Paper? Never Mind, It's Tearable."
+```
+
+---
+
+# Comparing strings
+
+.leftcol[
+
+Case matters:
+
+
+```r
+a &lt;- "Apples"
+b &lt;- "apples"
+a == b
+```
+
+```
+#&gt; [1] FALSE
+```
+
+]
+
+--
+
+.rightcol[
+
+Convert case _before_ comparing if you just want to compare the string text:
+
+
+```r
+str_to_lower(a) == str_to_lower(b)
+```
+
+```
+#&gt; [1] TRUE
+```
+
+```r
+str_to_upper(a) == str_to_upper(b)
+```
+
+```
+#&gt; [1] TRUE
+```
+
+]
+
+---
+
+# Get the number of characters in a string
+
+--
+
+.leftcol[
+
+The `length()` function returns the _vector_ length:
+
+
+```r
+length("hello world")
+```
+
+```
+#&gt; [1] 1
+```
+
+]
+
+--
+
+.rightcol[
+
+To get the # of characters, use `str_length()`:
+
+
+```r
+str_length("hello world")
+```
+
+```
+#&gt; [1] 11
+```
+
+```r
+str_length(" ") # Spaces count
+```
+
+```
+#&gt; [1] 1
+```
+
+```r
+str_length("")  # Empty string
+```
+
+```
+#&gt; [1] 0
+```
+
+]
+
+---
+
+## Access characters by their index with `str_sub()`
+
+--
+
+.leftcol[
+
+Indices start at 1:
+
+
+```r
+str_sub("Apple", 1, 3)
+```
+
+```
+#&gt; [1] "App"
+```
+
+Negative numbers count backwards from end:
+
+
+```r
+str_sub("Apple", -3, -1)
+```
+
+```
+#&gt; [1] "ple"
+```
+
+]
+
+--
+
+.rightcol[
+
+Modify a string with `str_sub()`:
+
+
+```r
+x &lt;- 'abcdef'
+str_sub(x, 1, 3) &lt;- 'ABC'
+x
+```
+
+```
+#&gt; [1] "ABCdef"
+```
+
+]
+
+---
+
+## Get the indices of substrings
+
+Extract the substring `"Good"` from the following string:
+
+
+```r
+x &lt;- 'thisIsGoodPractice'
+```
+
+--
+
+.leftcol[
+
+**1)**: Use `str_locate()` to get&lt;br&gt;the **start** and **end** indices:
+
+
+```r
+indices &lt;- str_locate(x, 'Good')
+indices
+```
+
+```
+#&gt;      start end
+#&gt; [1,]     7  10
+```
+
+]
+
+--
+
+.rightcol[
+
+**2)**: Use `str_sub()` to get the substring:
+
+
+```r
+str_sub(x, indices[1], indices[2])
+```
+
+```
+#&gt; [1] "Good"
+```
+
+]
+
+---
+
+# Repeat a string with `str_dup()`
+
+
+```r
+str_dup("holla", 3)
+```
+
+```
+#&gt; [1] "hollahollaholla"
+```
+
+--
+
+Note the difference with `rep()`:
+
+
+```r
+rep("holla", 3)
+```
+
+```
+#&gt; [1] "holla" "holla" "holla"
+```
+
+---
+
+# `stringr` functions work on vectors
+
+--
+
+
+```r
+x &lt;- c("apples", "oranges")
+x
+```
+
+```
+#&gt; [1] "apples"  "oranges"
+```
+
+--
+
+.leftcol[
+
+Get the first 3 letters in each string:
+
+
+```r
+str_sub(x, 1, 3)
+```
+
+```
+#&gt; [1] "app" "ora"
+```
+
+]
+
+--
+
+.rightcol[
+
+Duplicate each string twice
+
+
+```r
+str_dup(x, 2)
+```
+
+```
+#&gt; [1] "applesapples"   "orangesoranges"
+```
+
+]
+
+---
+
+# Quick practice:
+
+<div class="countdown" id="timer_6216acfa" style="top:0;right:0;font-size:2em;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+Create this string object: 
+
+
+```r
+x &lt;- 'thisIsGoodPractice'
+```
+
+Then use **stringr** functions to transform `x` into the following strings:
+
+.leftcol[
+
+- `'thisIsGood'`
+- `'practice'`
+- `'GOOD'`
+- `'thisthisthis'`
+- `'GOODGOODGOOD'`
+
+]
+
+.rightcol[
+
+**Hint**: You'll need these:
+
+- `str_to_lower()`
+- `str_to_upper()`
+- `str_locate()`
+- `str_sub()`
+- `str_dup()`
+
+]
+
+---
+
+
+
+class: inverse, middle
+
+# Week 7: .fancy[Strings]
+
+### 1. Making strings
+### 2. Case conversion &amp; substrings
+### 3. .orange[Padding, splitting, &amp; merging]
+
+### BREAK
+
+### 4. Detecting &amp; replacing
+
+---
+
+class: center
+
+## Padding, splitting, &amp; merging
+
+|Function         |  Description                            |
+|:----------------|:----------------------------------------|
+|`str_trim()`     | removes leading and trailing whitespace |
+|`str_pad()`      | pads a string                           |
+|`paste()`        | string concatenation                    |
+|`str_split()`    | split a string into a vector            |
+
+---
+
+# Remove excess white space with `str_trim()`
+
+--
+
+
+```r
+x &lt;- "         aStringWithSpace        "
+x
+```
+
+```
+#&gt; [1] "         aStringWithSpace        "
+```
+
+--
+
+
+```r
+str_trim(x) # Trims both sides by default
+```
+
+```
+#&gt; [1] "aStringWithSpace"
+```
+
+--
+
+
+```r
+str_trim(x, side = "left") # Only trim left side
+```
+
+```
+#&gt; [1] "aStringWithSpace        "
+```
+
+--
+
+
+```r
+str_trim(x, side = "right") # Only trim right side
+```
+
+```
+#&gt; [1] "         aStringWithSpace"
+```
+
+---
+
+## Add white space (or other characters) with `str_pad()`
+
+--
+
+
+```r
+x &lt;- "hello"
+x
+```
+
+```
+#&gt; [1] "hello"
+```
+
+--
+
+
+```r
+str_pad(x, width = 10) # Inserts pad on left by default
+```
+
+```
+#&gt; [1] "     hello"
+```
+
+--
+
+
+```r
+str_pad(x, width = 10, side = "both") # Pad both sides
+```
+
+```
+#&gt; [1] "  hello   "
+```
+
+--
+
+
+```r
+str_pad(x, width = 10, side = "both", pad = '*') # Specify the pad
+```
+
+```
+#&gt; [1] "**hello***"
+```
+
+---
+
+# Combine strings into one string with `paste()`
+
+--
+
+
+```r
+paste('x', 'y', 'z')
+```
+
+```
+#&gt; [1] "x y z"
+```
+
+Control separation with `sep` argument (default is `" "`:
+
+
+```r
+paste('x', 'y', 'z', sep = "-")
+```
+
+```
+#&gt; [1] "x-y-z"
+```
+
+---
+
+# Combine strings into one string with `paste()`
+
+--
+
+Note the difference with _vectors_ of strings:
+
+
+```r
+paste(c('x', 'y', 'z'))
+```
+
+```
+#&gt; [1] "x" "y" "z"
+```
+
+To make a single string from a vector of strings, use `collapse`:
+
+
+```r
+paste(c('x', 'y', 'z'), collapse = "")
+```
+
+```
+#&gt; [1] "xyz"
+```
+
+---
+
+## Split a string into multiple strings with `str_split()`
+
+--
+
+
+```r
+x &lt;- 'This string has spaces-and-dashes'
+x
+```
+
+```
+#&gt; [1] "This string has spaces-and-dashes"
+```
+
+--
+
+
+```r
+str_split(x, " ") # Split on the spaces
+```
+
+```
+#&gt; [[1]]
+#&gt; [1] "This"              "string"            "has"               "spaces-and-dashes"
+```
+
+--
+
+
+```r
+str_split(x, "-") # Split on the dashes
+```
+
+```
+#&gt; [[1]]
+#&gt; [1] "This string has spaces" "and"                    "dashes"
+```
+
+---
+
+## What's with the `[[1]]` thing?
+
+--
+
+`str_split()` returns a `list` of vectors
+
+--
+
+
+```r
+x &lt;- c('babble', 'scrabblebabble')
+str_split(x, 'bb')
+```
+
+```
+#&gt; [[1]]
+#&gt; [1] "ba" "le"
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] "scra" "leba" "le"
+```
+
+--
+
+If you're only splitting one string, add `[[1]]` to get the first vector:
+
+
+```r
+str_split('hooray', 'oo')[[1]]
+```
+
+```
+#&gt; [1] "h"   "ray"
+```
+
+---
+
+# Common splits (**memorize these!**)
+
+--
+
+Splitting on `""` breaks a string into _characters_:
+
+
+```r
+str_split("apples", "")[[1]]
+```
+
+```
+#&gt; [1] "a" "p" "p" "l" "e" "s"
+```
+
+--
+
+Splitting on `" "` breaks a _sentence_ into words:
+
+
+```r
+x &lt;- "If you want to view paradise, simply look around and view it"
+str_split(x, " ")[[1]]
+```
+
+```
+#&gt;  [1] "If"        "you"       "want"      "to"        "view"      "paradise," "simply"    "look"      "around"    "and"       "view"      "it"
+```
+
+---
+
+## Quick practice:
+
+<div class="countdown" id="timer_6216ad20" style="top:0;right:0;font-size:2em;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+.font90[
+
+Create the following objects:
+
+
+```r
+x &lt;- 'this_is_good_practice'
+y &lt;- c('hello', 'world')
+```
+
+Use `stringr` functions to transform `x` and `y` into the following:
+
+.leftcol60[
+
+- `"hello world"`
+- `"***hello world***"`
+- `c("this", "is", "good", "practice")`
+- `"this is good practice"`
+- `"hello world, this is good practice"`
+
+]
+
+.rightcol40[
+
+**Hint**: You'll need these:
+
+- `str_trim()`
+- `str_pad()`
+- `paste()`
+- `str_split()`
+
+]]
+
+---
+
+class: inverse
+
+<div class="countdown" id="timer_6216aeb9" style="top:0;right:0;font-size:2em;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+## Your turn
+
+1) `reverseString(s)`: Write a function that returns the string `s` in reverse order.
+
+- `reverseString("aWordWithCaps") == "spaChtiWdroWa"`
+- `reverseString("abcde") == "edcba"`
+- `reverseString("") == ""`
+
+2) `isPalindrome(s)`: Write a function that returns `TRUE` if the string `s` is a [Palindrome](https://en.wikipedia.org/wiki/Palindrome) and `FALSE` otherwise.
+
+- `isPalindrome("abcba") == TRUE`
+- `isPalindrome("abcb") == FALSE`
+- `isPalindrome("321123") == TRUE`
+
+---
+
+class: inverse, center
+
+# .fancy[Break]
+
+<div class="countdown" id="timer_6216adfc" style="top:1;right:0;bottom:0;left:0;margin:5%;font-size:8em;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+
+
+class: inverse, middle
+
+# Week 7: .fancy[Strings]
+
+### 1. Making strings
+### 2. Case conversion &amp; substrings
+### 3. Padding, splitting, &amp; merging
+
+### BREAK
+
+### 4. .orange[Detecting &amp; replacing]
+
+---
+
+class: center
+
+## Detecting &amp; replacing
+
+|Function         |  Description                            |
+|:----------------|:----------------------------------------|
+|`str_sort()`     | sort a string alphabetically            |
+|`str_order()`    | get the order of a sorted string        |
+|`str_detect()`   | match a string in another string        |
+|`str_replace()`  | replace a string in another string      |
+
+---
+
+## Sort string vectors alphabetically with `str_sort()`
+
+
+```r
+x &lt;- c('Y', 'M', 'C', 'A')
+x
+```
+
+```
+#&gt; [1] "Y" "M" "C" "A"
+```
+
+--
+
+
+```r
+str_sort(x)
+```
+
+```
+#&gt; [1] "A" "C" "M" "Y"
+```
+
+--
+
+
+```r
+str_sort(x, decreasing = TRUE)
+```
+
+```
+#&gt; [1] "Y" "M" "C" "A"
+```
+
+---
+
+### Detect pattern in string: `str_detect(string, pattern)`
+
+--
+
+
+```r
+tenFruit &lt;- fruit[1:10]
+tenFruit
+```
+
+```
+#&gt;  [1] "apple"        "apricot"      "avocado"      "banana"      
+#&gt;  [5] "bell pepper"  "bilberry"     "blackberry"   "blackcurrant"
+#&gt;  [9] "blood orange" "blueberry"
+```
+
+--
+
+
+```r
+str_detect(tenFruit, "berry")
+```
+
+```
+#&gt;  [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE
+```
+
+--
+
+How many in vector have the string `"berry"`?
+
+
+```r
+sum(str_detect(tenFruit, "berry"))
+```
+
+```
+#&gt; [1] 3
+```
+
+---
+
+## Count number of times pattern appears in string
+
+`str_count(string, pattern)`
+
+--
+
+Example:
+
+
+```r
+x &lt;- c("apple", "banana", "pear")
+str_count(x, "a")
+```
+
+```
+#&gt; [1] 1 3 1
+```
+
+--
+
+Note the difference with `str_detect()`:
+
+
+```r
+str_detect(x, "a")
+```
+
+```
+#&gt; [1] TRUE TRUE TRUE
+```
+
+---
+
+## Detect if string _starts_ with pattern
+
+Which fruits **start** with "a"?
+
+
+```r
+fiveFruit &lt;- fruit[1:5]
+fiveFruit
+```
+
+```
+#&gt; [1] "apple"       "apricot"     "avocado"     "banana"     
+#&gt; [5] "bell pepper"
+```
+
+--
+
+.leftcol[
+
+**Wrong**:
+
+
+```r
+str_detect(fiveFruit, "a")
+```
+
+```
+#&gt; [1]  TRUE  TRUE  TRUE  TRUE FALSE
+```
+
+]
+
+--
+
+.rightcol[
+
+**Right**:
+
+
+```r
+str_detect(fiveFruit, "^a")
+```
+
+```
+#&gt; [1]  TRUE  TRUE  TRUE FALSE FALSE
+```
+
+]
+
+---
+
+# Detect if string _ends_ with pattern
+
+Which fruits **end** with an "e"?
+
+
+```r
+fiveFruit
+```
+
+```
+#&gt; [1] "apple"       "apricot"     "avocado"     "banana"     
+#&gt; [5] "bell pepper"
+```
+
+--
+
+.leftcol[
+
+**Wrong**:
+
+
+```r
+str_detect(fiveFruit, "e")
+```
+
+```
+#&gt; [1]  TRUE FALSE FALSE FALSE  TRUE
+```
+
+]
+
+--
+
+.rightcol[
+
+**Right**:
+
+
+```r
+str_detect(fiveFruit, "e$")
+```
+
+```
+#&gt; [1]  TRUE FALSE FALSE FALSE FALSE
+```
+
+]
+
+---
+
+## Remember:
+
+### If you _start_ with power (`^`), you'll _end_ up with money (`$`).
+
+--
+
+
+```r
+fiveFruit
+```
+
+```
+#&gt; [1] "apple"       "apricot"     "avocado"     "banana"     
+#&gt; [5] "bell pepper"
+```
+
+--
+
+
+```r
+str_detect(fiveFruit, "^a") # Start with power (^)
+```
+
+```
+#&gt; [1]  TRUE  TRUE  TRUE FALSE FALSE
+```
+
+--
+
+
+```r
+str_detect(fiveFruit, "e$") # End with money ($)
+```
+
+```
+#&gt; [1]  TRUE FALSE FALSE FALSE FALSE
+```
+
+---
+
+# Quick practice:
+
+<div class="countdown" id="timer_6216ae76" style="top:0;right:0;font-size:2em;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+
+```r
+fruit[1:5]
+```
+
+```
+#&gt; [1] "apple"       "apricot"     "avocado"     "banana"     
+#&gt; [5] "bell pepper"
+```
+
+Use `stringr` functions to answer the following questions about the  `fruit` vector:
+
+1. How many fruit have the string `"rr"` in it?
+2. Which fruit end with string `"fruit"`?
+3. Which fruit contain more than one `"o"` character?
+
+**Hint**: You'll need to use `str_detect()` and `str_count()`
+
+---
+
+# Replace matched strings with new string
+
+`str_replace(string, pattern, replacement)`
+
+--
+
+
+```r
+x &lt;- c("apple", "pear", "banana")
+```
+
+--
+
+
+```r
+str_replace(x, "a", "-") # Only replaces the first match
+```
+
+```
+#&gt; [1] "-pple"  "pe-r"   "b-nana"
+```
+
+--
+
+
+```r
+str_replace_all(x, "a", "-") # Replaces all matches
+```
+
+```
+#&gt; [1] "-pple"  "pe-r"   "b-n-n-"
+```
+
+---
+
+### Quick practice redux
+
+
+```r
+x &lt;- 'this_is_good_practice'
+```
+
+Convert `x` into: `"this is good practice"`
+
+--
+
+We did this earlier:
+
+
+```r
+paste(str_split(x, "_")[[1]], collapse = " ")
+```
+
+```
+#&gt; [1] "this is good practice"
+```
+
+--
+
+But now we can do this!
+
+
+```r
+str_replace_all(x, "_", " ")
+```
+
+```
+#&gt; [1] "this is good practice"
+```
+
+---
+
+class: inverse
+
+<div class="countdown" id="timer_6216af84" style="top:0;right:0;font-size:2em;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+## Your turn
+
+.font90[
+
+1) `sortString(s)`: Write the function `sortString(s)` that takes a string `s` and returns back an alphabetically sorted string.
+
+- `sortString("cba") == "abc"`
+- `sortString("abedhg") == "abdegh"`
+- `sortString("AbacBc") == "aAbBcc"`
+
+2) `areAnagrams(s1, s2)`: Write the function `areAnagrams(s1, s2)` that takes two strings, `s1` and `s2`, and returns `TRUE` if the strings are [anagrams](https://en.wikipedia.org/wiki/Anagram), and `FALSE` otherwise. **Treat lower and upper case as the same letters**.
+
+- `areAnagrams("", "") == TRUE`
+- `areAnagrams("aabbccdd", "bbccddee") == FALSE`
+- `areAnagrams("TomMarvoloRiddle", "IAmLordVoldemort") == TRUE`
+
+]
+
+---
+
+### Homeworks
+
+- Deadline to submit homeworks 1 - 7: **March 10**
+
+--
+
+### Midterm Review
+
+- We'll hold a one-hour review via zoom next week. 
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
