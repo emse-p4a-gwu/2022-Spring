@@ -61,6 +61,24 @@ countdown(
 
 ---
 
+class: middle
+
+<center>
+<img src="images/hw.png" width=600>
+</center>
+
+---
+
+# New HW policies (after Spring Break)
+
+<br>
+
+## - Up to 3 days late for full credit
+## - Up to 1 week for 50% credit
+## - Beyond 1 week late = 0
+
+---
+
 ```{r child="topics/0.Rmd"}
 ```
 
