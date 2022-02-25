@@ -1,0 +1,16 @@
+---
+title: "Introduction to Python (in R)"
+output:
+  html_document:
+    number_sections: false
+    toc: no
+params:
+  class: "8-python"
+---
+
+```{r child = file.path("child", "setup.Rmd")}
+```
+
+```{r child = file.path("child", "class.Rmd")}
+```
+
