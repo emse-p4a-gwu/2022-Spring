@@ -1,11 +1,11 @@
 ---
-title: "Introduction to Python (in R)"
+title: "Midterm Review"
 output:
   html_document:
     number_sections: false
     toc: no
 params:
-  class: "8-python"
+  class: "8-midterm-review"
 ---
 
 ```{r child = file.path("child", "setup.Rmd")}
