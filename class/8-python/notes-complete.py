@@ -45,7 +45,13 @@ def hypotenuse(a, b):
 def hypotenuse(a, b):
     return((a**2 + b**2)**0.5)
 
-hypotenuse(3, 4)
+def test_hypotenuse():
+    print("Testing hypotenuse...")
+    assert(hypotenuse(3,4) == 5)
+    assert(hypotenuse(5, 12) == 13)
+    print("Passed!")
+
+test_hypotenuse()
 
 # 2. isRightTriangle(a, b, c): Returns True if the triangle formed by
 #    the lines of length a, b, and c is a right triangle and False otherwise.
@@ -87,8 +93,16 @@ def factorial(n):
         total = total*i
     return(total)
 
-factorial(0) == 1
-factorial(3) == 3*2*1
+def test_factorial():
+    print("Testing factorial...")
+    assert(factorial(0) == 1)
+    assert(factorial(3) == 1*2*3)
+    assert(factorial(5) == 1*2*3*4*5)
+    print("Passed!")
+
+test_factorial()
+
+
 
 def nthHighestValue(n, x):
     x.sort(reverse = True)
@@ -97,10 +111,16 @@ def nthHighestValue(n, x):
 def nthHighestValue(n, x):
     y = sorted(x, reverse = True)
     return(y[n-1])
-    
-nthHighestValue(1, [5,1,3]) == 5
-nthHighestValue(2, [5,1,3]) == 3
-nthHighestValue(3, [5,1,3]) == 1
+
+def test_nthHighestValue():
+    print("Testing nthHighestValue...")
+    assert(nthHighestValue(1, [5, 1, 3]) == 5)
+    assert(nthHighestValue(2, [5, 1, 3]) == 3)
+    assert(nthHighestValue(3, [5, 1, 3]) == 1)
+    print("Passed!")
+
+test_nthHighestValue()
+
 
 # ------------------------------------------------
 # Practice 3
@@ -115,9 +135,14 @@ def sortString(s):
     x = sorted(list(s))
     return("".join(x))
 
-sortString("cba") == "abc"
-sortString("abedhg") == "abdegh"
-sortString("AbacBc") == "ABabcc"
+def test_sortString():
+    print("Testing sortString...")
+    assert(sortString("cba") == "abc")
+    assert(sortString("abedhg") == "abdegh")
+    assert(sortString("AbacBc") == "ABabcc")
+    print("Passed!")
+
+test_sortString()
 
 # 2. areAnagrams(s1, s2): Takes two strings, s1 and s2, and returns True if
 #    the strings are anagrams, and False otherwise. **Treat lower and upper
@@ -131,8 +156,13 @@ def areAnagrams(s1, s2):
 def areAnagrams(s1, s2):
     return(sortString(s1.lower()) == sortString(s2.lower()))
     
-areAnagrams("", "") == True
-areAnagrams("aabbccdd", "bbccddee") == False
-areAnagrams("TomMarvoloRiddle", "IAmLordVoldemort") == True
+def test_areAnagrams():
+    print("Testing areAnagrams...")
+    assert(areAnagrams("", "") == True)
+    assert(areAnagrams("aabbccdd", "bbccddee") == False)
+    assert(areAnagrams("TomMarvoloRiddle", "IAmLordVoldemort") == True)
+    print("Passed!")
+
+test_areAnagrams()
 
 
