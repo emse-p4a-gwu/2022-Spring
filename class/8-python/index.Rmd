@@ -26,6 +26,63 @@ output:
 
 ---
 
+class: inverse
+
+# Quiz 5
+
+```{r, echo=FALSE}
+countdown(
+  minutes      = 5,
+  warn_when    = 30,
+  update_every = 1,
+  top          = 0,
+  right        = 0,
+  font_size    = '3em'
+)
+```
+
+.leftcol[
+## Go to `#class` channel in Slack for quiz link
+
+## Open RStudio first!
+
+## Rules:
+
+- You may use your notes and RStudio
+- You may **not** use any other resources (e.g. the internet, your classmates, etc.)
+]
+
+.rightcol[
+<br>
+<center>
+<img src="https://github.com/emse-p4a-gwu/2022-Spring/raw/main/images/quiz_doge.png" width="400">
+</center>
+]
+
+---
+
+class: center, middle, inverse
+
+# .fancy[R tip of the week]: 
+
+# `styler`
+
+---
+
+# Install `styler` package
+
+<br>
+
+```{r, eval=FALSE}
+install.packages("styler")
+```
+
+<br>
+
+Go to .red[Addins] menu, search for .red["style"], select .red["Style active file"]
+
+---
+
 ```{r child="topics/0.Rmd"}
 ```
 
@@ -599,7 +656,7 @@ You can source a Python script from R, then use the Python function in R!
 
 --
 
-Inside your `notes.py` file, you have the following function defined:
+Inside your `notes-blank.py` file, you have the following function defined:
 
 ```{python}
 def isEven(n):
@@ -610,7 +667,7 @@ def isEven(n):
 
 --
 
-Open your `notes-blank.R` file and _source_ the `note.py` file:
+Open your `notes.R` file and _source_ the `notes-blank.py` file:
 
 ```{r, eval=FALSE}
 reticulate::source_python('notes-blank.py')
