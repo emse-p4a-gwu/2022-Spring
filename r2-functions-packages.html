@@ -165,6 +165,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -185,6 +186,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -416,7 +420,7 @@ div.tocify {
 <div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -447,7 +451,7 @@ div.tocify {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fas fa-laptop-code"></span>
      
     Class
@@ -500,7 +504,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-pencil-ruler"></span>
      
     Assignments
@@ -547,7 +551,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     Readings
@@ -610,7 +614,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-bookmark"></span>
      
     References
@@ -656,7 +660,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fas fa-question-circle"></span>
      
     Help
@@ -690,7 +694,7 @@ div.tocify {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-bars"></span>
      
      
@@ -766,7 +770,7 @@ div.tocify {
 <p>Here the letters <code>sqrt</code> are short for “square root,” and the value inside the <code>()</code> is the “argument” to the function. In the example above, the value <code>225</code> is the “argument”.</p>
 <p>Keep in mind that not all functions have (or require) arguments:</p>
 <pre class="r"><code>date() # Returns the current date and time</code></pre>
-<pre><code>#&gt; [1] &quot;Wed Mar  2 20:48:09 2022&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Thu Mar  3 14:40:28 2022&quot;</code></pre>
 <p>(the date above is the date this page was last built)</p>
 <div id="multiple-arguments" class="section level2">
 <h2>Multiple arguments</h2>
@@ -984,9 +988,9 @@ library(packagename)   # This also works</code></pre>
 <p>Now that you have the package installed on your computer, try loading it using <code>library(wikifacts)</code>, then trying using some of it’s functions:</p>
 <pre class="r"><code>library(wikifacts) # Load the library</code></pre>
 <pre class="r"><code>wiki_randomfact()</code></pre>
-<pre><code>#&gt; [1] &quot;Did you know that on September 13 in 1541 – After three years of exile, John Calvin returned to Geneva to reform the church under a body of doctrine that came to be known as Calvinism. (Courtesy of Wikipedia)&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Did you know that on April 17 in 1986 – Having supposedly been at war for 335 years without a single shot having been fired and no casualties incurred, the Netherlands and the Isles of Scilly declared peace. (Courtesy of Wikipedia)&quot;</code></pre>
 <pre class="r"><code>wiki_didyouknow()</code></pre>
-<pre><code>#&gt; [1] &quot;Did you know that the association footballer Dick Pudan was banned from the sport in 1907 after he walked out on his club, which had refused to let him play professional cricket too? (Courtesy of Wikipedia)&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Did you know that Neanderthals went fishing? (Courtesy of Wikipedia)&quot;</code></pre>
 <p>In case you’re wondering, the only thing this package does is generate messages containing random facts from <a href="https://www.wikipedia.org/">Wikipedia</a>.</p>
 </div>
 <div id="using-only-some-package-functions" class="section level2">
@@ -997,7 +1001,7 @@ library(packagename)   # This also works</code></pre>
 </blockquote>
 <p>Here I use the name of the <em>package</em> followed by <code>::</code> to tell R that I’m looking for a function that is in that package. For example, if I didn’t want to load the whole <strong>wikifacts</strong> library but still wanted to use the <code>wiki_randomfact()</code> function, I could do this:</p>
 <pre class="r"><code>wikifacts::wiki_randomfact()</code></pre>
-<pre><code>#&gt; [1] &quot;Did you know that more than 2,100 years after Lady Gouyi (pictured) was ordered by the emperor to die, her mausoleum was robbed and more than 1,100 artifacts were stolen? (Courtesy of Wikipedia)&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;Did you know that on July 22 in 2002 – The Israel Defense Forces dropped a bomb on the home of Salah Shehade, the leader of the military arm of Hamas, killing him, his family and some neighboring civilians, among them seven children. (Courtesy of Wikipedia)&quot;</code></pre>
 <p>Where this is particularly handy is when two packages have a function with the same name. If you load both library, R might not know which function to use. In those cases, it’s best to also provide the <strong>package</strong> name. For example, let’s say there was a package called <strong>apples</strong> and another called <strong>bananas</strong>, and each had a function named <code>fruitName()</code>. If I wanted to use each of them in my code, I would need to specify the package names like this:</p>
 <pre class="r"><code>apples::fruitName()
 bananas::fruitName()</code></pre>

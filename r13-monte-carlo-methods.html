@@ -165,6 +165,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -185,6 +186,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -416,7 +420,7 @@ div.tocify {
 <div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -447,7 +451,7 @@ div.tocify {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fas fa-laptop-code"></span>
      
     Class
@@ -500,7 +504,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-pencil-ruler"></span>
      
     Assignments
@@ -547,7 +551,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     Readings
@@ -610,7 +614,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-bookmark"></span>
      
     References
@@ -656,7 +660,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fas fa-question-circle"></span>
      
     Help
@@ -690,7 +694,7 @@ div.tocify {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-bars"></span>
      
      
@@ -808,11 +812,11 @@ ratio &lt;- sum(belowCurve) / numTrials
 totalArea &lt;- (7 - 3) * 7^2 # Rectangle length x height = 196
 areaUnderCurve &lt;- ratio * totalArea
 areaUnderCurve</code></pre>
-<pre><code>#&gt; [1] 105.4578</code></pre>
-<p>So, using Monte Carlo simulation with 100,000 points, we estimate that the area under the curve is 105.4578. How’d we do? Well, if you’re familiar with calculus, the integral of <span class="math inline">\(f(x) = x^2\)</span> has a closed-form solution (<span class="math inline">\(\frac{x^3}{3} + C\)</span>), so we can check our estimate against the pure-math solution:</p>
+<pre><code>#&gt; [1] 105.3676</code></pre>
+<p>So, using Monte Carlo simulation with 100,000 points, we estimate that the area under the curve is 105.36764. How’d we do? Well, if you’re familiar with calculus, the integral of <span class="math inline">\(f(x) = x^2\)</span> has a closed-form solution (<span class="math inline">\(\frac{x^3}{3} + C\)</span>), so we can check our estimate against the pure-math solution:</p>
 <p><span class="math display">\[\int_{3}^{7} x^2 \mathrm{dx} = \left ( \frac{x^3}{3} \right ) \Big|_3^7 = \frac{7^3}{3} - \frac{3^3}{3} = 105.33\bar{3}\]</span></p>
-<p>So our estimate error is: <code>105.333 -</code> <code>105.4578</code> <code>=</code> <code>-0.1244667</code>.</p>
-<p>That’s an error of just 0.12 % - not bad!</p>
+<p>So our estimate error is: <code>105.333 -</code> <code>105.36764</code> <code>=</code> <code>-0.0343067</code>.</p>
+<p>That’s an error of just 0.03 % - not bad!</p>
 <hr />
 </div>
 <div id="monte-carlo-pi" class="section level1">
@@ -843,12 +847,12 @@ points &lt;- data.frame(
     y = runif(numTrials, -0.5, 0.5))
 head(points)</code></pre>
 <pre><code>#&gt;             x           y
-#&gt; 1 -0.14447264 -0.17286132
-#&gt; 2 -0.39418310  0.32516512
-#&gt; 3  0.30599109 -0.14384071
-#&gt; 4 -0.23656653 -0.04972475
-#&gt; 5 -0.46884491 -0.16540153
-#&gt; 6 -0.03743846 -0.49350856</code></pre>
+#&gt; 1  0.44046338 -0.08343234
+#&gt; 2 -0.32620910  0.10679098
+#&gt; 3  0.17787641  0.47455214
+#&gt; 4  0.21111440 -0.31630211
+#&gt; 5 -0.07694856  0.03145083
+#&gt; 6  0.38214284 -0.19959939</code></pre>
 <p>For this example, we’re putting the points in a data frame to make it easier to work with. Now that we have random x and y points, let’s compute the radius to each point (the distance from <code>(x, y) = (0, 0)</code>) so we can determine which points fall inside the circle (which has a radius of 0.5):</p>
 <pre class="r"><code>library(dplyr)
 points &lt;- points %&gt;%
@@ -865,9 +869,9 @@ ggplot(points) +
 <pre class="r"><code>ratio &lt;- sum(points$pointInCircle) / nrow(points)
 piApprox &lt;- 4 * ratio
 piApprox</code></pre>
-<pre><code>#&gt; [1] 3.136</code></pre>
-<p>So our estimate error is: <code>3.1415 -</code> <code>3.136</code> <code>=</code> <code>-0.0055927</code>.</p>
-<p>That’s an error of just 0.18 % - not bad for only 1,000 points!</p>
+<pre><code>#&gt; [1] 3.108</code></pre>
+<p>So our estimate error is: <code>3.1415 -</code> <code>3.108</code> <code>=</code> <code>-0.0335927</code>.</p>
+<p>That’s an error of just 1.07 % - not bad for only 1,000 points!</p>
 <p>To get an even better estimate of <span class="math inline">\(\pi\)</span>, we can increase N. Let’s see what we get with 100,000 trials:</p>
 <pre class="r"><code>numTrials &lt;- 100000
 points &lt;- data.frame(
@@ -879,13 +883,13 @@ points &lt;- data.frame(
 ratio &lt;- sum(points$pointInCircle) / nrow(points)
 piApprox &lt;- 4 * ratio
 piApprox</code></pre>
-<pre><code>#&gt; [1] 3.14512</code></pre>
+<pre><code>#&gt; [1] 3.1434</code></pre>
 <pre class="r"><code># Compute error:
 error &lt;- piApprox - pi
 percentError &lt;- round(100*abs(error / pi), 2)
 percentError</code></pre>
-<pre><code>#&gt; [1] 0.11</code></pre>
-<p>By increasing the number of trials from 1,000 to 100,000, we improved our estimate error from 0.18 % to 0.11 %!</p>
+<pre><code>#&gt; [1] 0.06</code></pre>
+<p>By increasing the number of trials from 1,000 to 100,000, we improved our estimate error from 1.07 % to 0.06 %!</p>
 <hr />
 <p><strong>Page sources</strong>:</p>
 <p>Some content on this page has been modified from other courses, including:</p>
