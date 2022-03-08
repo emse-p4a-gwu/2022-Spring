@@ -215,7 +215,7 @@ While the University Library is not a stand in for TAs, you can schedule a consu
 
 ## Late Policy
 
-Due dates are "soft" for homeworks 1-7. Any assignments submitted before March 10 (the midterm) will be graded for full credit. For homeworks 8-12, the late policy is as follows:
+Due dates are "soft" for homeworks 1-8. Any assignments submitted before March 10 (the midterm) will be graded for full credit. For homeworks 9-12, the late policy is as follows:
 
 - Up to 3 days late for full credit
 - Up to 1 week for 50% credit
