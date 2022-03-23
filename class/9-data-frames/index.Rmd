@@ -988,8 +988,35 @@ ggplot(msleep, aes(x=brainwt, y=bodywt)) +
 
 ---
 
-# A note about HW9
+# A note about HW 9
 
 - You have what you need to start now.
 - It will be _much_ easier if you use the **dplyr** functions (i.e. read ahead).
 
+---
+
+class: inverse
+
+```{r, echo=FALSE}
+countdown(
+  minutes = 8,
+  warn_when = 30,
+  update_every = 1,
+  top = 0,
+  right = 0,
+  font_size = '2em'
+)
+```
+
+## Extra Practice!
+
+1. Install the **dslabs** package. 
+2. Load the package, then use `data(package = "dslabs")` to see the different data sets in this package. 
+3. Pick one. 
+4. Answer these questions:
+
+- What is the dataset about?
+- How many observations are in the data frame?
+- What is the original source of the data?
+- What type of data is each variable?
+- Find one thing interesting about it to share.
