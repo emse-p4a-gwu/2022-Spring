@@ -67,6 +67,12 @@ class: center, middle
 
 ---
 
+class: middle, center
+
+# [AMG Grading](https://p4a.seas.gwu.edu/2022-Spring/syllabus.html#72_AMG_Grading)
+
+---
+
 # Before we start
 
 Make sure you have these packages installed and loaded:
