@@ -30,6 +30,7 @@ Imports:
     knitr,
     logitr,
     metathis,
+    nycflights13,
     palmerpenguins,
     remotes,
     reticulate,
