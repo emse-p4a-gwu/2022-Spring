@@ -1,0 +1,98 @@
+---
+title: "College Majors Analysis"
+author: "John Helveston"
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+    theme: simplex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	fig.path = "figs/",
+	fig.retina = 3,
+	message = FALSE,
+	warning = FALSE,
+	comment = "#>"
+)
+library(tidyverse)
+library(here)
+library(knitr)
+grads <- read_csv(here::here('data', 'recent_grads.csv'))
+```
+
+
+### What are the highest earning engineering majors?
+
+```{r}
+grads %>%
+    filter(Major_category == "Engineering") %>% 
+    mutate(Major = str_to_title(Major)) %>% 
+    select(Major, Median) %>% 
+    arrange(desc(Median)) %>% 
+    kable()
+```
+
+```{r median-incomes}
+grads %>%
+    filter(Major_category == "Engineering") %>% 
+    mutate(Major = str_to_title(Major)) %>% 
+    select(Major, Median) %>% 
+    arrange(desc(Median)) %>% 
+    ggplot() + 
+    geom_col(aes(y = reorder(Major, Median), x = Median)) + 
+    labs(x = "Median income ($)", 
+         y = "Major") +
+    theme_minimal()
+```
+
+Petroleum engineers apparently make bank!
+
+### Within the engineering majors, which ones have better employment rates?
+
+```{r}
+grads %>%
+    filter(Major_category == "Engineering") %>% 
+    mutate(Major = str_to_title(Major)) %>% 
+    select(Major, Unemployment_rate) %>% 
+    arrange(Unemployment_rate) %>% 
+    kable()
+```
+
+```{r unemployment}
+grads %>%
+    filter(Major_category == "Engineering") %>% 
+    mutate(Major = str_to_title(Major)) %>% 
+    select(Major, Unemployment_rate) %>% 
+    arrange(Unemployment_rate) %>% 
+    ggplot() + 
+    geom_col(aes(y = reorder(Major, -Unemployment_rate), x = Unemployment_rate)) + 
+    labs(x = "Unemployment rate", 
+         y = "Major") +
+    theme_minimal()
+```
+
+### Within the engineering majors, which ones have a better gender balance?
+
+```{r}
+grads %>%
+    filter(Major_category == "Engineering") %>% 
+    mutate(Major = str_to_title(Major)) %>% 
+    select(Major, ShareWomen) %>% 
+    arrange(desc(ShareWomen)) %>% 
+    kable()
+```
+
+```{r gender-balance}
+grads %>%
+    filter(Major_category == "Engineering") %>% 
+    mutate(Major = str_to_title(Major)) %>% 
+    select(Major, ShareWomen) %>% 
+    arrange(desc(ShareWomen)) %>%
+    ggplot() + 
+    geom_col(aes(y = reorder(Major, ShareWomen), x = ShareWomen)) + 
+    labs(x = "Unemployment rate", 
+         y = "Major") +
+    theme_minimal()
+```

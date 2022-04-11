@@ -1,0 +1,74 @@
+---
+title: "Birds and Bears Analysis"
+author: "John Helveston"
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+    theme: flatly
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	fig.path = "figs/",
+	fig.retina = 3,
+	message = FALSE,
+	warning = FALSE,
+	comment = "#>"
+)
+library(tidyverse)
+library(here)
+library(knitr)
+bears <- read_csv(here::here('data', 'bear_killings.csv'))
+birds <- read_csv(here::here('data', 'wildlife_impacts.csv'))
+```
+
+# Questions about birds
+
+### Which months have the highest and lowest number of bird impacts with aircraft?
+
+```{r bird-month-count, echo=FALSE}
+birds %>% 
+  count(incident_month) %>% 
+  arrange(desc(n))
+
+# birds %>% 
+#   group_by(incident_month) %>% 
+#   summarise(count = n())
+```
+
+The month with the most incidents is **September** and the month with the least is **December**
+
+### Does the annual number of bird impacts appear to be changing over time?
+
+```{r}
+birds %>% 
+  count(incident_year) %>% 
+  arrange(desc(n))
+```
+
+# Questions about bears
+
+### Which months have the highest frequency of bear killings?
+
+```{r}
+bears %>% 
+  count(month) %>% 
+  arrange(desc(n)) %>% 
+  knitr::kable()
+```
+
+### Who has been killed more often by bears: hunters or hikers?
+
+```{r}
+bears %>% 
+  count(hunter, hiker)
+```
+
+### How do the the number of bear attacks on men vs women compare?
+
+```{r}
+bears %>% 
+  count(gender)
+```
+
