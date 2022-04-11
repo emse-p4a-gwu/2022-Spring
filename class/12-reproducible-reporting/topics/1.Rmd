@@ -1,0 +1,12 @@
+
+class: inverse, middle
+
+# Week `r rmarkdown::metadata$week`: .fancy[`r rmarkdown::metadata$title`]
+
+### 1. .orange[Why RMarkdown?]
+### 2. Metadata and output formats
+
+### BREAK
+
+### 3. Text
+### 4. Code chunks
