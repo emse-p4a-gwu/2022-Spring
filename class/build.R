@@ -10,6 +10,7 @@ zip::zipr(
     zipfile = paste0(lesson, ".zip"),
     files = c(
         'notes-blank.R',
-        'notes-complete.R'))
+        'notes-complete.R',
+        paste0(lesson, ".Rproj")))
 
 
