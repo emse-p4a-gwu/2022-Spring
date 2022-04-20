@@ -9,7 +9,7 @@ xaringanBuilder::build_pdf("index.html", paste0(lesson, ".pdf"))
 zip::zipr(
     zipfile = paste0(lesson, ".zip"),
     files = c(
-        'notes-blank',
-        'notes-complete')))
+        'notes-blank.R',
+        'notes-complete.R'))
 
 
