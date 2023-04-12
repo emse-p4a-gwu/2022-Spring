@@ -13,6 +13,7 @@
 
 <title>Homework 7 - Strings</title>
 
+<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
@@ -31,8 +32,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.3.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.3.0/css/v4-shims.min.css" rel="stylesheet" />
 <link rel="icon" href="images/favicon.ico">
 <script src="https://kit.fontawesome.com/1392a7030f.js" crossorigin="anonymous"></script>
 <style type="text/css">
@@ -243,11 +244,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -276,8 +281,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -285,16 +290,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -665,79 +663,168 @@ $(document).ready(function () {
 
 <blockquote>
 <p><strong>Due</strong>: March 02 by 11:59pm</p>
-<p><strong>Submit</strong>: To submit this assignment, create a zip file of all the files in your R project folder for this assignment. Name the zip file <code>hw7-netID.zip</code>, replacing <code>netID</code> with your netID (e.g., <code>hw7-jph.zip</code>). Use <a href="https://u.pcloud.com/#page=puplink&amp;code=pVYkZ0DBDeiPfkj7fgH08J9hSD4jQf07k">this link</a> to submit your file.</p>
-<p><strong>Weight</strong>: This assignment is worth 5% of your final grade.</p>
+<p><strong>Submit</strong>: To submit this assignment, create a zip file
+of all the files in your R project folder for this assignment. Name the
+zip file <code>hw7-netID.zip</code>, replacing <code>netID</code> with
+your netID (e.g., <code>hw7-jph.zip</code>). Use <a
+href="https://u.pcloud.com/#page=puplink&amp;code=pVYkZ0DBDeiPfkj7fgH08J9hSD4jQf07k">this
+link</a> to submit your file.</p>
+<p><strong>Weight</strong>: This assignment is worth 5% of your final
+grade.</p>
 <p><strong>Purpose</strong>: The purposes of this assignment are:</p>
 <ul>
-<li>To practice manipulating strings in R with the <strong>stringr</strong> package.</li>
+<li>To practice manipulating strings in R with the
+<strong>stringr</strong> package.</li>
 <li>To practice computational problem solving with strings.</li>
 </ul>
-<p><strong>Assessment</strong>: Each question indicates the % of the assignment grade, summing to 100%. The credit for each question will be assigned as follows:</p>
+<p><strong>Assessment</strong>: Each question indicates the % of the
+assignment grade, summing to 100%. The credit for each question will be
+assigned as follows:</p>
 <ul>
 <li>0% for not attempting a response.</li>
 <li>50% for attempting the question but with <em>major</em> errors.</li>
 <li>75% for attempting the question but with <em>minor</em> errors.</li>
 <li>100% for correctly answering the question.</li>
 </ul>
-<p>The reflection portion is always worth 10% and graded for completion.</p>
+<p>The reflection portion is always worth 10% and graded for
+completion.</p>
 <p><strong>Rules</strong>:</p>
 <ul>
-<li>Problems marked <strong>SOLO</strong> may not be worked on with other classmates, though you may consult instructors for help.</li>
-<li>For problems marked <strong>COLLABORATIVE</strong>, you may work in groups of up to 3 students who are in this course this semester. You may not split up the work – everyone must work on every problem. And you may not simply copy any code but rather truly work together and submit your own solutions.</li>
+<li>Problems marked <strong>SOLO</strong> may not be worked on with
+other classmates, though you may consult instructors for help.</li>
+<li>For problems marked <strong>COLLABORATIVE</strong>, you may work in
+groups of up to 3 students who are in this course this semester. You may
+not split up the work – everyone must work on every problem. And you may
+not simply copy any code but rather truly work together and submit your
+own solutions.</li>
 </ul>
 </blockquote>
 <blockquote>
-<h3 id="using-the-autograder">Using the <a href="autograder.html">autograder</a></h3>
+<h3 id="using-the-autograder">Using the <a
+href="autograder.html">autograder</a></h3>
 <ul>
-<li>You can check your solutions to problems 2 - 7 by logging into the <a href="autograder.html">autograder</a> and uploading your <code>hw7.R</code> file.</li>
-<li><strong>The file must be named <code>hw7.R</code> or it won’t work.</strong></li>
-<li>Your user name is your netID, and your password is inside the <code>readme.txt</code> file in the Box folder I shared with you.</li>
+<li>You can check your solutions to problems 2 - 7 by logging into the
+<a href="autograder.html">autograder</a> and uploading your
+<code>hw7.R</code> file.</li>
+<li><strong>The file must be named <code>hw7.R</code> or it won’t
+work.</strong></li>
+<li>Your user name is your netID, and your password is inside the
+<code>readme.txt</code> file in the Box folder I shared with you.</li>
 </ul>
 </blockquote>
 <div id="staying-organized-solo-5" class="section level3">
 <h3>1) Staying organized [SOLO, 5%]</h3>
-<p>Download and use <a href="templates/hw7.zip">this template</a> for your assignment. Inside the “hw7” folder, open and edit the R script called “hw7.R” and fill out your name, GW Net ID, and the names of anyone you worked with on this assignment.</p>
+<p>Download and use <a href="templates/hw7.zip">this template</a> for
+your assignment. Inside the “hw7” folder, open and edit the R script
+called “hw7.R” and fill out your name, GW Net ID, and the names of
+anyone you worked with on this assignment.</p>
 <blockquote>
-<h3 id="writing-test-functions"><strong>Writing test functions</strong></h3>
-<p>For each of the following functions, write a test function first, and then write the function. <strong>Your test functions will count for half of the available credit for each problem</strong>. Think carefully about the test cases to include in your test functions.</p>
+<h3 id="writing-test-functions"><strong>Writing test
+functions</strong></h3>
+<p>For each of the following functions, write a test function first, and
+then write the function. <strong>Your test functions will count for half
+of the available credit for each problem</strong>. Think carefully about
+the test cases to include in your test functions.</p>
 </blockquote>
 <blockquote>
 <h3 id="using-good-style"><strong>Using good style</strong></h3>
-<p>For this assignment, you must use good style to receive full credit. Follow the best practices described in <a href="http://adv-r.had.co.nz/Style.html">this style guide</a>.</p>
+<p>For this assignment, you must use good style to receive full credit.
+Follow the best practices described in <a
+href="http://adv-r.had.co.nz/Style.html">this style guide</a>.</p>
 </blockquote>
 </div>
 <div id="strtolowers-solo-10" class="section level3">
 <h3>2) <code>strToLower(s)</code> [SOLO, 10%]</h3>
-<p>Write a function that does exactly what <code>str_to_lower()</code> does (i.e. returns the same string but with all letters in lower case) without using <code>str_to_lower()</code> or the Base R <code>tolower()</code> function. Hint: check out the <code>str_replace_all()</code> function!</p>
+<p>Write a function that does exactly what <code>str_to_lower()</code>
+does (i.e. returns the same string but with all letters in lower case)
+without using <code>str_to_lower()</code> or the Base R
+<code>tolower()</code> function. Hint: check out the
+<code>str_replace_all()</code> function!</p>
 </div>
 <div id="getmiddlecharacters-solo-15" class="section level3">
 <h3>3) <code>getMiddleCharacter(s)</code> [SOLO, 15%]</h3>
-<p>Write a function that takes a single string, <code>s</code>, and returns the middle character of the string. If the string has an even number of characters, then return the two middle characters. So <code>getMiddleCharacter("one")</code> should return <code>"n"</code>, and <code>getMiddleCharacter("feet")</code> should return <code>"ee"</code>.</p>
+<p>Write a function that takes a single string, <code>s</code>, and
+returns the middle character of the string. If the string has an even
+number of characters, then return the two middle characters. So
+<code>getMiddleCharacter("one")</code> should return <code>"n"</code>,
+and <code>getMiddleCharacter("feet")</code> should return
+<code>"ee"</code>.</p>
 </div>
 <div id="rotatestringlefts-k-collaborative-15" class="section level3">
 <h3>4) <code>rotateStringLeft(s, k)</code> [COLLABORATIVE, 15%]</h3>
-<p>Write the function <code>rotateStringLeft(s, k)</code> that takes a string <code>s</code> and a non-negative integer <code>k</code>, and returns the string <code>s</code> rotated <code>k</code> places to the left. So, if <code>s = "iknowkungfu"</code> and <code>k = 2</code>, then the result should be <code>"nowkungfuik"</code>. If <code>k</code> is larger than the length of <code>s</code>, the function should continue to rotate the string beyond its starting point. So, if <code>s = "iknowkungfu"</code> and <code>k = 11</code>, then the result should be <code>"iknowkungfu"</code>, but if <code>k = 12</code>, the result should be <code>"knowkungfui"</code>.</p>
+<p>Write the function <code>rotateStringLeft(s, k)</code> that takes a
+string <code>s</code> and a non-negative integer <code>k</code>, and
+returns the string <code>s</code> rotated <code>k</code> places to the
+left. So, if <code>s = "iknowkungfu"</code> and <code>k = 2</code>, then
+the result should be <code>"nowkungfuik"</code>. If <code>k</code> is
+larger than the length of <code>s</code>, the function should continue
+to rotate the string beyond its starting point. So, if
+<code>s = "iknowkungfu"</code> and <code>k = 11</code>, then the result
+should be <code>"iknowkungfu"</code>, but if <code>k = 12</code>, the
+result should be <code>"knowkungfui"</code>.</p>
 </div>
 <div id="isdigits-collaborative-15" class="section level3">
 <h3>5) <code>isDigit(s)</code> [COLLABORATIVE, 15%]</h3>
-<p>Write the function <code>isDigit(s)</code> that takes a string <code>s</code> and returns <code>TRUE</code> if all characters in the string are numeric integers and <code>FALSE</code> otherwise. So <code>isDigit("123")</code> should return <code>TRUE</code>, <code>isDigit("123N")</code> should return <code>FALSE</code>, and <code>isDigit("")</code> should return <code>FALSE</code>. Hint: the value <code>'\\d'</code> can be used to search for whether a string has as digit, so <code>str_detect("r2d2", '\\d')</code> would return <code>TRUE</code> but <code>str_detect("rd", '\\d')</code> would return <code>FALSE</code>.</p>
+<p>Write the function <code>isDigit(s)</code> that takes a string
+<code>s</code> and returns <code>TRUE</code> if all characters in the
+string are numeric integers and <code>FALSE</code> otherwise. So
+<code>isDigit("123")</code> should return <code>TRUE</code>,
+<code>isDigit("123N")</code> should return <code>FALSE</code>, and
+<code>isDigit("")</code> should return <code>FALSE</code>. Hint: the
+value <code>'\\d'</code> can be used to search for whether a string has
+as digit, so <code>str_detect("r2d2", '\\d')</code> would return
+<code>TRUE</code> but <code>str_detect("rd", '\\d')</code> would return
+<code>FALSE</code>.</p>
 </div>
 <div id="getthegerundssentence-collaborative-15" class="section level3">
 <h3>6) <code>getTheGerunds(sentence)</code> [COLLABORATIVE, 15%]</h3>
-<p>Write a function that takes a single string, <code>sentence</code>, and returns a vector of all the gerunds in it (i.e. all the words that end in <code>"ing"</code>). So <code>getTheGerunds("I like hiking and swimming")</code> should return <code>c("hiking", "swimming")</code>. If there are no gerunds in <code>sentence</code>, the function should return <code>NULL</code>. Hint: first solve how you might separate a single-string sentence into a vector of words.</p>
+<p>Write a function that takes a single string, <code>sentence</code>,
+and returns a vector of all the gerunds in it (i.e. all the words that
+end in <code>"ing"</code>). So
+<code>getTheGerunds("I like hiking and swimming")</code> should return
+<code>c("hiking", "swimming")</code>. If there are no gerunds in
+<code>sentence</code>, the function should return <code>NULL</code>.
+Hint: first solve how you might separate a single-string sentence into a
+vector of words.</p>
 </div>
 <div id="samecharss1-s2-collaborative-15" class="section level3">
 <h3>7) <code>sameChars(s1, s2)</code> [COLLABORATIVE, 15%]</h3>
-<p>Write the function <code>sameChars(s1, s2)</code> that takes two strings and returns <code>TRUE</code> if the two strings are composed of the same characters (though perhaps in different numbers and in different orders); that is, if every character that is in the first string is in the second (and vice versa), and <code>FALSE</code> otherwise. This test is case-sensitive, so <code>"ABC"</code> and <code>"abc"</code> do not contain the same characters. The function returns <code>FALSE</code> if either parameter is not a string, but returns <code>TRUE</code> if both strings are empty.</p>
+<p>Write the function <code>sameChars(s1, s2)</code> that takes two
+strings and returns <code>TRUE</code> if the two strings are composed of
+the same characters (though perhaps in different numbers and in
+different orders); that is, if every character that is in the first
+string is in the second (and vice versa), and <code>FALSE</code>
+otherwise. This test is case-sensitive, so <code>"ABC"</code> and
+<code>"abc"</code> do not contain the same characters. The function
+returns <code>FALSE</code> if either parameter is not a string, but
+returns <code>TRUE</code> if both strings are empty.</p>
 </div>
 <div id="read-and-reflect-solo-10" class="section level3">
 <h3>8) Read and reflect [SOLO, 10%]</h3>
-<p>Read and reflect on next week’s readings on <a href="r8-python.html">using python in R</a>. Afterwards, in a comment (<code>#</code>) in your R file, write a short reflection on what you’ve learned and any questions or points of confusion you have about what we’ve covered thus far. This can just few a few sentences related to this assignment, next week’s readings, things going on in the world that remind you something from class, etc. If there’s anything that jumped out at you, write it down.</p>
+<p>Read and reflect on next week’s readings on <a
+href="r8-python.html">using python in R</a>. Afterwards, in a comment
+(<code>#</code>) in your R file, write a short reflection on what you’ve
+learned and any questions or points of confusion you have about what
+we’ve covered thus far. This can just few a few sentences related to
+this assignment, next week’s readings, things going on in the world that
+remind you something from class, etc. If there’s anything that jumped
+out at you, write it down.</p>
 <hr />
 </div>
 <div id="bonus-hasbalancedparenthesess-solo-3" class="section level3">
-<h3><strong>Bonus</strong>: <code>hasBalancedParentheses(s)</code> [SOLO, 3%]</h3>
-<p>Write the function <code>hasBalancedParentheses(s)</code>, which takes a string <code>s</code> and returns <code>TRUE</code> if the parentheses in <code>s</code> are balanced and <code>FALSE</code> otherwise (ignoring all non-parentheses in the string). We say that parentheses are “balanced” if each right parenthesis closes (matches) an open (unmatched) left parenthesis, and no left parentheses are left unclosed (unmatched) at the end of the text. So, for example, <code>"( ( ( ) ( ) ) ( ) )"</code> is balanced, but <code>"( ) )"</code> is not balanced, and <code>"( ) ) ("</code> is also not balanced. Hint: keep track of how many right parentheses remain unmatched as you iterate over the string.</p>
+<h3><strong>Bonus</strong>: <code>hasBalancedParentheses(s)</code>
+[SOLO, 3%]</h3>
+<p>Write the function <code>hasBalancedParentheses(s)</code>, which
+takes a string <code>s</code> and returns <code>TRUE</code> if the
+parentheses in <code>s</code> are balanced and <code>FALSE</code>
+otherwise (ignoring all non-parentheses in the string). We say that
+parentheses are “balanced” if each right parenthesis closes (matches) an
+open (unmatched) left parenthesis, and no left parentheses are left
+unclosed (unmatched) at the end of the text. So, for example,
+<code>"( ( ( ) ( ) ) ( ) )"</code> is balanced, but <code>"( ) )"</code>
+is not balanced, and <code>"( ) ) ("</code> is also not balanced. Hint:
+keep track of how many right parentheses remain unmatched as you iterate
+over the string.</p>
 </div>
 
 <hr>

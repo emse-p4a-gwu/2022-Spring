@@ -13,6 +13,7 @@
 
 <title>Course Schedule</title>
 
+<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
@@ -33,8 +34,8 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.3.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.3.0/css/v4-shims.min.css" rel="stylesheet" />
 <link rel="icon" href="images/favicon.ico">
 <script src="https://kit.fontawesome.com/1392a7030f.js" crossorigin="anonymous"></script>
 <style type="text/css">
@@ -245,11 +246,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -278,8 +283,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -287,16 +292,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -700,13 +698,22 @@ Jan 13
 <td style="text-align:left;background-color: #e1e1e1 !important;">
 </td>
 <td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
-<a href="c1-getting-started.html"><i class="fas fa-laptop-code"></i></a> <strong>Getting Started</strong><br>Class orientation, intro to R, workflow, problem solving
+<a href="c1-getting-started.html"><i class="fas fa-laptop-code"></i></a>
+<strong>Getting Started</strong><br>Class orientation, intro to R,
+workflow, problem solving
 </td>
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
-<a href="hw1-getting-started.html"><i class="fas fa-pencil-ruler"></i></a> <strong>HW 1</strong><br>Due: Jan 19
+<a
+href="hw1-getting-started.html"><i class="fas fa-pencil-ruler"></i></a>
+<strong>HW 1</strong><br>Due: Jan 19
 </td>
 <td style="text-align:left;background-color: #e1e1e1 !important;">
-<a href="r1.1-getting-started.html"><i class="fas fa-book"></i></a> Getting Started<br><a href="r1.2-operations-data-types.html"><i class="fas fa-book"></i></a> Operations &amp; Data Types<br><a href="r2-functions-packages.html"><i class="fas fa-book"></i></a> Functions &amp; Packages
+<a href="r1.1-getting-started.html"><i class="fas fa-book"></i></a>
+Getting Started<br><a
+href="r1.2-operations-data-types.html"><i class="fas fa-book"></i></a>
+Operations &amp; Data Types<br><a
+href="r2-functions-packages.html"><i class="fas fa-book"></i></a>
+Functions &amp; Packages
 </td>
 </tr>
 <tr>
@@ -720,13 +727,19 @@ Jan 20
 Quiz 1: <br> <em>Week 1</em>
 </td>
 <td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
-<a href="c2-functions-packages.html"><i class="fas fa-laptop-code"></i></a> <strong>Functions &amp; Packages</strong><br>Functions, arguments, installing external packages
+<a
+href="c2-functions-packages.html"><i class="fas fa-laptop-code"></i></a>
+<strong>Functions &amp; Packages</strong><br>Functions, arguments,
+installing external packages
 </td>
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
-<a href="hw2-functions-packages.html"><i class="fas fa-pencil-ruler"></i></a> <strong>HW 2</strong><br>Due: Jan 26
+<a
+href="hw2-functions-packages.html"><i class="fas fa-pencil-ruler"></i></a>
+<strong>HW 2</strong><br>Due: Jan 26
 </td>
 <td style="text-align:left;background-color: #e1e1e1 !important;">
-<a href="r3-creating-functions.html"><i class="fas fa-book"></i></a> Creating Functions
+<a href="r3-creating-functions.html"><i class="fas fa-book"></i></a>
+Creating Functions
 </td>
 </tr>
 <tr>
@@ -740,13 +753,21 @@ Jan 27
 Quiz 2: <br> <em>Weeks 1 - 2</em>
 </td>
 <td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
-<a href="c3-creating-functions.html"><i class="fas fa-laptop-code"></i></a> <strong>Creating Functions</strong><br>Defining your own functions, top-down structure
+<a
+href="c3-creating-functions.html"><i class="fas fa-laptop-code"></i></a>
+<strong>Creating Functions</strong><br>Defining your own functions,
+top-down structure
 </td>
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
-<a href="hw3-creating-functions.html"><i class="fas fa-pencil-ruler"></i></a> <strong>HW 3</strong><br>Due: Feb 02
+<a
+href="hw3-creating-functions.html"><i class="fas fa-pencil-ruler"></i></a>
+<strong>HW 3</strong><br>Due: Feb 02
 </td>
 <td style="text-align:left;background-color: #e1e1e1 !important;">
-<a href="r4.1-conditionals.html"><i class="fas fa-book"></i></a> Conditionals<br><a href="r4.2-testing-debugging.html"><i class="fas fa-book"></i></a> Testing &amp; Debugging
+<a href="r4.1-conditionals.html"><i class="fas fa-book"></i></a>
+Conditionals<br><a
+href="r4.2-testing-debugging.html"><i class="fas fa-book"></i></a>
+Testing &amp; Debugging
 </td>
 </tr>
 <tr>
@@ -759,10 +780,15 @@ Feb 03
 <td style="text-align:left;background-color: #e1e1e1 !important;">
 </td>
 <td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
-<a href="c4-conditionals-testing.html"><i class="fas fa-laptop-code"></i></a> <strong>Conditionals &amp; Testing</strong><br>If / else statements, writing unit tests
+<a
+href="c4-conditionals-testing.html"><i class="fas fa-laptop-code"></i></a>
+<strong>Conditionals &amp; Testing</strong><br>If / else statements,
+writing unit tests
 </td>
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
-<a href="hw4-conditionals-testing.html"><i class="fas fa-pencil-ruler"></i></a> <strong>HW 4</strong><br>Due: Feb 09
+<a
+href="hw4-conditionals-testing.html"><i class="fas fa-pencil-ruler"></i></a>
+<strong>HW 4</strong><br>Due: Feb 09
 </td>
 <td style="text-align:left;background-color: #e1e1e1 !important;">
 <a href="r5-iteration.html"><i class="fas fa-book"></i></a> Iteration
@@ -779,10 +805,12 @@ Feb 10
 Quiz 3: <br> <em>Weeks 3 - 4</em>
 </td>
 <td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
-<a href="c5-iteration.html"><i class="fas fa-laptop-code"></i></a> <strong>Iteration</strong><br>Ins and outs of loops
+<a href="c5-iteration.html"><i class="fas fa-laptop-code"></i></a>
+<strong>Iteration</strong><br>Ins and outs of loops
 </td>
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
-<a href="hw5-iteration.html"><i class="fas fa-pencil-ruler"></i></a> <strong>HW 5</strong><br>Due: Feb 16
+<a href="hw5-iteration.html"><i class="fas fa-pencil-ruler"></i></a>
+<strong>HW 5</strong><br>Due: Feb 16
 </td>
 <td style="text-align:left;background-color: #e1e1e1 !important;">
 <a href="r6-vectors.html"><i class="fas fa-book"></i></a> Vectors
@@ -798,10 +826,12 @@ Feb 17
 <td style="text-align:left;background-color: #e1e1e1 !important;">
 </td>
 <td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
-<a href="c6-vectors.html"><i class="fas fa-laptop-code"></i></a> <strong>Vectors</strong><br>Creating and slicing collections of values
+<a href="c6-vectors.html"><i class="fas fa-laptop-code"></i></a>
+<strong>Vectors</strong><br>Creating and slicing collections of values
 </td>
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
-<a href="hw6-vectors.html"><i class="fas fa-pencil-ruler"></i></a> <strong>HW 6</strong><br>Due: Feb 23
+<a href="hw6-vectors.html"><i class="fas fa-pencil-ruler"></i></a>
+<strong>HW 6</strong><br>Due: Feb 23
 </td>
 <td style="text-align:left;background-color: #e1e1e1 !important;">
 <a href="r7-strings.html"><i class="fas fa-book"></i></a> Strings
@@ -818,10 +848,12 @@ Feb 24
 Quiz 4: <br> <em>Weeks 5 - 6</em>
 </td>
 <td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
-<a href="c7-strings.html"><i class="fas fa-laptop-code"></i></a> <strong>Strings</strong><br>All things between quotes
+<a href="c7-strings.html"><i class="fas fa-laptop-code"></i></a>
+<strong>Strings</strong><br>All things between quotes
 </td>
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
-<a href="hw7-strings.html"><i class="fas fa-pencil-ruler"></i></a> <strong>HW 7</strong><br>Due: Mar 02
+<a href="hw7-strings.html"><i class="fas fa-pencil-ruler"></i></a>
+<strong>HW 7</strong><br>Due: Mar 02
 </td>
 <td style="text-align:left;background-color: #e1e1e1 !important;">
 <a href="r8-python.html"><i class="fas fa-book"></i></a> Intro to Python
@@ -838,10 +870,12 @@ Mar 03
 Quiz 5: <br> <em>Week 7</em>
 </td>
 <td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
-<a href="c8-python.html"><i class="fas fa-laptop-code"></i></a> <strong>Python in R</strong><br>Python basics, and using python in R
+<a href="c8-python.html"><i class="fas fa-laptop-code"></i></a>
+<strong>Python in R</strong><br>Python basics, and using python in R
 </td>
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
-<a href="hw8-python.html"><i class="fas fa-pencil-ruler"></i></a> <strong>HW 8</strong><br>Due: Mar 09
+<a href="hw8-python.html"><i class="fas fa-pencil-ruler"></i></a>
+<strong>HW 8</strong><br>Due: Mar 09
 </td>
 <td style="text-align:left;background-color: #e1e1e1 !important;">
 </td>
@@ -856,7 +890,8 @@ Mar 10
 <td style="text-align:left;background-color: #e1e1e1 !important;">
 </td>
 <td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
-<strong>Midterm</strong><br>Don’t panic!<br><strong>(Deadline to submit HW 1-8)</strong>
+<strong>Midterm</strong><br>Don’t panic!<br><strong>(Deadline to submit
+HW 1-8)</strong>
 </td>
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
 </td>
@@ -878,7 +913,10 @@ Mar 17
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
 </td>
 <td style="text-align:left;background-color: #e1e1e1 !important;">
-<a href="r9.1-data-analysis-prelude.html"><i class="fas fa-book"></i></a> Data Analysis Prelude<br><a href="r9.2-data-frames.html"><i class="fas fa-book"></i></a> Data Frames
+<a
+href="r9.1-data-analysis-prelude.html"><i class="fas fa-book"></i></a>
+Data Analysis Prelude<br><a
+href="r9.2-data-frames.html"><i class="fas fa-book"></i></a> Data Frames
 </td>
 </tr>
 <tr>
@@ -891,13 +929,16 @@ Mar 24
 <td style="text-align:left;background-color: #e1e1e1 !important;">
 </td>
 <td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
-<a href="c9-data-frames.html"><i class="fas fa-laptop-code"></i></a> <strong>Data Frames</strong><br>Rows and columns of data
+<a href="c9-data-frames.html"><i class="fas fa-laptop-code"></i></a>
+<strong>Data Frames</strong><br>Rows and columns of data
 </td>
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
-<a href="hw9-data-frames.html"><i class="fas fa-pencil-ruler"></i></a> <strong>HW 9</strong><br>Due: Mar 30
+<a href="hw9-data-frames.html"><i class="fas fa-pencil-ruler"></i></a>
+<strong>HW 9</strong><br>Due: Mar 30
 </td>
 <td style="text-align:left;background-color: #e1e1e1 !important;">
-<a href="r10-data-wrangling.html"><i class="fas fa-book"></i></a> Data Wrangling
+<a href="r10-data-wrangling.html"><i class="fas fa-book"></i></a> Data
+Wrangling
 </td>
 </tr>
 <tr>
@@ -910,13 +951,17 @@ Mar 31
 <td style="text-align:left;background-color: #e1e1e1 !important;">
 </td>
 <td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
-<a href="c10-data-wrangling.html"><i class="fas fa-laptop-code"></i></a> <strong>Data Wrangling</strong><br>Modifying data frames
+<a href="c10-data-wrangling.html"><i class="fas fa-laptop-code"></i></a>
+<strong>Data Wrangling</strong><br>Modifying data frames
 </td>
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
-<a href="hw10-data-wrangling.html"><i class="fas fa-pencil-ruler"></i></a> <strong>HW 10</strong><br>Due: Apr 06
+<a
+href="hw10-data-wrangling.html"><i class="fas fa-pencil-ruler"></i></a>
+<strong>HW 10</strong><br>Due: Apr 06
 </td>
 <td style="text-align:left;background-color: #e1e1e1 !important;">
-<a href="r11-data-visualization.html"><i class="fas fa-book"></i></a> Data Visualization
+<a href="r11-data-visualization.html"><i class="fas fa-book"></i></a>
+Data Visualization
 </td>
 </tr>
 <tr>
@@ -930,13 +975,19 @@ Apr 07
 Quiz 6: <br> <em>Weeks 11 - 12</em>
 </td>
 <td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
-<a href="c11-data-visualization.html"><i class="fas fa-laptop-code"></i></a> <strong>Data Visualization</strong><br>Visualizing your data
+<a
+href="c11-data-visualization.html"><i class="fas fa-laptop-code"></i></a>
+<strong>Data Visualization</strong><br>Visualizing your data
 </td>
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
-<a href="hw11-data-visualization.html"><i class="fas fa-pencil-ruler"></i></a> <strong>HW 11</strong><br>Due: Apr 13
+<a
+href="hw11-data-visualization.html"><i class="fas fa-pencil-ruler"></i></a>
+<strong>HW 11</strong><br>Due: Apr 13
 </td>
 <td style="text-align:left;background-color: #e1e1e1 !important;">
-<a href="r12-reproducible-reporting.html"><i class="fas fa-book"></i></a> Reproducible Reporting
+<a
+href="r12-reproducible-reporting.html"><i class="fas fa-book"></i></a>
+Reproducible Reporting
 </td>
 </tr>
 <tr>
@@ -950,13 +1001,19 @@ Apr 14
 Quiz 7: <br> <em>Week 13</em>
 </td>
 <td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
-<a href="c12-reproducible-reporting.html"><i class="fas fa-laptop-code"></i></a> <strong>Reproducible Reporting</strong><br>Combinging text and code with RMarkdown
+<a
+href="c12-reproducible-reporting.html"><i class="fas fa-laptop-code"></i></a>
+<strong>Reproducible Reporting</strong><br>Combinging text and code with
+RMarkdown
 </td>
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
-<a href="hw12-reproducible-reporting.html"><i class="fas fa-pencil-ruler"></i></a> <strong>HW 12</strong><br>Due: Apr 20
+<a
+href="hw12-reproducible-reporting.html"><i class="fas fa-pencil-ruler"></i></a>
+<strong>HW 12</strong><br>Due: Apr 20
 </td>
 <td style="text-align:left;background-color: #e1e1e1 !important;">
-<a href="r13-monte-carlo-methods.html"><i class="fas fa-book"></i></a> Monte Carlo Methods
+<a href="r13-monte-carlo-methods.html"><i class="fas fa-book"></i></a>
+Monte Carlo Methods
 </td>
 </tr>
 <tr>
@@ -969,7 +1026,10 @@ Apr 21
 <td style="text-align:left;background-color: #e1e1e1 !important;">
 </td>
 <td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
-<a href="c13-monte-carlo-methods.html"><i class="fas fa-laptop-code"></i></a> <strong>Monte Carlo Methods</strong><br>Using simulation to solve problems
+<a
+href="c13-monte-carlo-methods.html"><i class="fas fa-laptop-code"></i></a>
+<strong>Monte Carlo Methods</strong><br>Using simulation to solve
+problems
 </td>
 <td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
 </td>
@@ -994,20 +1054,20 @@ Apr 28
 </td>
 </tr>
 <tr>
-<td style="text-align:center;">
+<td style="text-align:center;background-color: #e1e1e1 !important;">
 17
 </td>
-<td style="text-align:center;width: 2em; ">
+<td style="text-align:center;width: 2em; background-color: #e1e1e1 !important;">
 May 05
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;background-color: #e1e1e1 !important;">
 </td>
-<td style="text-align:left;width: 20em; ">
+<td style="text-align:left;width: 20em; background-color: #e1e1e1 !important;">
 <strong>Final Exam</strong><br>Don’t panic!
 </td>
-<td style="text-align:left;width: 9em; ">
+<td style="text-align:left;width: 9em; background-color: #e1e1e1 !important;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;background-color: #e1e1e1 !important;">
 </td>
 </tr>
 </tbody>

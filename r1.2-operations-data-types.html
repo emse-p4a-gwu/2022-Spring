@@ -13,6 +13,7 @@
 
 <title>Operators &amp; Data Types</title>
 
+<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
@@ -34,8 +35,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.3.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.3.0/css/v4-shims.min.css" rel="stylesheet" />
 <link rel="icon" href="images/favicon.ico">
 <script src="https://kit.fontawesome.com/1392a7030f.js" crossorigin="anonymous"></script>
 <style type="text/css">
@@ -246,11 +247,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -279,8 +284,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -288,16 +293,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -750,19 +748,24 @@ div.tocify {
 <ul>
 <li>Be able to use R as a calculator.</li>
 <li>Be able to compare values in R.</li>
-<li>Know the distinctions between how R handles different types of data types (numbers, strings, and logicals).</li>
+<li>Know the distinctions between how R handles different types of data
+types (numbers, strings, and logicals).</li>
 </ul>
 <h3 id="suggested-readings">Suggested Readings</h3>
 <ul>
-<li>Chapter 3 of Danielle Navarro’s book <a href="https://learningstatisticswithr.com/book/introR.html">“Learning Statistics With R”</a></li>
+<li>Chapter 3 of Danielle Navarro’s book <a
+href="https://learningstatisticswithr.com/book/introR.html">“Learning
+Statistics With R”</a></li>
 </ul>
 </blockquote>
 <div id="r-as-a-calculator" class="section level1">
 <h1>R as a calculator</h1>
-<p>You can do a ton of things with R, but at its core it’s basically a fancy calculator. Let’s get started with some basic arithmetic!</p>
+<p>You can do a ton of things with R, but at its core it’s basically a
+fancy calculator. Let’s get started with some basic arithmetic!</p>
 <div id="doing-basic-math" class="section level2">
 <h2>Doing basic math</h2>
-<p>R handles simple arithmetic using the following <strong>arithmetic</strong> operators:</p>
+<p>R handles simple arithmetic using the following
+<strong>arithmetic</strong> operators:</p>
 <div style="width:500px">
 <table>
 <thead>
@@ -807,7 +810,9 @@ div.tocify {
 </tbody>
 </table>
 </div>
-<p>The first four basic operators (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>) are pretty straightforward and behave as expected:</p>
+<p>The first four basic operators (<code>+</code>, <code>-</code>,
+<code>*</code>, <code>/</code>) are pretty straightforward and behave as
+expected:</p>
 <pre class="r"><code>7 + 5 # Addition</code></pre>
 <pre><code>#&gt; [1] 12</code></pre>
 <pre class="r"><code>7 - 5 # Subtraction</code></pre>
@@ -816,14 +821,19 @@ div.tocify {
 <pre><code>#&gt; [1] 35</code></pre>
 <pre class="r"><code>7 / 5 # Division</code></pre>
 <pre><code>#&gt; [1] 1.4</code></pre>
-<p>Not a lot of surprises (you can ignore the <code>[1]</code> you see in the returned values…that’s just R saying there’s only one value to return).</p>
-<p>Powers (i.e. <span class="math inline">\(x^n\)</span>) are represented using the <code>^</code> symbol. For example, to calculate <span class="math inline">\(5^4\)</span> in R, we would type:</p>
+<p>Not a lot of surprises (you can ignore the <code>[1]</code> you see
+in the returned values…that’s just R saying there’s only one value to
+return).</p>
+<p>Powers (i.e. <span class="math inline">\(x^n\)</span>) are
+represented using the <code>^</code> symbol. For example, to calculate
+<span class="math inline">\(5^4\)</span> in R, we would type:</p>
 <pre class="r"><code>5^4</code></pre>
 <pre><code>#&gt; [1] 625</code></pre>
 </div>
 <div id="slightly-more-tricky-math" class="section level2">
 <h2>Slightly more tricky math</h2>
-<p>There are two other operators that are not typically as well-known as the first five but are quite common in programming:</p>
+<p>There are two other operators that are not typically as well-known as
+the first five but are quite common in programming:</p>
 <div style="width:500px">
 <table>
 <thead>
@@ -852,38 +862,53 @@ div.tocify {
 </div>
 <div id="integer-division" class="section level3">
 <h3>Integer division</h3>
-<p>Integer division is division in which the remainder is discarded. Note the difference between regular (<code>/</code>) and integer (<code>%/%</code>) division:</p>
+<p>Integer division is division in which the remainder is discarded.
+Note the difference between regular (<code>/</code>) and integer
+(<code>%/%</code>) division:</p>
 <pre class="r"><code>4 / 3 # Regular division</code></pre>
 <pre><code>#&gt; [1] 1.333333</code></pre>
 <pre class="r"><code>4 %/% 3 # Integer division</code></pre>
 <pre><code>#&gt; [1] 1</code></pre>
-<p>With integer division, 3 can only go into 4 once, so <code>4 %/% 3</code> returns <code>1</code>.</p>
-<p>With integer division, dividing a number by a larger number will always produce <code>0</code> (because the larger number cannot go into the smaller number):</p>
+<p>With integer division, 3 can only go into 4 once, so
+<code>4 %/% 3</code> returns <code>1</code>.</p>
+<p>With integer division, dividing a number by a larger number will
+always produce <code>0</code> (because the larger number cannot go into
+the smaller number):</p>
 <pre class="r"><code>4 %/% 5 # Will return 0</code></pre>
 <pre><code>#&gt; [1] 0</code></pre>
 </div>
 <div id="the-modulus-operator" class="section level3">
 <h3>The Modulus operator</h3>
-<p>The <strong>modulus</strong> (aka “mod” operator) returns the remainder after doing integer division. For example:</p>
+<p>The <strong>modulus</strong> (aka “mod” operator) returns the
+remainder after doing integer division. For example:</p>
 <pre class="r"><code>17 %% 3</code></pre>
 <pre><code>#&gt; [1] 2</code></pre>
-<p>This returns <code>2</code> because because 17 / 3 is equal to 5 with a remainder of 2. The modulus returns any remainder, including decimals:</p>
+<p>This returns <code>2</code> because because 17 / 3 is equal to 5 with
+a remainder of 2. The modulus returns any remainder, including
+decimals:</p>
 <pre class="r"><code>3.1415 %% 3</code></pre>
 <pre><code>#&gt; [1] 0.1415</code></pre>
-<p>If you mod a number by itself, you’ll get <code>0</code> (because there’s no remainder):</p>
+<p>If you mod a number by itself, you’ll get <code>0</code> (because
+there’s no remainder):</p>
 <pre class="r"><code>17 %% 17 # Will return 0</code></pre>
 <pre><code>#&gt; [1] 0</code></pre>
-<p>Finally, if you mod a number by a larger number, you’ll get the smaller number back since it’s the remainder:</p>
+<p>Finally, if you mod a number by a larger number, you’ll get the
+smaller number back since it’s the remainder:</p>
 <pre class="r"><code>17 %% 20 # Will return 17</code></pre>
 <pre><code>#&gt; [1] 17</code></pre>
 </div>
 </div>
 <div id="tricks-with-and" class="section level2">
 <h2>Tricks with <code>%%</code> and <code>%/%</code></h2>
-<p>The <code>%%</code> and <code>%/%</code> operators can be really handy. Here are a few tricks.</p>
+<p>The <code>%%</code> and <code>%/%</code> operators can be really
+handy. Here are a few tricks.</p>
 <div id="odds-and-evens-with-n-2" class="section level3">
 <h3>Odds and evens with <code>n %% 2</code></h3>
-<p>You can tell if an integer <code>n</code> is even or odd by using <code>m %% 2</code>. If the result is <code>0</code>, <code>n</code> must be even (because 2 goes in <em>evenly</em> to even numbers with no remainder). If <code>n</code> is odd, you’ll get a remainder of <code>1</code>. Here’s an example:</p>
+<p>You can tell if an integer <code>n</code> is even or odd by using
+<code>m %% 2</code>. If the result is <code>0</code>, <code>n</code>
+must be even (because 2 goes in <em>evenly</em> to even numbers with no
+remainder). If <code>n</code> is odd, you’ll get a remainder of
+<code>1</code>. Here’s an example:</p>
 <pre class="r"><code>10 %% 2 # Even</code></pre>
 <pre><code>#&gt; [1] 0</code></pre>
 <pre class="r"><code>11 %% 2 # Odd</code></pre>
@@ -897,14 +922,18 @@ div.tocify {
 </div>
 <div id="number-chopping-with-10s" class="section level2">
 <h2>Number “chopping” with 10s</h2>
-<p>When you use the mod operator <code>%%</code> on a <strong>positive</strong> number with factors of 10, it “chops” the number and returns everything to the <em>right</em> of the “chop” point:</p>
+<p>When you use the mod operator <code>%%</code> on a
+<strong>positive</strong> number with factors of 10, it “chops” the
+number and returns everything to the <em>right</em> of the “chop”
+point:</p>
 <pre class="r"><code>123456 %% 1 # Chops to the right of the *ones* digit</code></pre>
 <pre><code>#&gt; [1] 0</code></pre>
 <pre class="r"><code>123456 %% 10 # Chops to the right of the *tens* digit</code></pre>
 <pre><code>#&gt; [1] 6</code></pre>
 <pre class="r"><code>123456 %% 100 # Chops to the right of the *hundreds* digit</code></pre>
 <pre><code>#&gt; [1] 56</code></pre>
-<p>Integer division <code>%/%</code> works the same way, except it returns everything to the <em>left</em> of the “chop” point:</p>
+<p>Integer division <code>%/%</code> works the same way, except it
+returns everything to the <em>left</em> of the “chop” point:</p>
 <pre class="r"><code>123456 %/% 1 # &quot;Chops to the right of the ones digit</code></pre>
 <pre><code>#&gt; [1] 123456</code></pre>
 <pre class="r"><code>123456 %/% 10 # &quot;Chops to the right of the tens digit</code></pre>
@@ -916,16 +945,20 @@ div.tocify {
 <pre><code>#&gt; [1] 0.1415</code></pre>
 <pre class="r"><code>3.1415 %/% 1</code></pre>
 <pre><code>#&gt; [1] 3</code></pre>
-<p>But <strong>be careful</strong> - this “trick” only works with <em>positive</em> numbers:</p>
+<p>But <strong>be careful</strong> - this “trick” only works with
+<em>positive</em> numbers:</p>
 <pre class="r"><code>-123.456 %% 10</code></pre>
 <pre><code>#&gt; [1] 6.544</code></pre>
 <pre class="r"><code>-123.456 %/% 10</code></pre>
 <pre><code>#&gt; [1] -13</code></pre>
 <p>Here’s some mental notes to remember how this works:</p>
 <ul>
-<li><code>%%</code> returns everything to the <em>right</em> (<code>&lt;chop&gt; -&gt;</code>)</li>
-<li><code>%/%</code> returns everything to the <em>left</em> (<code>&lt;- &lt;chop&gt;</code>)</li>
-<li>The “chop” point is always just to the <em>right</em> of the chopping digit:</li>
+<li><code>%%</code> returns everything to the <em>right</em>
+(<code>&lt;chop&gt; -&gt;</code>)</li>
+<li><code>%/%</code> returns everything to the <em>left</em>
+(<code>&lt;- &lt;chop&gt;</code>)</li>
+<li>The “chop” point is always just to the <em>right</em> of the
+chopping digit:</li>
 </ul>
 <div style="width:500px">
 <table>
@@ -969,11 +1002,15 @@ div.tocify {
 </div>
 <div id="comparing-things-in-r" class="section level1">
 <h1>Comparing things in R</h1>
-<p>Other than simple arithmetic, another common programming task is to compare different values to see if one is greater than, less than, or equal to the other. R handles comparisons with <strong>relational</strong> and <strong>logical</strong> operators.</p>
+<p>Other than simple arithmetic, another common programming task is to
+compare different values to see if one is greater than, less than, or
+equal to the other. R handles comparisons with
+<strong>relational</strong> and <strong>logical</strong> operators.</p>
 </div>
 <div id="comparing-two-things" class="section level1">
 <h1>Comparing two things</h1>
-<p>To compare two things, use the following <strong>relational</strong> operators:</p>
+<p>To compare two things, use the following <strong>relational</strong>
+operators:</p>
 <ul>
 <li>Less than: <code>&lt;</code></li>
 <li>Less than or equal to : <code>&lt;=</code></li>
@@ -982,35 +1019,46 @@ div.tocify {
 <li>Equal: <code>==</code></li>
 <li>Not equal: <code>!=</code></li>
 </ul>
-<p>The <em>less than</em> operator <code>&lt;</code> can be used to test whether one number is smaller than another number:</p>
+<p>The <em>less than</em> operator <code>&lt;</code> can be used to test
+whether one number is smaller than another number:</p>
 <pre class="r"><code>2 &lt; 5</code></pre>
 <pre><code>#&gt; [1] TRUE</code></pre>
-<p>If the two values are equal, the <code>&lt;</code> operator will return <code>FALSE</code>, while the <code>&lt;=</code> operator will return <code>TRUE</code>: :</p>
+<p>If the two values are equal, the <code>&lt;</code> operator will
+return <code>FALSE</code>, while the <code>&lt;=</code> operator will
+return <code>TRUE</code>: :</p>
 <pre class="r"><code>2 &lt; 2</code></pre>
 <pre><code>#&gt; [1] FALSE</code></pre>
 <pre class="r"><code>2 &lt;= 2</code></pre>
 <pre><code>#&gt; [1] TRUE</code></pre>
-<p>The “greater than” (<code>&gt;</code>) and “greater than or equal to” (<code>&gt;=</code>) operators work the same way but in reverse:</p>
+<p>The “greater than” (<code>&gt;</code>) and “greater than or equal to”
+(<code>&gt;=</code>) operators work the same way but in reverse:</p>
 <pre class="r"><code>2 &gt; 5</code></pre>
 <pre><code>#&gt; [1] FALSE</code></pre>
 <pre class="r"><code>2 &gt; 2</code></pre>
 <pre><code>#&gt; [1] FALSE</code></pre>
 <pre class="r"><code>2 &gt;= 2</code></pre>
 <pre><code>#&gt; [1] TRUE</code></pre>
-<p>To assess whether two values are equal, we have to use a double equal sign (<code>==</code>):</p>
+<p>To assess whether two values are equal, we have to use a double equal
+sign (<code>==</code>):</p>
 <pre class="r"><code>(2 + 2) == 4</code></pre>
 <pre><code>#&gt; [1] TRUE</code></pre>
 <pre class="r"><code>(2 + 2) == 5</code></pre>
 <pre><code>#&gt; [1] FALSE</code></pre>
-<p>To assess whether two values are <em>not</em> equal, we have to use an exclamation point sign with an equal sign (<code>!=</code>):</p>
+<p>To assess whether two values are <em>not</em> equal, we have to use
+an exclamation point sign with an equal sign (<code>!=</code>):</p>
 <pre class="r"><code>(2 + 2) != 4</code></pre>
 <pre><code>#&gt; [1] FALSE</code></pre>
 <pre class="r"><code>(2 + 2) != 5</code></pre>
 <pre><code>#&gt; [1] TRUE</code></pre>
-<p>It’s worth noting that you can also apply equality operations to “strings,” which is the general word to describe character values (i.e. not numbers). For example, R understands that a <code>"penguin"</code> is a <code>"penguin"</code> so you get this:</p>
+<p>It’s worth noting that you can also apply equality operations to
+“strings,” which is the general word to describe character values
+(i.e. not numbers). For example, R understands that a
+<code>"penguin"</code> is a <code>"penguin"</code> so you get this:</p>
 <pre class="r"><code>&quot;penguin&quot; == &quot;penguin&quot;</code></pre>
 <pre><code>#&gt; [1] TRUE</code></pre>
-<p>However, R is very particular about what counts as equality. For two pieces of text to be equal, they must be <em>precisely</em> the same:</p>
+<p>However, R is very particular about what counts as equality. For two
+pieces of text to be equal, they must be <em>precisely</em> the
+same:</p>
 <pre class="r"><code>&quot;penguin&quot; == &quot;PENGUIN&quot;        # FALSE because the case is different</code></pre>
 <pre><code>#&gt; [1] FALSE</code></pre>
 <pre class="r"><code>&quot;penguin&quot; == &quot;p e n g u i n&quot;  # FALSE because the spacing is different</code></pre>
@@ -1019,37 +1067,50 @@ div.tocify {
 <pre><code>#&gt; [1] FALSE</code></pre>
 <div id="making-multiple-comparisons" class="section level2">
 <h2>Making multiple comparisons</h2>
-<p>To make a more complex comparison of more than just two things, use the following <strong>logical</strong> operators:</p>
+<p>To make a more complex comparison of more than just two things, use
+the following <strong>logical</strong> operators:</p>
 <ul>
 <li>And: <code>&amp;</code></li>
 <li>Or: <code>|</code></li>
 <li>Not: <code>!</code></li>
 </ul>
 <p><strong>And</strong>:</p>
-<p>A logical expression <code>x &amp; y</code> is <code>TRUE</code> only if <em>both</em> <code>x</code> and <code>y</code> are <code>TRUE</code>.</p>
+<p>A logical expression <code>x &amp; y</code> is <code>TRUE</code> only
+if <em>both</em> <code>x</code> and <code>y</code> are
+<code>TRUE</code>.</p>
 <pre class="r"><code>(2 == 2) &amp; (2 == 3) # FALSE because the second comparison if not TRUE</code></pre>
 <pre><code>#&gt; [1] FALSE</code></pre>
 <pre class="r"><code>(2 == 2) &amp; (3 == 3) # TRUE because both comparisons are TRUE</code></pre>
 <pre><code>#&gt; [1] TRUE</code></pre>
 <p><strong>Or</strong>:</p>
-<p>A logical expression <code>x | y</code> is <code>TRUE</code> if <em>either</em> <code>x</code> or <code>y</code> are <code>TRUE</code>.</p>
+<p>A logical expression <code>x | y</code> is <code>TRUE</code> if
+<em>either</em> <code>x</code> or <code>y</code> are
+<code>TRUE</code>.</p>
 <pre class="r"><code>(2 == 2) | (2 == 3) # TRUE because the first comparison is TRUE</code></pre>
 <pre><code>#&gt; [1] TRUE</code></pre>
 <p><strong>Not</strong>:</p>
-<p>The <code>!</code> operator behaves like the word <em>“not”</em> in everyday language. If a statement is “not true”, then it must be “false”. Perhaps the simplest example is</p>
+<p>The <code>!</code> operator behaves like the word <em>“not”</em> in
+everyday language. If a statement is “not true”, then it must be
+“false”. Perhaps the simplest example is</p>
 <pre class="r"><code>!TRUE</code></pre>
 <pre><code>#&gt; [1] FALSE</code></pre>
-<p>It is good practice to include parentheses to clarify the statement or comparison being made. Consider the following example:</p>
+<p>It is good practice to include parentheses to clarify the statement
+or comparison being made. Consider the following example:</p>
 <pre class="r"><code>!3 == 5</code></pre>
 <pre><code>#&gt; [1] TRUE</code></pre>
-<p>This returns <code>TRUE</code>, but it’s a bit confusing. Reading from left to right, you start by saying “not 3”…what does that mean?</p>
-<p>What is really going on here is R first evaluates whether 3 is equal to 5 (<code>3 == 5</code>), and then returns the “not” (<code>!</code>) of that. A better version of the same thing would be:</p>
+<p>This returns <code>TRUE</code>, but it’s a bit confusing. Reading
+from left to right, you start by saying “not 3”…what does that mean?</p>
+<p>What is really going on here is R first evaluates whether 3 is equal
+to 5 (<code>3 == 5</code>), and then returns the “not” (<code>!</code>)
+of that. A better version of the same thing would be:</p>
 <pre class="r"><code>!(3 == 5)</code></pre>
 <pre><code>#&gt; [1] TRUE</code></pre>
 </div>
 <div id="order-of-operations" class="section level2">
 <h2>Order of operations</h2>
-<p>R follows the typical BEDMAS order of operations. That is, R evaluates statements in this order<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>:</p>
+<p>R follows the typical BEDMAS order of operations. That is, R
+evaluates statements in this order<a href="#fn1" class="footnote-ref"
+id="fnref1"><sup>1</sup></a>:</p>
 <ol style="list-style-type: decimal">
 <li><strong>B</strong>rackets</li>
 <li><strong>E</strong>xponents</li>
@@ -1061,31 +1122,55 @@ div.tocify {
 <p>For example, if I type:</p>
 <pre class="r"><code>1 + 2 * 4</code></pre>
 <pre><code>#&gt; [1] 9</code></pre>
-<p>R first computes <code>2 * 4</code> and then adds <code>1</code>. If what you actually wanted was for R to first add <code>2</code> to <code>1</code>, then you should have added parentheses around <code>1</code> and <code>2</code>:</p>
+<p>R first computes <code>2 * 4</code> and then adds <code>1</code>. If
+what you actually wanted was for R to first add <code>2</code> to
+<code>1</code>, then you should have added parentheses around
+<code>1</code> and <code>2</code>:</p>
 <pre class="r"><code>(1 + 2) * 4</code></pre>
 <pre><code>#&gt; [1] 12</code></pre>
-<p>A helpful rule of thumb to remember is that <strong>brackets always come first</strong>. So, if you’re ever unsure about what order R will do things in, an easy solution is to enclose the thing you want it to do first in brackets.</p>
+<p>A helpful rule of thumb to remember is that <strong>brackets always
+come first</strong>. So, if you’re ever unsure about what order R will
+do things in, an easy solution is to enclose the thing you want it to do
+first in brackets.</p>
 <blockquote>
-<p>Note that for logical operators, the order precedence is <code>! &gt; &amp; &gt; |</code></p>
+<p>Note that for logical operators, the order precedence is
+<code>! &gt; &amp; &gt; |</code></p>
 </blockquote>
 <p>For example, consider the following statement:</p>
 <pre class="r"><code>TRUE | FALSE &amp; FALSE</code></pre>
 <pre><code>#&gt; [1] TRUE</code></pre>
-<p>This returns <code>TRUE</code> because the <code>&amp;</code> statement (<code>FALSE &amp; FALSE</code>) is evaluated first, so the whole statement simplifies to <code>TRUE | FALSE</code>, which returns <code>TRUE</code>. If you put parentheses around the <code>|</code> statement, it would evaluate first and the whole statement would return <code>FALSE</code>:</p>
+<p>This returns <code>TRUE</code> because the <code>&amp;</code>
+statement (<code>FALSE &amp; FALSE</code>) is evaluated first, so the
+whole statement simplifies to <code>TRUE | FALSE</code>, which returns
+<code>TRUE</code>. If you put parentheses around the <code>|</code>
+statement, it would evaluate first and the whole statement would return
+<code>FALSE</code>:</p>
 <pre class="r"><code>(TRUE | FALSE) &amp; FALSE</code></pre>
 <pre><code>#&gt; [1] FALSE</code></pre>
 <p>Similarly, consider the following statement:</p>
 <pre class="r"><code>! TRUE | TRUE</code></pre>
 <pre><code>#&gt; [1] TRUE</code></pre>
-<p>This returns <code>TRUE</code> because the <code>!</code> statement is evaluated first (<code>! TRUE</code> is <code>FALSE</code>), and the simplified statement <code>FALSE | TRUE</code> returns <code>TRUE</code>. Again, if you put parentheses around the <code>|</code> statement the whole statement becomes <code>FALSE</code>:</p>
+<p>This returns <code>TRUE</code> because the <code>!</code> statement
+is evaluated first (<code>! TRUE</code> is <code>FALSE</code>), and the
+simplified statement <code>FALSE | TRUE</code> returns
+<code>TRUE</code>. Again, if you put parentheses around the
+<code>|</code> statement the whole statement becomes
+<code>FALSE</code>:</p>
 <pre class="r"><code>! (TRUE | TRUE)</code></pre>
 <pre><code>#&gt; [1] FALSE</code></pre>
 </div>
 </div>
 <div id="data-types" class="section level1">
 <h1>Data types</h1>
-<p>Every programming language has the ability to store data of different types. R recognizes several important basic data types (there are others, but these cover most cases):</p>
+<p>Every programming language has the ability to store data of different
+types. R recognizes several important basic data types (there are
+others, but these cover most cases):</p>
 <table>
+<colgroup>
+<col width="20%" />
+<col width="59%" />
+<col width="20%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Type</th>
@@ -1116,85 +1201,133 @@ div.tocify {
 </tr>
 </tbody>
 </table>
-<p>If you want to check with type a value is, you can use the function <code>typeof()</code>. For example:</p>
+<p>If you want to check with type a value is, you can use the function
+<code>typeof()</code>. For example:</p>
 <pre class="r"><code>typeof(&quot;hello&quot;)</code></pre>
 <pre><code>#&gt; [1] &quot;character&quot;</code></pre>
 <div id="numeric-types" class="section level2">
 <h2>Numeric types</h2>
-<p>Numbers in R have the <code>numeric</code> data type, which is also the default computational type. There are two types of numbers:</p>
+<p>Numbers in R have the <code>numeric</code> data type, which is also
+the default computational type. There are two types of numbers:</p>
 <ul>
 <li><strong>Integers</strong></li>
 <li><strong>Non-integers</strong> (aka “double” or “float”)</li>
 </ul>
-<p>The difference is that integers don’t have decimal values. A non-integer in R has the type “<code>double</code>”:</p>
+<p>The difference is that integers don’t have decimal values. A
+non-integer in R has the type “<code>double</code>”:</p>
 <pre class="r"><code>typeof(3.14)</code></pre>
 <pre><code>#&gt; [1] &quot;double&quot;</code></pre>
-<p>By default, R assumes all numbers have a decimal place, even if it <em>looks</em> like an integer:</p>
+<p>By default, R assumes all numbers have a decimal place, even if it
+<em>looks</em> like an integer:</p>
 <pre class="r"><code>typeof(3)</code></pre>
 <pre><code>#&gt; [1] &quot;double&quot;</code></pre>
-<p>In this case, R assumes that <code>3</code> is really <code>3.0</code>. To make sure R knows you really do mean to create an integer, you have to add an <code>L</code> to the end of the number<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>:</p>
+<p>In this case, R assumes that <code>3</code> is really
+<code>3.0</code>. To make sure R knows you really do mean to create an
+integer, you have to add an <code>L</code> to the end of the number<a
+href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>:</p>
 <pre class="r"><code>typeof(3L)</code></pre>
 <pre><code>#&gt; [1] &quot;integer&quot;</code></pre>
 </div>
 <div id="character-types" class="section level2">
 <h2>Character types</h2>
-<p>A character value is used to represent string values in R. Anything put between single quotes (<code>''</code>) or double quotes (<code>""</code>) will be stored as a character. For example:</p>
+<p>A character value is used to represent string values in R. Anything
+put between single quotes (<code>''</code>) or double quotes
+(<code>""</code>) will be stored as a character. For example:</p>
 <pre class="r"><code>typeof(&#39;3&#39;)</code></pre>
 <pre><code>#&gt; [1] &quot;character&quot;</code></pre>
-<p>Notice that even though the value <em>looks</em> like a number, because it is inside quotes R interprets it as a character. If you mistakenly thought it was a a number, R will gladly return an error when you try to do a numerical operation with it:</p>
+<p>Notice that even though the value <em>looks</em> like a number,
+because it is inside quotes R interprets it as a character. If you
+mistakenly thought it was a a number, R will gladly return an error when
+you try to do a numerical operation with it:</p>
 <pre class="r"><code>&#39;3&#39; + 7</code></pre>
 <pre><code>#&gt; Error in &quot;3&quot; + 7: non-numeric argument to binary operator</code></pre>
-<p>It doesn’t mattef if you use single or double quotes to create a character. The only time is <em>does</em> matter is if the character is a quote symbole itself. For example, if you wanted to type the word <code>"don't"</code>, you should use double quotes so that R knows the single quote is part of the character:</p>
+<p>It doesn’t mattef if you use single or double quotes to create a
+character. The only time is <em>does</em> matter is if the character is
+a quote symbole itself. For example, if you wanted to type the word
+<code>"don't"</code>, you should use double quotes so that R knows the
+single quote is part of the character:</p>
 <pre class="r"><code>typeof(&quot;don&#39;t&quot;)</code></pre>
 <pre><code>#&gt; [1] &quot;character&quot;</code></pre>
-<p>If you used single quotes, you’ll get an error because R reads <code>'don'</code> as a character:</p>
+<p>If you used single quotes, you’ll get an error because R reads
+<code>'don'</code> as a character:</p>
 <pre class="r"><code>typeof(&#39;don&#39;t&#39;)</code></pre>
 <pre><code>#&gt; Error: &lt;text&gt;:1:13: unexpected symbol
 #&gt; 1: typeof(&#39;don&#39;t
 #&gt;                 ^</code></pre>
-<p>We will go into much more detail about working with character values later on in <a href="L7-strings.html">Week 7</a>.</p>
+<p>We will go into much more detail about working with character values
+later on in <a href="L7-strings.html">Week 7</a>.</p>
 </div>
 <div id="logical-types" class="section level2">
 <h2>Logical types</h2>
-<p>Logical data only have two values: <code>TRUE</code> or <code>FALSE</code>. Note that these are not in quotes and are in all caps.</p>
+<p>Logical data only have two values: <code>TRUE</code> or
+<code>FALSE</code>. Note that these are not in quotes and are in all
+caps.</p>
 <pre class="r"><code>typeof(TRUE)</code></pre>
 <pre><code>#&gt; [1] &quot;logical&quot;</code></pre>
 <pre class="r"><code>typeof(FALSE)</code></pre>
 <pre><code>#&gt; [1] &quot;logical&quot;</code></pre>
-<p>R uses these two special values to help answer questions about logical statements. For example, let’s compare whether <code>1</code> is greater than <code>2</code>:</p>
+<p>R uses these two special values to help answer questions about
+logical statements. For example, let’s compare whether <code>1</code> is
+greater than <code>2</code>:</p>
 <pre class="r"><code>1 &gt; 2</code></pre>
 <pre><code>#&gt; [1] FALSE</code></pre>
-<p>R returns the values <code>FALSE</code> because 1 is not greater than 2. If I flip the question to whether <code>1</code> is <em>less</em> than <code>2</code>, I’ll get <code>TRUE</code>:</p>
+<p>R returns the values <code>FALSE</code> because 1 is not greater than
+2. If I flip the question to whether <code>1</code> is <em>less</em>
+than <code>2</code>, I’ll get <code>TRUE</code>:</p>
 <pre class="r"><code>1 &lt; 2</code></pre>
 <pre><code>#&gt; [1] TRUE</code></pre>
 </div>
 <div id="special-values" class="section level2">
 <h2>Special values</h2>
-<p>In addition to the four main data types mentioned, there are a few additional “special” types: <code>Inf</code>, <code>NaN</code>, <code>NA</code> and <code>NULL</code>.</p>
-<p><strong>Infinity</strong>: <code>Inf</code> corresponds to a value that is infinitely large (or infinitely small with <code>-Inf</code>). The easiest way to get <code>Inf</code> is to divide a positive number by 0:</p>
+<p>In addition to the four main data types mentioned, there are a few
+additional “special” types: <code>Inf</code>, <code>NaN</code>,
+<code>NA</code> and <code>NULL</code>.</p>
+<p><strong>Infinity</strong>: <code>Inf</code> corresponds to a value
+that is infinitely large (or infinitely small with <code>-Inf</code>).
+The easiest way to get <code>Inf</code> is to divide a positive number
+by 0:</p>
 <pre class="r"><code>1/0</code></pre>
 <pre><code>#&gt; [1] Inf</code></pre>
-<p><strong>Not a Number</strong>: <code>NaN</code> is short for “not a number”, and it’s basically a reserved keyword that means “there isn’t a mathematically defined number for this.” For example:</p>
+<p><strong>Not a Number</strong>: <code>NaN</code> is short for “not a
+number”, and it’s basically a reserved keyword that means “there isn’t a
+mathematically defined number for this.” For example:</p>
 <pre class="r"><code>0/0</code></pre>
 <pre><code>#&gt; [1] NaN</code></pre>
-<p><strong>Not available</strong>: <code>NA</code> indicates that the value that is “supposed” to be stored here is missing. We’ll see these much more when we start getting into data structures like vectors and data frames.</p>
-<p><strong>No value</strong>: <code>NULL</code> asserts that the variable genuinely has no value whatsoever, or does not even exist.</p>
+<p><strong>Not available</strong>: <code>NA</code> indicates that the
+value that is “supposed” to be stored here is missing. We’ll see these
+much more when we start getting into data structures like vectors and
+data frames.</p>
+<p><strong>No value</strong>: <code>NULL</code> asserts that the
+variable genuinely has no value whatsoever, or does not even exist.</p>
 <hr />
 <p><strong>Page sources</strong>:</p>
-<p>Some content on this page has been modified from other courses, including:</p>
+<p>Some content on this page has been modified from other courses,
+including:</p>
 <ul>
-<li>Danielle Navarro’s book <a href="https://learningstatisticswithr.com/book/introR.html">“Learning Statistics With R”</a></li>
+<li>Danielle Navarro’s book <a
+href="https://learningstatisticswithr.com/book/introR.html">“Learning
+Statistics With R”</a></li>
 <li>Jenny Bryan’s <a href="http://stat545.com/">STAT 545 Course</a></li>
-<li><a href="https://rstudio.cloud/learn/primers/1.2">RStudio primers</a></li>
-<li>Xiao Ping Song’s <a href="https://github.com/xp-song/Intro2R">Intro2R crash course</a></li>
+<li><a href="https://rstudio.cloud/learn/primers/1.2">RStudio
+primers</a></li>
+<li>Xiao Ping Song’s <a
+href="https://github.com/xp-song/Intro2R">Intro2R crash course</a></li>
 </ul>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
-<li id="fn1"><p>For a more precise statement, see the <a href="http://stat.ethz.ch/R-manual/R-devel/library/base/html/Syntax.html">operator precedence</a> for R.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Why <code>L</code>? Well, it’s a bit <a href="https://stackoverflow.com/questions/24350733/why-would-r-use-the-l-suffix-to-denote-an-integer">complicated</a>, but R supports complex numbers which are denoted by <code>i</code>, so <code>i</code> was already taken. A quick answer is that R uses 32-bit <em>long</em> integers, so <code>L</code> for “long”.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>For a more precise statement, see the <a
+href="http://stat.ethz.ch/R-manual/R-devel/library/base/html/Syntax.html">operator
+precedence</a> for R.<a href="#fnref1"
+class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Why <code>L</code>? Well, it’s a bit <a
+href="https://stackoverflow.com/questions/24350733/why-would-r-use-the-l-suffix-to-denote-an-integer">complicated</a>,
+but R supports complex numbers which are denoted by <code>i</code>, so
+<code>i</code> was already taken. A quick answer is that R uses 32-bit
+<em>long</em> integers, so <code>L</code> for “long”.<a href="#fnref2"
+class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 

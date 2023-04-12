@@ -13,6 +13,7 @@
 
 <title>Iteration</title>
 
+<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
@@ -34,8 +35,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.3.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.3.0/css/v4-shims.min.css" rel="stylesheet" />
 <link rel="icon" href="images/favicon.ico">
 <script src="https://kit.fontawesome.com/1392a7030f.js" crossorigin="anonymous"></script>
 <style type="text/css">
@@ -246,11 +247,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -279,8 +284,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -288,16 +293,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -749,33 +747,57 @@ div.tocify {
 <h3 id="learning-objectives">Learning Objectives</h3>
 <ul>
 <li>Describe what loops are.</li>
-<li>Understand the differences and different uses of <code>for</code> loops and <code>while</code> loops.</li>
-<li>Understand how to use <code>break</code> and <code>next</code> statements inside loops.</li>
+<li>Understand the differences and different uses of <code>for</code>
+loops and <code>while</code> loops.</li>
+<li>Understand how to use <code>break</code> and <code>next</code>
+statements inside loops.</li>
 </ul>
 <h3 id="suggested-readings">Suggested Readings</h3>
 <ul>
-<li><a href="https://r4ds.had.co.nz/iteration.html">Chapter 21</a> of “R for Data Science”, by Garrett Grolemund and Hadley Wickham</li>
-<li><a href="https://rstudio-education.github.io/hopr/loops.html">Chapters 11</a> of “Hands-On Programming with R”, by Garrett Grolemund</li>
+<li><a href="https://r4ds.had.co.nz/iteration.html">Chapter 21</a> of “R
+for Data Science”, by Garrett Grolemund and Hadley Wickham</li>
+<li><a
+href="https://rstudio-education.github.io/hopr/loops.html">Chapters
+11</a> of “Hands-On Programming with R”, by Garrett Grolemund</li>
 </ul>
 </blockquote>
 <hr />
-<p>Similar to conditionals (remember those <a href="L4.1-conditionals.html">if / else statements</a>?), loops are another kind of “flow control” - that is, code that alters the otherwise linear flow of operations from the top of a script straight through to the end. The idea is simple: a loop is a block of code (i.e., a sequence of commands) that R will execute over and over again until some <em>termination criterion</em> is met.</p>
-<p>The main two types of loops are <code>for</code> and <code>while</code> loops.</p>
+<p>Similar to conditionals (remember those <a
+href="L4.1-conditionals.html">if / else statements</a>?), loops are
+another kind of “flow control” - that is, code that alters the otherwise
+linear flow of operations from the top of a script straight through to
+the end. The idea is simple: a loop is a block of code (i.e., a sequence
+of commands) that R will execute over and over again until some
+<em>termination criterion</em> is met.</p>
+<p>The main two types of loops are <code>for</code> and
+<code>while</code> loops.</p>
 <div id="the-for-loop" class="section level1">
 <h1>The <code>for</code> loop</h1>
-<p>Use <code>for</code> loops when there is a known number of iterations. The basic format of a <code>for</code> loop goes like this:</p>
+<p>Use <code>for</code> loops when there is a known number of
+iterations. The basic format of a <code>for</code> loop goes like
+this:</p>
 <pre><code>for (VALUE in SEQUENCE) {
   STATEMENT1
   STATEMENT2
   ETC
 }</code></pre>
-<p>In a <code>for</code> loop, R runs a fixed number of iterations determined by the <code>SEQUENCE</code> statement, which is a sequence of values. In each iteration, the variable <code>VALUE</code> will take the next value in <code>SEQUENCE</code>. Once we’ve exhausted all of the values in <code>SEQUENCE</code>, the loop terminates and the flow of the program continues down the script. This schematic illustrates the idea:</p>
+<p>In a <code>for</code> loop, R runs a fixed number of iterations
+determined by the <code>SEQUENCE</code> statement, which is a sequence
+of values. In each iteration, the variable <code>VALUE</code> will take
+the next value in <code>SEQUENCE</code>. Once we’ve exhausted all of the
+values in <code>SEQUENCE</code>, the loop terminates and the flow of the
+program continues down the script. This schematic illustrates the
+idea:</p>
 <center>
 <img src="images/loop_for.png" width="350" />
 </center>
 <div id="looping-over-numbers" class="section level2">
 <h2>Looping over numbers</h2>
-<p>It is common to use a sequence of integers for the values in <code>SEQUENCE</code>. The simplest way to do this is to use the <code>:</code> operator. For example, the code <code>1:10</code> creates the integers 1 through 10. The following <code>for</code> loop uses this sequence to print out each integer in the sequence:</p>
+<p>It is common to use a sequence of integers for the values in
+<code>SEQUENCE</code>. The simplest way to do this is to use the
+<code>:</code> operator. For example, the code <code>1:10</code> creates
+the integers 1 through 10. The following <code>for</code> loop uses this
+sequence to print out each integer in the sequence:</p>
 <pre class="r"><code># Print the numbers from 1 to 10
 for (i in 1:10) {
     print(i)
@@ -790,7 +812,9 @@ for (i in 1:10) {
 #&gt; [1] 8
 #&gt; [1] 9
 #&gt; [1] 10</code></pre>
-<p>You can also use the <code>seq()</code> function to generate a specific sequence of numbers over which to iterate. This can be useful if you want to control the step size (in the example below, it’s 2):</p>
+<p>You can also use the <code>seq()</code> function to generate a
+specific sequence of numbers over which to iterate. This can be useful
+if you want to control the step size (in the example below, it’s 2):</p>
 <pre class="r"><code># Print the numbers from 1 to 10 with a step size of 2
 for (i in seq(1, 10, by=2)) {
     print(i)
@@ -803,7 +827,10 @@ for (i in seq(1, 10, by=2)) {
 </div>
 <div id="looping-over-other-things" class="section level2">
 <h2>Looping over other things</h2>
-<p>R will loop over any sequence you create. For example, you can loop over a vector of characters (The <code>c()</code> function creates a “vector”…we’ll get to those <a href="L6-vectors.html">next lesson</a>):</p>
+<p>R will loop over any sequence you create. For example, you can loop
+over a vector of characters (The <code>c()</code> function creates a
+“vector”…we’ll get to those <a href="L6-vectors.html">next
+lesson</a>):</p>
 <pre class="r"><code>x &lt;- c(&#39;If&#39;, &#39;you&#39;, &#39;want&#39;, &#39;to&#39;, &#39;view&#39;, &#39;paradise,&#39;, &#39;simply&#39;, &#39;look&#39;,
        &#39;around&#39;, &#39;and&#39;, &#39;view&#39;, &#39;it.&#39;)
 for (i in x) {
@@ -821,7 +848,8 @@ for (i in x) {
 #&gt; [1] &quot;and&quot;
 #&gt; [1] &quot;view&quot;
 #&gt; [1] &quot;it.&quot;</code></pre>
-<p>You can also loop over logical values. The following loop will print out the value when it is <code>TRUE</code>:</p>
+<p>You can also loop over logical values. The following loop will print
+out the value when it is <code>TRUE</code>:</p>
 <pre class="r"><code>x &lt;- c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, TRUE, FALSE)
 for (i in x) {
     if (i == TRUE) {
@@ -834,7 +862,10 @@ for (i in x) {
 </div>
 <div id="nested-for-loops" class="section level2">
 <h2>Nested <code>for</code> loops</h2>
-<p>You can have loops inside loops! This is useful when working on things that have more than one dimension. For example, let’s print out a 5 x 5 rectangle out of asterisks (<code>*</code>) by looping over rows and columns:</p>
+<p>You can have loops inside loops! This is useful when working on
+things that have more than one dimension. For example, let’s print out a
+5 x 5 rectangle out of asterisks (<code>*</code>) by looping over rows
+and columns:</p>
 <pre class="r"><code>n &lt;- 5
 for (row in seq(n)) {
     for (col in seq(n)) {
@@ -847,28 +878,40 @@ for (row in seq(n)) {
 #&gt; *****
 #&gt; *****
 #&gt; *****</code></pre>
-<p>This will come in handy when working with 2-dimensional objects like <a href="L10-da1-data-frames.html">data frames</a>.</p>
+<p>This will come in handy when working with 2-dimensional objects like
+<a href="L10-da1-data-frames.html">data frames</a>.</p>
 <hr />
 </div>
 </div>
 <div id="the-while-loop" class="section level1">
 <h1>The <code>while</code> loop</h1>
 <blockquote>
-<p>A friend calls her programmer roommate and says, “while you’re out, buy some milk”…her roommate never returned home.</p>
+<p>A friend calls her programmer roommate and says, “while you’re out,
+buy some milk”…her roommate never returned home.</p>
 <p><img src="images/laugh_emoji.png" width="100" /></p>
 </blockquote>
-<p>Use while loops when there is an indeterminate number of iterations. The basic format of the loop looks like this:</p>
+<p>Use while loops when there is an indeterminate number of iterations.
+The basic format of the loop looks like this:</p>
 <pre><code>while (CONDITION) {
   STATEMENT1
   STATEMENT2
   ETC
 }</code></pre>
-<p>The code corresponding to <code>CONDITION</code> needs to produce a logical value, either <code>TRUE</code> or <code>FALSE</code>. Whenever R encounters a while statement, it checks to see if the condition is <code>TRUE</code>. If it is, R goes on to execute all of the commands inside the curly brackets. R will then continue to repeat this process until the condition is <code>FALSE</code>. Once that happens, R jumps to the bottom of the loop (i.e., to the <code>}</code> character), and then continues on with whatever commands appear next in the script. This schematic illustrates the idea:</p>
+<p>The code corresponding to <code>CONDITION</code> needs to produce a
+logical value, either <code>TRUE</code> or <code>FALSE</code>. Whenever
+R encounters a while statement, it checks to see if the condition is
+<code>TRUE</code>. If it is, R goes on to execute all of the commands
+inside the curly brackets. R will then continue to repeat this process
+until the condition is <code>FALSE</code>. Once that happens, R jumps to
+the bottom of the loop (i.e., to the <code>}</code> character), and then
+continues on with whatever commands appear next in the script. This
+schematic illustrates the idea:</p>
 <center>
 <img src="images/loop_while.png" width="350" />
 </center>
 <p><strong>Example</strong>:</p>
-<p>The following function prints each power of 2 up to an upper limit:</p>
+<p>The following function prints each power of 2 up to an upper
+limit:</p>
 <pre class="r"><code>powersOfTwo &lt;- function(upperLimit) {
     n = 1
     while (n &lt; upperLimit) {
@@ -894,7 +937,10 @@ for (row in seq(n)) {
 <h1>The break and next statements</h1>
 <div id="break" class="section level2">
 <h2>break</h2>
-<p>You can force a loop to stop by inserting the <code>break</code> statement in the loop. In a nested loop, the <code>break</code> statement exits from the innermost loop that is being evaluated. Here’s an example:</p>
+<p>You can force a loop to stop by inserting the <code>break</code>
+statement in the loop. In a nested loop, the <code>break</code>
+statement exits from the innermost loop that is being evaluated. Here’s
+an example:</p>
 <pre class="r"><code>for (val in 1:5) {
     if (val == 3) {
         break
@@ -903,11 +949,17 @@ for (row in seq(n)) {
 }</code></pre>
 <pre><code>#&gt; [1] 1
 #&gt; [1] 2</code></pre>
-<p>In this example, we iterate over the consecutive numbers from 1 to 5. Inside the for loop we have used a if condition to break if the current value is equal to 3. As we can see from the output, the loop terminates when it encounters the break statement.</p>
+<p>In this example, we iterate over the consecutive numbers from 1 to 5.
+Inside the for loop we have used a if condition to break if the current
+value is equal to 3. As we can see from the output, the loop terminates
+when it encounters the break statement.</p>
 </div>
 <div id="next" class="section level2">
 <h2>next</h2>
-<p>A <code>next</code> statement is useful when we want to skip the current iteration of a loop without terminating it. On encountering <code>next</code>, R will jump to the end of the loop and start the next iteration. Here’s an example:</p>
+<p>A <code>next</code> statement is useful when we want to skip the
+current iteration of a loop without terminating it. On encountering
+<code>next</code>, R will jump to the end of the loop and start the next
+iteration. Here’s an example:</p>
 <pre class="r"><code>for (val in 1:5) {
     if (val == 3) {
         next
@@ -918,13 +970,21 @@ for (row in seq(n)) {
 #&gt; [1] 2
 #&gt; [1] 4
 #&gt; [1] 5</code></pre>
-<p>In the above example, we use the <code>next</code> statement inside an <code>if</code> statement to check if the value is equal to 3. If the value is equal to 3, the current evaluation stops (i.e. the value is not printed) and the loop continues with the next iteration.</p>
+<p>In the above example, we use the <code>next</code> statement inside
+an <code>if</code> statement to check if the value is equal to 3. If the
+value is equal to 3, the current evaluation stops (i.e. the value is not
+printed) and the loop continues with the next iteration.</p>
 <hr />
 <p><strong>Page sources</strong>:</p>
-<p>Some content on this page has been modified from other courses, including:</p>
+<p>Some content on this page has been modified from other courses,
+including:</p>
 <ul>
-<li>CMU <a href="http://www.kosbie.net/cmu/spring-17/15-112/">15-112: Fundamentals of Programming</a>, by <a href="http://www.kosbie.net/cmu/">David Kosbie</a> &amp; <a href="https://hcii.cmu.edu/people/kelly-rivers">Kelly Rivers</a></li>
-<li>Danielle Navarro’s website <a href="https://psyr.org/index.html">“R for Psychological Science”</a></li>
+<li>CMU <a href="http://www.kosbie.net/cmu/spring-17/15-112/">15-112:
+Fundamentals of Programming</a>, by <a
+href="http://www.kosbie.net/cmu/">David Kosbie</a> &amp; <a
+href="https://hcii.cmu.edu/people/kelly-rivers">Kelly Rivers</a></li>
+<li>Danielle Navarro’s website <a href="https://psyr.org/index.html">“R
+for Psychological Science”</a></li>
 </ul>
 </div>
 </div>
