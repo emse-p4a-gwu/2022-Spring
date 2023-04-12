@@ -39,3 +39,4 @@ website](http://p4a.seas.gwu.edu/2022-Spring/).
 This course was inspired by many other courses / resources that cover
 similar material - see the course [about
 page](http://p4a.seas.gwu.edu/2022-Spring/about.html) for more details.
+
